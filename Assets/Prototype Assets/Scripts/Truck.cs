@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Truck : MonoBehaviour
 {
@@ -44,6 +45,8 @@ public class Truck : MonoBehaviour
             sceneIndex++;
         }
         yield return StartCoroutine(MoveTo(destination.position));
+        // Switches to dice minigame
+        SceneManager.LoadScene("DiceScene");
     }
 
     IEnumerator MoveTo(Vector3 target)

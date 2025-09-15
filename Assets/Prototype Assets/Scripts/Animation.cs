@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Scene : MonoBehaviour
+public class Animation : MonoBehaviour
 {
     void Start()
     {

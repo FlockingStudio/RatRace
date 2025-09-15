@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Truck : MonoBehaviour
 {
@@ -10,14 +9,14 @@ public class Truck : MonoBehaviour
     public Transform[] centerMovement;
     public Transform[] bottomMovement;
     public Transform destination;
-    public Scene dogScene;
-    public Scene personScene;
+    public Animation dogScene;
+    public Animation personScene;
 
-    private Scene[][] sceneMatrix;
+    private Animation[][] sceneMatrix;
     // Start is called before the first frame update
     void Start()
     {
-        sceneMatrix = new Scene[][] {new Scene[] {dogScene, personScene}, new Scene[] {personScene, dogScene}, new Scene[] {dogScene, dogScene}};
+        sceneMatrix = new Animation[][] {new Animation[] {dogScene, personScene}, new Animation[] {personScene, dogScene}, new Animation[] {dogScene, dogScene}};
     }
 
     // Update is called once per frame
@@ -39,14 +38,12 @@ public class Truck : MonoBehaviour
         foreach (Transform waypoint in movements)
         {
             yield return StartCoroutine(MoveTo(waypoint.position));
-            Scene usedScene = sceneMatrix[movement][sceneIndex];
+            Animation usedScene = sceneMatrix[movement][sceneIndex];
             yield return StartCoroutine(usedScene.ComeInAndBackCoroutine());
             yield return new WaitForSeconds(1f);
             sceneIndex++;
         }
         yield return StartCoroutine(MoveTo(destination.position));
-        // Switches to dice minigame
-        SceneManager.LoadScene("DiceScene");
     }
 
     IEnumerator MoveTo(Vector3 target)

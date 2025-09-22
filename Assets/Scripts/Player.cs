@@ -1,10 +1,10 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class Player : MonoBehaviour
 {
-    public static GameManager Instance;
-    public static string myName;
+    public static Player Instance;
+    public static int money;
 
     void Awake()
     {
@@ -21,11 +21,11 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        myName = "Bird";
+        money = 200;
         // if not in To scene load scene
-        if (SceneManager.GetActiveScene().buildIndex != 1)
+        if (SceneManager.GetActiveScene().name != "TO")
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene("TO");
         }
     }
 }

@@ -6,6 +6,6 @@ public class NewSceneTest : MonoBehaviour
 
     void Start()
     {
-        Debug.Log(GameManager.myName);
+        Debug.Log($"I have this much money: {Player.money}");
     }
 }

@@ -61,8 +61,8 @@ public class Dice : MonoBehaviour
     }
 
     // Switches back to main scene
-    void SwitchScene()
-    {
-        SceneManager.LoadScene("MapScene");
-    }
+    // void SwitchScene()
+    // {
+    //     SceneManager.LoadScene("MapScene");
+    // }
 }

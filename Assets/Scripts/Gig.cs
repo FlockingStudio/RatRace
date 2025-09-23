@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Dice : MonoBehaviour
+public class Gig : MonoBehaviour
 {
     public List<Sprite> DiceSides;
     public float timePerSide;
@@ -56,6 +56,8 @@ public class Dice : MonoBehaviour
             // Sets that dice side as the permanent image
             sp.sprite = sp.sprite = DiceSides[randomPick];
             complete = true;
+            // Makes the player pay to roll the dice
+            Player.money -= 10;
             Invoke("SwitchScene", 3.0f);
         }
     }

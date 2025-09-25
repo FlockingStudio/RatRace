@@ -17,8 +17,7 @@ public class GigMoneyDisplay : MonoBehaviour
     void Update()
     { 
         // Displays the text for the amount of money the player has
-        text = "$ " + Player.money;
-        moneyText.SetText(text);
+        moneyText.SetText(Player.money.ToString());
     }
     
 }

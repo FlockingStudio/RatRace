@@ -28,7 +28,7 @@ public class GigButton : MonoBehaviour
         else if (timesPressed == 1)
         {
             // Charges for a dice roll
-            Player.money -= 50;
+            Player.Instance.Money -= 50;
             Invoke("DiceRoll", 2.0f);
             timesPressed += 1;
         }
@@ -42,7 +42,7 @@ public class GigButton : MonoBehaviour
         int choice = d.Complete();
         if (choice > 3)
         {
-            Player.money += 200;
+            Player.Instance.Money += 200;
         }
     }
 }

@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class GigMoneyDisplay : MonoBehaviour
+public class MoneyDisplay : MonoBehaviour
 {
     TextMeshProUGUI moneyText;
-    string text;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +16,7 @@ public class GigMoneyDisplay : MonoBehaviour
     void Update()
     { 
         // Displays the text for the amount of money the player has
-        moneyText.SetText(Player.money.ToString());
+        moneyText.SetText(Player.Instance.Money.ToString());
     }
     
 }

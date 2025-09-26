@@ -42,7 +42,22 @@ public class Player : MonoBehaviour
     public void OpenGig()
     {
         CurrentStage = Stage.gig;
-        SceneManager.LoadScene("GigScene");
+        StartCoroutine(CloseAllWindowsAndLoadScene("GigScene"));
+    }
+
+    private IEnumerator CloseAllWindowsAndLoadScene(string sceneName)
+    {
+        Window[] allWindows = FindObjectsOfType<Window>();
+
+        foreach (Window window in allWindows)
+        {
+            window.CloseWindow();
+        }
+
+        // Wait for animation to complete (0.4f is the duration from MinimizeAnimation)
+        yield return new WaitForSeconds(0.8f);
+
+        SceneManager.LoadScene(sceneName);
     }
 
 }

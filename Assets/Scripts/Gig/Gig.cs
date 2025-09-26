@@ -57,7 +57,7 @@ public class Gig : MonoBehaviour
             sp.sprite = sp.sprite = DiceSides[randomPick];
             complete = true;
             // Makes the player pay to roll the dice
-            Player.money -= 10;
+            Player.Instance.Money -= 10;
             Invoke("SwitchScene", 3.0f);
         }
     }

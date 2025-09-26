@@ -21,13 +21,28 @@ public class GigButton : MonoBehaviour
             // Makes the text invisible
             gigText.alpha = 0;
             textBox.enabled = false;
-            Player.money -= 10;
             // Makes the dice visible
             diceImage.enabled = true;
+            timesPressed += 1;
         }
         else if (timesPressed == 1)
         {
-            //Player.money -= 20;
+            // Charges for a dice roll
+            Player.money -= 50;
+            Invoke("DiceRoll", 2.0f);
+            timesPressed += 1;
+        }
+    }
+
+    // Makes a function to roll the dice so that it can be called with invoke
+    void DiceRoll() {
+        Debug.Log("Dice roll function");
+        //Stops the dice if it is pressed again
+        Dice d = diceImage.GetComponent<Dice>();
+        int choice = d.Complete();
+        if (choice > 3)
+        {
+            Player.money += 200;
         }
     }
 }

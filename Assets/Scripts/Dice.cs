@@ -48,8 +48,9 @@ public class Dice : MonoBehaviour
     }
 
     // Stops the dice animation
-    public void Complete()
+    public int Complete()
     {
         complete = true;
+        return current + 1;
     }
 }

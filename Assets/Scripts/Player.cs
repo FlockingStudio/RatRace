@@ -23,9 +23,9 @@ public class Player : MonoBehaviour
     {
         money = 200;
         // if not in To scene load scene
-        if (SceneManager.GetActiveScene().name != "TO")
+        if (SceneManager.GetActiveScene().name != "GigScene")
         {
-            SceneManager.LoadScene("TO");
+            SceneManager.LoadScene("GigScene");
         }
     }
 }

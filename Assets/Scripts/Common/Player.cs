@@ -3,8 +3,9 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public static Player Instance { get; private set; }
-    public int Money { get; set; }
-    public int Turn { get; set; }
+    public int Money;
+    public int Turn;
+    public int Day;
 
     // Start is called before the first frame update
     void Awake()
@@ -17,9 +18,6 @@ public class Player : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
-
-        Money = 100;
-        Turn = 2;
     }
 
     // Update is called once per frame

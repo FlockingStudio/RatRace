@@ -6,7 +6,6 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
     public Stage CurrentStage { get; set; }
-    public int Day { get; set; }
 
     public enum Stage
     {
@@ -14,6 +13,7 @@ public class GameManager : MonoBehaviour
         gig = 1,
         dilemma = 2
     }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,10 +24,8 @@ public class GameManager : MonoBehaviour
         }
 
         Instance = this;
-
-        // initialize values
         CurrentStage = Stage.map;
-        Day = 1;
+
     }
 
     // Update is called once per frame
@@ -39,7 +37,6 @@ public class GameManager : MonoBehaviour
     public void OpenGig() => OpenScene(Stage.gig);
     public void OpenDilemma() => OpenScene(Stage.dilemma);
     public void OpenMap() => OpenScene(Stage.map);
-
     private void OpenScene(Stage stage)
     {
         CurrentStage = stage;

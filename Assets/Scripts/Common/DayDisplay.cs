@@ -16,7 +16,6 @@ public class DayDisplay : MonoBehaviour
     void Update()
     {
         // Displays the text for the amount of money the player has
-        dayText.SetText("Day " + GameManager.Instance.Day.ToString());
+        dayText.SetText("Day " + Player.Instance.Day.ToString());
     }
-
 }

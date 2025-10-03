@@ -210,6 +210,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a55f905d11cd7ea4096ee013494e9e36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Money: 200
+  Turn: 2
+  Day: 1
 --- !u!1 &1235979843
 GameObject:
   m_ObjectHideFlags: 0

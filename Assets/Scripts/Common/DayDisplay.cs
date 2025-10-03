@@ -14,9 +14,8 @@ public class DayDisplay : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    { 
+    {
         // Displays the text for the amount of money the player has
         dayText.SetText("Day " + Player.Instance.Day.ToString());
     }
-    
 }

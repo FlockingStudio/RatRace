@@ -104,3 +104,6 @@ InitTestScene*.unity*
 
 # Mac
 .DS_Store
+
+# Claude Code documentation
+CLAUDE.md

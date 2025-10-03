@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Microsoft.Unity.VisualStudio.Editor;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -35,7 +34,8 @@ public class GigButton : MonoBehaviour
     }
 
     // Makes a function to roll the dice so that it can be called with invoke
-    void DiceRoll() {
+    void DiceRoll()
+    {
         Debug.Log("Dice roll function");
         //Stops the dice if it is pressed again
         Dice d = diceImage.GetComponent<Dice>();

@@ -1,12 +1,10 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class MapNode : MonoBehaviour
 {
-    public enum NodeType { None, Gig, Dilemma }
+    public enum NodeType { None, Gig, Dilemma, Player, Completed }
     public MapNode[] accessibleNodes;
     public NodeType nodeType = NodeType.None;
 
@@ -34,6 +32,7 @@ public class MapNode : MonoBehaviour
                 img.sprite = Resources.Load<Sprite>("Map_Icon_Dilemma");
                 break;
             default:
+                img.sprite = Resources.Load<Sprite>("Map_Icon_Complete");
                 break;
         }
     }
@@ -68,9 +67,11 @@ public class MapNode : MonoBehaviour
             switch (nodeType)
             {
                 case NodeType.Gig:
+                    GameManager.Instance.NodeStates[this.name] = NodeType.Player;
                     GameManager.Instance.OpenGig();
                     break;
                 case NodeType.Dilemma:
+                    GameManager.Instance.NodeStates[this.name] = NodeType.Player;
                     GameManager.Instance.OpenDilemma();
                     break;
                 default:

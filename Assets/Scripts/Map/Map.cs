@@ -5,25 +5,46 @@ using UnityEngine.UI;
 
 public class Map : MonoBehaviour
 {
-    public static Map Instance { get; private set; }
     public int NumberOfDilemmas;
     public int NumberOfGigs;
-    private MapNode[] nodes;
+    private MapNode[] MapNodes;
     private MapNode PlayerNode;
     // Start is called before the first frame update
     void Start()
     {
-        Instance = this;
-        nodes = FindObjectsOfType<MapNode>();
+        MapNodes = FindObjectsOfType<MapNode>();
 
-        if (NumberOfDilemmas + NumberOfGigs != nodes.Length - 1)
+        if (GameManager.Instance.NodeStates.Count == MapNodes.Length)
         {
-            Debug.LogError("Number of events does not match number of nodes minus one for player start node.");
-            return;
+            Player.Instance.SubtractTurn();
+            foreach (MapNode node in MapNodes)
+            {
+                MapNode.NodeType state = GameManager.Instance.NodeStates[node.name];
+                if (state == MapNode.NodeType.Player)
+                {
+                    PlayerNode = node;
+                    Image img = PlayerNode.GetComponent<Image>();
+                    img.sprite = Resources.Load<Sprite>("Map_Icon_Player");
+                }
+                else
+                {
+                    node.AssignEvent(state);
+                }
+            }
+
+        }
+        else
+        {
+            if (NumberOfDilemmas + NumberOfGigs != MapNodes.Length - 1)
+            {
+                Debug.LogError("Number of events does not match number of nodes minus one for player start node.");
+                return;
+            }
+            RandomlyPlacePlayer();
+            AssignEvents();
+
         }
 
-        RandomlyPlacePlayer();
-        AssignEvents();
         UpdateAccessibleNodes();
     }
 
@@ -33,15 +54,33 @@ public class Map : MonoBehaviour
 
     }
 
-    public static Map GetInstance()
+    private void OnDestroy()
     {
-        return Instance;
+        for (int index = 0; index < MapNodes.Length; index++)
+        {
+            MapNode node = MapNodes[index];
+            if (node == PlayerNode)
+            {
+                GameManager.Instance.NodeStates[node.name] = MapNode.NodeType.Completed;
+            }
+            else
+            {
+                if (!GameManager.Instance.NodeStates.ContainsKey(node.name))
+                {
+                    GameManager.Instance.NodeStates[node.name] = node.nodeType;
+                }
+                else if (GameManager.Instance.NodeStates[node.name] != MapNode.NodeType.Player)
+                {
+                    GameManager.Instance.NodeStates[node.name] = node.nodeType;
+                }
+            }
+        }
     }
 
     private void RandomlyPlacePlayer()
     {
-        int randomIndex = Random.Range(0, nodes.Length);
-        PlayerNode = nodes[randomIndex];
+        int randomIndex = Random.Range(0, MapNodes.Length);
+        PlayerNode = MapNodes[randomIndex];
         // Get the image component from the game object and set the sprite
         Image img = PlayerNode.GetComponent<Image>();
         img.sprite = Resources.Load<Sprite>("Map_Icon_Player");
@@ -71,11 +110,11 @@ public class Map : MonoBehaviour
         int eventIndex = 0;
 
         // For each node, assign an event based on its type except for the player's current node
-        for (int i = 0; i < nodes.Length; i++)
+        for (int i = 0; i < MapNodes.Length; i++)
         {
-            if (nodes[i] != PlayerNode)
+            if (MapNodes[i] != PlayerNode)
             {
-                nodes[i].AssignEvent(events[eventIndex]);
+                MapNodes[i].AssignEvent(events[eventIndex]);
                 eventIndex++;
             }
         }
@@ -83,7 +122,7 @@ public class Map : MonoBehaviour
 
     private void UpdateAccessibleNodes()
     {
-        foreach (MapNode node in nodes)
+        foreach (MapNode node in MapNodes)
         {
             node.DisableNode();
         }

@@ -12,21 +12,27 @@ public class Dice : MonoBehaviour
     // Keeps track of the current image being displayed
     private int current;
     private bool complete;
+    private bool animationStarted;
 
     // Start is called before the first frame update
     void Start()
     {
         count = 0;
         complete = false;
-        // Sets the dice as invisible to start
-        GetComponent<UnityEngine.UI.Image>().enabled = false;
+        animationStarted = false;
+    }
+
+    // Begins the dice roll animation
+    public void beginAnimation()
+    {
+        animationStarted = true;
     }
 
     // Update is called once per frame
     void Update()
     {
         // If the player hasn't chosen yet run the routine to change the sprite
-        if (!complete)
+        if (!complete && animationStarted)
         {
             // Changes the image
             if (count >= timePerSide)
@@ -47,9 +53,9 @@ public class Dice : MonoBehaviour
     }
 
     // Stops the dice animation
-    public int Complete()
+    public void Complete(int side)
     {
         complete = true;
-        return current + 1;
+        GetComponent<UnityEngine.UI.Image>().sprite = DiceSides[side - 1];
     }
 }

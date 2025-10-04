@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,6 +8,8 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     public Stage CurrentStage { get; set; }
 
+    // Store the state of each node by its name
+    public Dictionary<string, MapNode.NodeType> NodeStates { get; set; }
     public enum Stage
     {
         map = 0,
@@ -15,7 +18,7 @@ public class GameManager : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         if (Instance != null && Instance != this)
         {
@@ -24,8 +27,8 @@ public class GameManager : MonoBehaviour
         }
 
         Instance = this;
+        DontDestroyOnLoad(gameObject);
         CurrentStage = Stage.map;
-
     }
 
     // Update is called once per frame

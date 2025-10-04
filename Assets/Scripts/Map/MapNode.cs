@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class MapNode : MonoBehaviour
 {
-    public enum NodeType { None, Gig, Dilemma }
+    public enum NodeType { None, Gig, Dilemma, Player }
     public MapNode[] accessibleNodes;
     public NodeType nodeType = NodeType.None;
 

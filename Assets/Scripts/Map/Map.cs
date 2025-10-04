@@ -14,12 +14,12 @@ public class Map : MonoBehaviour
     {
         MapNodes = FindObjectsOfType<MapNode>();
 
-        if (GameManager.Instance.NodeStates != null)
+        if (GameManager.Instance.NodeStates.Count == MapNodes.Length)
         {
-            Dictionary<string, MapNode.NodeType> nodeStates = GameManager.Instance.NodeStates;
+            Player.Instance.SubtractTurn();
             foreach (MapNode node in MapNodes)
             {
-                MapNode.NodeType state = nodeStates[node.name];
+                MapNode.NodeType state = GameManager.Instance.NodeStates[node.name];
                 if (state == MapNode.NodeType.Player)
                 {
                     PlayerNode = node;
@@ -32,7 +32,6 @@ public class Map : MonoBehaviour
                 }
             }
 
-            UpdateAccessibleNodes();
         }
         else
         {
@@ -44,8 +43,9 @@ public class Map : MonoBehaviour
             RandomlyPlacePlayer();
             AssignEvents();
 
-            UpdateAccessibleNodes();
         }
+
+        UpdateAccessibleNodes();
     }
 
     // Update is called once per frame
@@ -56,21 +56,25 @@ public class Map : MonoBehaviour
 
     private void OnDestroy()
     {
-        Dictionary<string, MapNode.NodeType> nodeStates = new Dictionary<string, MapNode.NodeType>();
         for (int index = 0; index < MapNodes.Length; index++)
         {
             MapNode node = MapNodes[index];
             if (node == PlayerNode)
             {
-                nodeStates[node.name] = MapNode.NodeType.Player;
+                GameManager.Instance.NodeStates[node.name] = MapNode.NodeType.Completed;
             }
             else
             {
-                nodeStates[node.name] = node.nodeType;
+                if (!GameManager.Instance.NodeStates.ContainsKey(node.name))
+                {
+                    GameManager.Instance.NodeStates[node.name] = node.nodeType;
+                }
+                else if (GameManager.Instance.NodeStates[node.name] != MapNode.NodeType.Player)
+                {
+                    GameManager.Instance.NodeStates[node.name] = node.nodeType;
+                }
             }
         }
-
-        GameManager.Instance.NodeStates = nodeStates;
     }
 
     private void RandomlyPlacePlayer()

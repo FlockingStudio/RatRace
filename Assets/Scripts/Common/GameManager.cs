@@ -17,7 +17,6 @@ public class GameManager : MonoBehaviour
         dilemma = 2
     }
 
-    // Start is called before the first frame update
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -29,6 +28,7 @@ public class GameManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
         CurrentStage = Stage.map;
+        NodeStates = new Dictionary<string, MapNode.NodeType>();
     }
 
     // Update is called once per frame

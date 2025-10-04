@@ -1,0 +1,98 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class Map : MonoBehaviour
+{
+    public static Map Instance { get; private set; }
+    public int NumberOfDilemmas;
+    public int NumberOfGigs;
+    private MapNode[] nodes;
+    private MapNode PlayerNode;
+    // Start is called before the first frame update
+    void Start()
+    {
+        Instance = this;
+        nodes = FindObjectsOfType<MapNode>();
+
+        if (NumberOfDilemmas + NumberOfGigs != nodes.Length - 1)
+        {
+            Debug.LogError("Number of events does not match number of nodes minus one for player start node.");
+            return;
+        }
+
+        RandomlyPlacePlayer();
+        AssignEvents();
+        UpdateAccessibleNodes();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+    public static Map GetInstance()
+    {
+        return Instance;
+    }
+
+    private void RandomlyPlacePlayer()
+    {
+        int randomIndex = Random.Range(0, nodes.Length);
+        PlayerNode = nodes[randomIndex];
+        // Get the image component from the game object and set the sprite
+        Image img = PlayerNode.GetComponent<Image>();
+        img.sprite = Resources.Load<Sprite>("Map_Icon_Player");
+    }
+
+    private void AssignEvents()
+    {
+        MapNode.NodeType[] events = new MapNode.NodeType[NumberOfDilemmas + NumberOfGigs];
+        for (int i = 0; i < NumberOfDilemmas; i++)
+        {
+            events[i] = MapNode.NodeType.Dilemma;
+        }
+        for (int i = NumberOfDilemmas; i < NumberOfDilemmas + NumberOfGigs; i++)
+        {
+            events[i] = MapNode.NodeType.Gig;
+        }
+
+        // Shuffle the events list
+        for (int i = 0; i < events.Length; i++)
+        {
+            MapNode.NodeType temp = events[i];
+            int randomIndex = Random.Range(i, events.Length);
+            events[i] = events[randomIndex];
+            events[randomIndex] = temp;
+        }
+
+        int eventIndex = 0;
+
+        // For each node, assign an event based on its type except for the player's current node
+        for (int i = 0; i < nodes.Length; i++)
+        {
+            if (nodes[i] != PlayerNode)
+            {
+                nodes[i].AssignEvent(events[eventIndex]);
+                eventIndex++;
+            }
+        }
+    }
+
+    private void UpdateAccessibleNodes()
+    {
+        foreach (MapNode node in nodes)
+        {
+            node.DisableNode();
+        }
+
+        foreach (MapNode node in PlayerNode.accessibleNodes)
+        {
+            node.EnableNode();
+        }
+
+        PlayerNode.EnableNode();
+    }
+}

@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameOverScene.unity
     guid: dac5ca37a8f8c6842a7caf64f037db7c
+  - enabled: 1
+    path: Assets/Scenes/DilemmaScene.unity
+    guid: 41dd7a7d4633e604d878e30d9b0c3e24
   m_configObjects: {}

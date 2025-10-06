@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Event
   - Node
+  - Boundary
   layers:
   - Default
   - TransparentFX

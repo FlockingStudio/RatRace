@@ -5,25 +5,55 @@ using UnityEngine.UI;
 public class MapNode : MonoBehaviour
 {
     public enum NodeType { None, Gig, Dilemma, Player, Completed }
+
     public MapNode[] accessibleNodes;
+
     public NodeType nodeType = NodeType.None;
 
-    // Start is called before the first frame update
-    void Start()
+    [Header("Float Animation")]
+    public float floatAmplitude = 10f;
+
+    public float floatSpeed = 2f;
+
+    private RectTransform rectTransform;
+    private Vector2 startPosition;
+    private bool isFloating = false;
+    private bool isInitialized = false;
+
+    private void Awake()
     {
+        InitializeRectTransform();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
+        if (isFloating && nodeType != NodeType.Player && nodeType != NodeType.Completed)
+        {
+            float newY = startPosition.y + Mathf.Sin(Time.time * floatSpeed) * floatAmplitude;
+            rectTransform.anchoredPosition = new Vector2(startPosition.x, newY);
+        }
+    }
 
+    private void InitializeRectTransform()
+    {
+        if (!isInitialized)
+        {
+            rectTransform = GetComponent<RectTransform>();
+            startPosition = rectTransform.anchoredPosition;
+            isInitialized = true;
+        }
     }
 
     public void AssignEvent(NodeType eventType)
     {
         nodeType = eventType;
+        UpdateVisual();
+    }
+
+    public void UpdateVisual()
+    {
         Image img = GetComponent<Image>();
-        switch (eventType)
+        switch (nodeType)
         {
             case NodeType.Gig:
                 img.sprite = Resources.Load<Sprite>("Map_Icon_Gig");
@@ -31,7 +61,10 @@ public class MapNode : MonoBehaviour
             case NodeType.Dilemma:
                 img.sprite = Resources.Load<Sprite>("Map_Icon_Dilemma");
                 break;
-            default:
+            case NodeType.Player:
+                img.sprite = Resources.Load<Sprite>("Map_Icon_Player");
+                break;
+            case NodeType.Completed:
                 img.sprite = Resources.Load<Sprite>("Map_Icon_Complete");
                 break;
         }
@@ -39,30 +72,37 @@ public class MapNode : MonoBehaviour
 
     public void DisableNode()
     {
+        InitializeRectTransform();
+
         Image img = GetComponent<Image>();
-        // set the color having a transparency of 25%
         img.color = new Color(img.color.r, img.color.g, img.color.b, 0.25f);
+
         Button btn = GetComponent<Button>();
         btn.interactable = false;
+
+        isFloating = false;
+        rectTransform.anchoredPosition = startPosition;
     }
 
     public void EnableNode()
     {
         Image img = GetComponent<Image>();
-        // set the color having a transparency of 100%
         img.color = new Color(img.color.r, img.color.g, img.color.b, 1f);
+
         Button btn = GetComponent<Button>();
         btn.interactable = true;
+
+        isFloating = nodeType != NodeType.Player && nodeType != NodeType.Completed;
     }
 
-    public Boolean IsAccessible()
+    public bool IsAccessible()
     {
         return GetComponent<Button>().interactable;
     }
 
     public void OnNodeClicked()
     {
-        if (IsAccessible())
+        if (IsAccessible() && nodeType != NodeType.Player)
         {
             switch (nodeType)
             {
@@ -70,13 +110,18 @@ public class MapNode : MonoBehaviour
                     GameManager.Instance.NodeStates[this.name] = NodeType.Player;
                     GameManager.Instance.OpenGig();
                     break;
+
                 case NodeType.Dilemma:
                     GameManager.Instance.NodeStates[this.name] = NodeType.Player;
                     GameManager.Instance.OpenDilemma();
                     break;
-                default:
-                    Debug.Log("No event assigned to this node.");
+
+                case NodeType.Completed:
+                    Map.Instance.MoveToNode(this);
                     break;
+
+                default:
+                    throw new Exception("Node type not recognized");
             }
         }
     }

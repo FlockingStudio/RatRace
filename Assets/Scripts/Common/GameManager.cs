@@ -6,10 +6,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-    public Stage CurrentStage { get; set; }
+    public GameObject MenuPrefab;
 
-    // Store the state of each node by its name
-    public Dictionary<string, MapNode.NodeType> NodeStates { get; set; }
     public enum Stage
     {
         map = 0,
@@ -17,8 +15,14 @@ public class GameManager : MonoBehaviour
         dilemma = 2
     }
 
-    void Awake()
+    public Stage CurrentStage { get; set; }
+
+    public Dictionary<string, MapNode.NodeType> NodeStates { get; set; }
+    private GameObject menuInstance;
+
+    private void Awake()
     {
+        // Singleton pattern implementation
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -27,37 +31,38 @@ public class GameManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
+
+        // Initialize game state
         CurrentStage = Stage.map;
         NodeStates = new Dictionary<string, MapNode.NodeType>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void OpenGig() => OpenScene(Stage.gig);
+
     public void OpenDilemma() => OpenScene(Stage.dilemma);
+
     public void OpenMap() => OpenScene(Stage.map);
+
     private void OpenScene(Stage stage)
     {
         CurrentStage = stage;
-        string sceneName = "";
+        string sceneName = GetSceneName(stage);
+        StartCoroutine(CloseAllWindowsAndLoadScene(sceneName));
+    }
+
+    private string GetSceneName(Stage stage)
+    {
         switch (stage)
         {
             case Stage.map:
-                sceneName = "MapScene";
-                break;
+                return "MapScene";
             case Stage.gig:
-                sceneName = "GigScene";
-                break;
+                return "GigScene";
             case Stage.dilemma:
-                sceneName = "DilemmaScene";
-                break;
+                return "DilemmaScene";
+            default:
+                return "MapScene";
         }
-
-        StartCoroutine(CloseAllWindowsAndLoadScene(sceneName));
     }
 
     private IEnumerator CloseAllWindowsAndLoadScene(string sceneName)
@@ -69,9 +74,28 @@ public class GameManager : MonoBehaviour
             window.CloseWindow();
         }
 
-        // Wait for animation to complete (0.4f is the duration from MinimizeAnimation)
+        // Wait for window close animation to complete (0.8s standard duration)
         yield return new WaitForSeconds(0.8f);
 
         SceneManager.LoadScene(sceneName);
+    }
+
+    public void OpenMenu()
+    {
+        // instantiate menu prefab in the Screen canvas
+        if (menuInstance != null) return;
+        menuInstance = Instantiate(MenuPrefab, GameObject.Find("Screen").transform);
+    }
+
+    public void RestartGame()
+    {
+        Destroy(Player.Instance.gameObject);
+        Destroy(Instance.gameObject);
+        SceneManager.LoadScene("MainMenuScene");
+    }
+
+    public void ResumeGame()
+    {
+        menuInstance.GetComponent<Window>().CloseWindow();
     }
 }

@@ -7,6 +7,6 @@ public class StartButton : MonoBehaviour
 {
     public void PressStart()
     {
-        SceneManager.LoadScene("MapScene");
+        SceneManager.LoadScene("PrologueScene");
     }
 }

@@ -1,32 +1,42 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using System;
 
 public class GigDisplayManager : MonoBehaviour
 {
     public TextMeshProUGUI gigText;
+
     public TextMeshProUGUI greaterThanText;
+
     public Image gigImage;
+
     public TextAsset gigCSV;
+
     public Button rollButton;
-    // Start is called before the first frame update
-    void Start()
+
+    private void Start()
     {
-        // Splits the string into sets of data
+        LoadRandomGig();
+    }
+
+    private void LoadRandomGig()
+    {
+        // Parse CSV data
         string[] splitCSVData = gigCSV.text.Split("\n");
-        int textChoice = UnityEngine.Random.Range(0, splitCSVData.Length);
-        // Splits each line into the text of the line, the value required by the dice, and the image
+        int textChoice = Random.Range(0, splitCSVData.Length);
         string[] gigInfo = splitCSVData[textChoice].Split(",");
-        Debug.Log(gigInfo[2]);
+
+        // Update UI elements
         gigText.SetText(gigInfo[0]);
         greaterThanText.SetText("Roll greater than >" + gigInfo[1]);
-        // Gets the GigButton script attached to the roll button
+
+        // Set required roll value on the button
         GigButton gigButtonScript = rollButton.GetComponent<GigButton>();
         gigButtonScript.setRequiredRoll(int.Parse(gigInfo[1]));
-        //Set the gig image
+
+        // Load and set the gig image from Resources
         gigImage.sprite = Resources.Load<Sprite>(gigInfo[2].Trim());
+
+        Debug.Log("Loaded gig with image: " + gigInfo[2]);
     }
 }

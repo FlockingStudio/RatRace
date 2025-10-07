@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -9,7 +10,7 @@ public class Window : MonoBehaviour, IDragHandler
     private RectTransform boundaryRectTransform;
     private Canvas canvas;
 
-    void Awake()
+    private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
         canvas = GetComponentInParent<Canvas>();
@@ -18,9 +19,18 @@ public class Window : MonoBehaviour, IDragHandler
         {
             boundaryRectTransform = boundaryObject.GetComponent<RectTransform>();
         }
+        else
+        {
+            // grab the componnet using the tag "boundary"
+            GameObject boundary = GameObject.FindGameObjectWithTag("Boundary");
+            if (boundary != null)
+            {
+                boundaryRectTransform = boundary.GetComponent<RectTransform>();
+            }
+        }
     }
 
-    void Start()
+    private void Start()
     {
         MaximizeWindow();
     }
@@ -28,7 +38,12 @@ public class Window : MonoBehaviour, IDragHandler
     public void OnDrag(PointerEventData eventData)
     {
         Vector2 newPosition = rectTransform.anchoredPosition + (eventData.delta / canvas.scaleFactor);
-        if (boundaryRectTransform != null) newPosition = ClampToBoundary(newPosition);
+
+        if (boundaryRectTransform != null)
+        {
+            newPosition = ClampToBoundary(newPosition);
+        }
+
         rectTransform.anchoredPosition = newPosition;
     }
 
@@ -47,6 +62,7 @@ public class Window : MonoBehaviour, IDragHandler
     }
 
     public void CloseWindow() => StartCoroutine(AnimateWindow(true));
+
     public void MaximizeWindow() => StartCoroutine(AnimateWindow(false));
 
     private IEnumerator AnimateWindow(bool minimize)
@@ -77,6 +93,9 @@ public class Window : MonoBehaviour, IDragHandler
         rectTransform.anchoredPosition = targetPos;
         rectTransform.localScale = targetScale;
 
-        if (minimize) Destroy(gameObject);
+        if (minimize)
+        {
+            Destroy(gameObject);
+        }
     }
 }

@@ -347,8 +347,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7518932ae2909949be08938a9649eae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NumberOfDilemmas: 0
-  NumberOfGigs: 5
+  NumberOfDilemmas: 3
+  NumberOfGigs: 2
 --- !u!1001 &414667827
 PrefabInstance:
   m_ObjectHideFlags: 0

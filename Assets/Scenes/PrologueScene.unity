@@ -493,8 +493,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 85
-  m_fontSizeBase: 85
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -771,7 +771,9 @@ MonoBehaviour:
   dialogueSegments:
   - This game is mouse only. In the next screen, click on nodes to enter events.
     Different symbols will bring you into different events.
-  - This is just to prove that we can progress the dialogue
+  - It is possible to lose a turn to backtracking if you move into either of the
+    bottom two nodes before your third turn on the map; This is to demonstrate that
+    backtrakcing is possible.
   modText: {fileID: 746439204}
 --- !u!114 &1793051655
 MonoBehaviour:

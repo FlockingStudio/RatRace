@@ -12,10 +12,9 @@ public class GameManager : MonoBehaviour
     {
         map = 0,
         gig = 1,
-        dilemma = 2
+        dilemma = 2,
+        prologue= 3
     }
-
-    public Stage CurrentStage { get; set; }
 
     public Dictionary<string, MapNode.NodeType> NodeStates { get; set; }
     private GameObject menuInstance;
@@ -33,7 +32,6 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         // Initialize game state
-        CurrentStage = Stage.map;
         NodeStates = new Dictionary<string, MapNode.NodeType>();
     }
 
@@ -42,10 +40,10 @@ public class GameManager : MonoBehaviour
     public void OpenDilemma() => OpenScene(Stage.dilemma);
 
     public void OpenMap() => OpenScene(Stage.map);
+    public void OpenPrologue() => OpenScene(Stage.prologue);
 
     private void OpenScene(Stage stage)
     {
-        CurrentStage = stage;
         string sceneName = GetSceneName(stage);
         StartCoroutine(CloseAllWindowsAndLoadScene(sceneName));
     }
@@ -60,6 +58,8 @@ public class GameManager : MonoBehaviour
                 return "GigScene";
             case Stage.dilemma:
                 return "DilemmaScene";
+            case Stage.prologue:
+                return "PrologueScene";
             default:
                 return "MapScene";
         }
@@ -75,7 +75,10 @@ public class GameManager : MonoBehaviour
         }
 
         // Wait for window close animation to complete (0.8s standard duration)
-        yield return new WaitForSeconds(0.8f);
+        if (allWindows.Length > 0)
+        {
+            yield return new WaitForSeconds(0.8f);
+        }
 
         SceneManager.LoadScene(sceneName);
     }

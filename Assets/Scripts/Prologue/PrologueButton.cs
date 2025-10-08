@@ -18,7 +18,9 @@ public class PrologueButton : MonoBehaviour
             counter++;
         }
         else
-            SceneManager.LoadScene("MapScene");
+        {
+            GameManager.Instance.OpenMap();
+        }
     }
 
     void Start()

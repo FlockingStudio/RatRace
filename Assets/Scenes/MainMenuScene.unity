@@ -320,6 +320,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2216354612599588664, guid: a45ae8fe5610bb3428f91dced6d9b6e9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2216354613377723258, guid: a45ae8fe5610bb3428f91dced6d9b6e9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2216354614434090963, guid: a45ae8fe5610bb3428f91dced6d9b6e9, type: 3}
       propertyPath: m_Name
       value: Screen
@@ -430,7 +438,6 @@ GameObject:
   - component: {fileID: 1440059776}
   - component: {fileID: 1440059780}
   - component: {fileID: 1440059779}
-  - component: {fileID: 1440059778}
   - component: {fileID: 1440059777}
   m_Layer: 5
   m_Name: StartButton
@@ -504,9 +511,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1440059778}
-        m_TargetAssemblyTypeName: StartButton, Assembly-CSharp
-        m_MethodName: PressStart
+      - m_Target: {fileID: 1580043295}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: OpenPrologue
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -516,18 +523,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1440059778
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1440059775}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cbccc49302968f47a5e31f3c7865182, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1440059779
 MonoBehaviour:
   m_ObjectHideFlags: 0

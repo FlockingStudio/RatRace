@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Map : MonoBehaviour
 {
     public static Map Instance;
+    public GameObject TechDemoEndPrefab;
 
     public int NumberOfDilemmas;
 
@@ -16,6 +17,11 @@ public class Map : MonoBehaviour
 
     private void Start()
     {
+        if (GameManager.Instance.IsGameOver) {
+            Instantiate(TechDemoEndPrefab, FindObjectOfType<Canvas>().transform);
+            return;
+        }
+
         MapNodes = FindObjectsOfType<MapNode>();
         Instance = this;
 
@@ -36,7 +42,8 @@ public class Map : MonoBehaviour
 
     private void OnDestroy()
     {
-        SaveMapState();
+        if (!GameManager.Instance.IsGameOver)
+            SaveMapState();
     }
 
     private void RestoreMapState()

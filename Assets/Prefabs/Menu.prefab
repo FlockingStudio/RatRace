@@ -241,6 +241,7 @@ GameObject:
   - component: {fileID: 8764475478282401182}
   - component: {fileID: 8764475478282401181}
   - component: {fileID: 6321883374077176765}
+  - component: {fileID: 8381368339368431733}
   m_Layer: 5
   m_Name: RestartButton
   m_TagString: Untagged
@@ -351,6 +352,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 8381368339368431733}
+        m_TargetAssemblyTypeName: ButtonSound, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 5890718410506911943, guid: 9afe3cb2eb4e61346b3f6e26d0c71893, type: 3}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: RestartGame
@@ -363,6 +376,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &8381368339368431733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8764475478282401179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9595a54c856e19c438c9f4f26e8d1e1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8764475478298247707
 GameObject:
   m_ObjectHideFlags: 0
@@ -510,6 +535,7 @@ GameObject:
   - component: {fileID: 8764475478485217763}
   - component: {fileID: 8764475478485217762}
   - component: {fileID: 5050764810097669596}
+  - component: {fileID: 7831302416049069143}
   m_Layer: 5
   m_Name: ResumeButton
   m_TagString: Untagged
@@ -632,3 +658,27 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 8381368339368431733}
+        m_TargetAssemblyTypeName: ButtonSound, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7831302416049069143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8764475478485217760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9595a54c856e19c438c9f4f26e8d1e1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

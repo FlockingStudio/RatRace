@@ -50,7 +50,7 @@ public class Gig : MonoBehaviour
             complete = true;
 
             // Deduct cost
-            Player.Instance.Money -= 10;
+            Player.Instance.SubtractMoney(10);
 
             // Note: SwitchScene method is commented out in original code
             // Invoke("SwitchScene", 3.0f);

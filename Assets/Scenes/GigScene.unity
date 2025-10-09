@@ -1239,6 +1239,7 @@ GameObject:
   - component: {fileID: 1488477487}
   - component: {fileID: 1488477486}
   - component: {fileID: 1488477485}
+  - component: {fileID: 1488477489}
   m_Layer: 5
   m_Name: RollButton
   m_TagString: Untagged
@@ -1323,6 +1324,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1488477489}
+        m_TargetAssemblyTypeName: ButtonSound, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1488477486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1336,8 +1349,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   diceButton: {fileID: 1574052960}
-  shakeSound: {fileID: 1418826058}
-  rollSound: {fileID: 1588721386}
 --- !u!114 &1488477487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1376,6 +1387,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1488477483}
   m_CullTransparentMesh: 1
+--- !u!114 &1488477489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1488477483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9595a54c856e19c438c9f4f26e8d1e1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1574052959
 GameObject:
   m_ObjectHideFlags: 0

@@ -20,6 +20,8 @@ public class PrologueButton : MonoBehaviour
         else
         {
             GameManager.Instance.OpenMap();
+            // disable button to prevent spamming
+            GetComponent<Button>().enabled = false;
         }
     }
 

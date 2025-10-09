@@ -12,6 +12,6 @@ public class MoneyDisplay : MonoBehaviour
 
     private void Update()
     {
-        moneyText.SetText(Player.Instance.Money.ToString());
+        moneyText.SetText(Player.Instance.GetMoney().ToString());
     }
 }

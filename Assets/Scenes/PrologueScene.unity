@@ -739,6 +739,7 @@ GameObject:
   - component: {fileID: 1793051657}
   - component: {fileID: 1793051656}
   - component: {fileID: 1793051655}
+  - component: {fileID: 1793051658}
   - component: {fileID: 1793051654}
   m_Layer: 5
   m_Name: Button
@@ -786,6 +787,7 @@ MonoBehaviour:
   - It is possible to lose a turn to backtracking if you move into either of the
     bottom two nodes before your third turn on the map; This is to demonstrate that
     backtrakcing is possible.
+  - The goal is to reach 350 coins. You have 3 turns to reach the goal.
   modText: {fileID: 746439204}
 --- !u!114 &1793051655
 MonoBehaviour:
@@ -843,6 +845,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1793051658}
+        m_TargetAssemblyTypeName: ButtonSound, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1793051656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -881,6 +895,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1793051652}
   m_CullTransparentMesh: 1
+--- !u!114 &1793051658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1793051652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9595a54c856e19c438c9f4f26e8d1e1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2087266821
 PrefabInstance:
   m_ObjectHideFlags: 0

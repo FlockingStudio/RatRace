@@ -355,6 +355,7 @@ GameObject:
   - component: {fileID: 318609844}
   - component: {fileID: 318609843}
   - component: {fileID: 318609847}
+  - component: {fileID: 318609848}
   m_Layer: 5
   m_Name: Button2
   m_TagString: Untagged
@@ -406,6 +407,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 318609848}
+        m_TargetAssemblyTypeName: ButtonSound, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 318609847}
         m_TargetAssemblyTypeName: DilemmaButton, Assembly-CSharp
         m_MethodName: ModMoney
@@ -465,7 +478,7 @@ RectTransform:
   m_GameObject: {fileID: 318609842}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.4285715, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1381946086}
@@ -474,8 +487,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 247.65378, y: -343.21667}
-  m_SizeDelta: {x: 346.7193, y: 115.9725}
+  m_AnchoredPosition: {x: 247.67, y: -343.21667}
+  m_SizeDelta: {x: 495.35, y: 115.9725}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &318609847
 MonoBehaviour:
@@ -489,9 +502,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97d509b7961f1154da1713a7fc9b4b72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clickSound: {fileID: 1418826058}
   self: {fileID: 318609843}
   other: {fileID: 1187609576}
+--- !u!114 &318609848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 318609842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9595a54c856e19c438c9f4f26e8d1e1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &458025172
 GameObject:
   m_ObjectHideFlags: 0
@@ -568,9 +592,9 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 739307228}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.4285715, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1313373486}
@@ -578,8 +602,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -24.878796, y: 140.14687}
-  m_SizeDelta: {x: 726.7841, y: 409.6963}
+  m_AnchoredPosition: {x: 0, y: 137}
+  m_SizeDelta: {x: 300, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &739307230
 MonoBehaviour:
@@ -791,6 +815,7 @@ GameObject:
   - component: {fileID: 1187609574}
   - component: {fileID: 1187609576}
   - component: {fileID: 1187609577}
+  - component: {fileID: 1187609578}
   m_Layer: 5
   m_Name: Button1
   m_TagString: Untagged
@@ -807,7 +832,7 @@ RectTransform:
   m_GameObject: {fileID: 1187609572}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.4285715, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1963154053}
@@ -816,8 +841,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -294.1023, y: -343.22}
-  m_SizeDelta: {x: 345.1235, y: 115.97}
+  m_AnchoredPosition: {x: -294.9538, y: -343.22}
+  m_SizeDelta: {x: 498.852, y: 115.97}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1187609574
 MonoBehaviour:
@@ -901,6 +926,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 318609848}
+        m_TargetAssemblyTypeName: ButtonSound, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1187609577}
         m_TargetAssemblyTypeName: DilemmaButton, Assembly-CSharp
         m_MethodName: ModMoney
@@ -925,9 +962,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97d509b7961f1154da1713a7fc9b4b72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clickSound: {fileID: 1418826058}
   self: {fileID: 1187609576}
   other: {fileID: 318609843}
+--- !u!114 &1187609578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1187609572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9595a54c856e19c438c9f4f26e8d1e1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1313373485
 GameObject:
   m_ObjectHideFlags: 0
@@ -1142,8 +1190,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 52
+  m_fontSizeBase: 52
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1608,8 +1656,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 52
+  m_fontSizeBase: 52
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

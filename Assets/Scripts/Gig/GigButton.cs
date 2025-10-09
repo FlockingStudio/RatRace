@@ -94,13 +94,27 @@ public class GigButton : MonoBehaviour
         // Award money if the roll exceeds the requirement
         else
         {
-            // Changes the gig text to show the player won
-            gigText.text = "You failed. Reroll or press continue to go to map.";
-            diceRollComplete = true;
-            // Adds the complete button
-            completeButton.gameObject.SetActive(true);
-            // Changes the button text to say reroll
-            rollButtonText.text = "Reroll $50";
+            // Checks if the player has enough money to reroll
+            if (Player.Instance.GetMoney() >= 50)
+            {
+                // Changes the gig text to show the player won
+                gigText.text = "You failed. Reroll or press continue to go to map.";
+                diceRollComplete = true;
+                // Adds the complete button
+                completeButton.gameObject.SetActive(true);
+                // Changes the button text to say reroll
+                rollButtonText.text = "Reroll $50";
+            }
+            else
+            {
+                // Changes the gig text to show the player lost and can't reroll
+                gigText.text = "You failed and can't afford to reroll. Press continue to return to the map";
+                diceRollComplete = true;
+                // Removes the option to reroll
+                GetComponent<Button>().gameObject.SetActive(false);
+                // Adds the complete button
+                completeButton.gameObject.SetActive(true);
+            }
 
         }
     }

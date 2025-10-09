@@ -88,11 +88,13 @@ public class GameManager : MonoBehaviour
         // instantiate menu prefab in the Screen canvas
         if (menuInstance != null) return;
         menuInstance = Instantiate(MenuPrefab, GameObject.Find("Screen").transform);
+        SoundManager.Instance.PauseBackgroundMusic();
     }
 
     public void RestartGame()
     {
         Destroy(Player.Instance.gameObject);
+        Destroy(SoundManager.Instance.gameObject);
         Destroy(Instance.gameObject);
         SceneManager.LoadScene("MainMenuScene");
     }
@@ -100,5 +102,6 @@ public class GameManager : MonoBehaviour
     public void ResumeGame()
     {
         menuInstance.GetComponent<Window>().CloseWindow();
+        SoundManager.Instance.PlayBackgroundMusic();
     }
 }

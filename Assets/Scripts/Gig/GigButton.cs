@@ -5,10 +5,6 @@ public class GigButton : MonoBehaviour
 {
     public Image diceButton;
 
-    public AudioSource shakeSound;
-
-    public AudioSource rollSound;
-
     private int timesPressed = 0;
     private int requiredRoll = 0;
 
@@ -17,11 +13,11 @@ public class GigButton : MonoBehaviour
         if (timesPressed == 0)
         {
             // Deduct cost of dice roll
-            Player.Instance.Money -= 50;
+            Player.Instance.SubtractMoney(50);
 
             // Start dice animation
             Dice diceScript = diceButton.GetComponent<Dice>();
-            shakeSound.Play();
+            SoundManager.Instance.PlayDiceShake();
             diceScript.beginAnimation();
 
             // Schedule dice roll and scene transition
@@ -52,7 +48,7 @@ public class GigButton : MonoBehaviour
         // Award money if the roll exceeds the requirement
         if (randomPick > requiredRoll)
         {
-            Player.Instance.Money += 200;
+            Player.Instance.AddMoney(150);
         }
     }
 
@@ -63,6 +59,6 @@ public class GigButton : MonoBehaviour
 
     private void PlayRollSound()
     {
-        rollSound.Play();
+        SoundManager.Instance.PlayDiceRoll();
     }
 }

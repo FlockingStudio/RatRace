@@ -1,0 +1,79 @@
+using TMPro;
+using UnityEngine;
+
+public class SoundManager : MonoBehaviour
+{
+    public static SoundManager Instance { get; private set; }
+    public AudioSource buttonClickSound;
+    public AudioSource diceRollSound;
+    public AudioSource diceShakeSound;
+    public AudioSource backgroundMusic;
+    public AudioSource coinSound;
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void Start()
+    {
+        // Initialize audio sources if needed
+        PlayBackgroundMusic();
+    }
+
+    private void Update()
+    {
+    }
+
+    public void PlayDiceRoll()
+    {
+        // Implement sound playing logic here
+        diceRollSound.Play();
+    }
+
+    public void PlayDiceShake()
+    {
+        diceShakeSound.Play();
+    }
+
+    public void PlayButtonClick()
+    {
+        buttonClickSound.Play();
+    }
+
+    public void PlayBackgroundMusic()
+    {
+        if (!backgroundMusic.isPlaying)
+        {
+            backgroundMusic.Play();
+        }
+    }
+
+    public void PauseBackgroundMusic()
+    {
+        if (backgroundMusic.isPlaying)
+        {
+            backgroundMusic.Pause();
+        }
+    }
+
+    public void ResumeBackgroundMusic()
+    {
+        if (!backgroundMusic.isPlaying)
+        {
+            backgroundMusic.UnPause();
+        }
+    }
+
+    public void PlayCoinSound()
+    {
+        coinSound.Play();
+    }
+}

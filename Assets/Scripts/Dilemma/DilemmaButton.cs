@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class DilemmaButton : MonoBehaviour
 {
-    public AudioSource clickSound;
     int cost;
     public Button self;
     public Button other;
@@ -14,10 +13,10 @@ public class DilemmaButton : MonoBehaviour
     {
         cost = num;
     }
-    
-    public int GetCost() 
+
+    public int GetCost()
     {
-        return cost; 
+        return cost;
     }
 
     void SwitchToMap()
@@ -27,9 +26,17 @@ public class DilemmaButton : MonoBehaviour
     //main fuctionality. changes money, plays audio, switches to map, and disables the button (prevent spamming to get a lot of money)
     public void ModMoney()
     {
-        Player.Instance.Money += cost;
+        if (cost < 0)
+        {
+            Player.Instance.SubtractMoney(-cost);
+
+        }
+        else if (cost > 0)
+        {
+            Player.Instance.AddMoney(cost);
+        }
+        
         Invoke("SwitchToMap", 1.0f);
-        clickSound.Play();
         self.enabled = false;
         other.enabled = false;
     }

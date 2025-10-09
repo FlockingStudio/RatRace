@@ -29,7 +29,6 @@ public class Player : MonoBehaviour
 
         if (Turn <= 0)
         {
-            Debug.Log("Game Over! You have run out of turns.");
             UnityEngine.SceneManagement.SceneManager.LoadScene("GameOverScene");
         }
     }

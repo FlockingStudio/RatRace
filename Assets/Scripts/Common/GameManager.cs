@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     }
 
     public Dictionary<string, MapNode.NodeType> NodeStates { get; set; }
+    public bool IsGameOver { get; set; } = false;
     private GameObject menuInstance;
 
     private void Awake()
@@ -103,5 +104,14 @@ public class GameManager : MonoBehaviour
     {
         menuInstance.GetComponent<Window>().CloseWindow();
         SoundManager.Instance.PlayBackgroundMusic();
+    }
+
+    public void MoveToNextDay()
+    {
+        NodeStates.Clear();
+        Player.Instance.Day += 1;
+        Player.Instance.Turn = 3;
+        IsGameOver = true;
+        OpenMap();
     }
 }

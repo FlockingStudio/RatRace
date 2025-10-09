@@ -8,7 +8,9 @@ public class SoundManager : MonoBehaviour
     public AudioSource diceRollSound;
     public AudioSource diceShakeSound;
     public AudioSource backgroundMusic;
-    public AudioSource coinSound;
+    public AudioSource coinSoundGain;
+    public AudioSource coinSoundLose;
+
     private void Awake()
     {
         if (Instance == null)
@@ -72,8 +74,13 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    public void PlayCoinSound()
+    public void PlayCoinSoundGain()
     {
-        coinSound.Play();
+        coinSoundGain.Play();
+    }
+
+    public void PlayCoinSoundLose()
+    {
+        coinSoundLose.Play();
     }
 }

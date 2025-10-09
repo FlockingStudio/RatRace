@@ -13,6 +13,7 @@ public class GigDisplayManager : MonoBehaviour
     public TextAsset gigCSV;
 
     public Button rollButton;
+    public Button continueButton;
 
     private static CSVPool gigPool;
 
@@ -25,6 +26,8 @@ public class GigDisplayManager : MonoBehaviour
         }
 
         LoadRandomGig();
+        //Makes the continue button inactive to begin
+        continueButton.gameObject.SetActive(false);
     }
 
     private void LoadRandomGig()

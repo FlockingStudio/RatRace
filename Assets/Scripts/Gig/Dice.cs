@@ -44,7 +44,10 @@ public class Dice : MonoBehaviour
     public void beginAnimation()
     {
         animationStarted = true;
+        // Makes sure complete is false to allow dor multiple rerolls
+        complete = false;
     }
+
 
     public void Complete(int side)
     {

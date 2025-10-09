@@ -14,17 +14,26 @@ public class GigDisplayManager : MonoBehaviour
 
     public Button rollButton;
 
+    private static CSVPool gigPool;
+
     private void Start()
     {
+        // Create pool on first run
+        if (gigPool == null)
+        {
+            gigPool = new CSVPool(gigCSV);
+        }
+
         LoadRandomGig();
     }
 
     private void LoadRandomGig()
     {
-        // Parse CSV data
-        string[] splitCSVData = gigCSV.text.Split("\n");
-        int textChoice = Random.Range(0, splitCSVData.Length);
-        string[] gigInfo = splitCSVData[textChoice].Split(",");
+        // Get random gig from pool
+        string selectedGig = gigPool.GetRandom();
+
+        // Parse the selected gig
+        string[] gigInfo = selectedGig.Split(",");
 
         // Update UI elements
         gigText.SetText(gigInfo[0]);

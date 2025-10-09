@@ -15,24 +15,40 @@ public class DDisplayManager : MonoBehaviour
     public TextMeshProUGUI choice2;
     public Button button1;
     public Button button2;
-    // Start is called before the first frame update
+
+    private static CSVPool dilemmaPool;
+
     void Start()
     {
-        // Splits the string into sets of data
-        string[] splitCSVData = dilemmaCSV.text.Split("\n");
-        int textChoice = UnityEngine.Random.Range(0, splitCSVData.Length);
-        // Splits each line into the text of the line, the value required by the dice, and the image
-        string[] dilemmaInfo = splitCSVData[textChoice].Split(",");
-        //Debug.Log(Info[2]);
+        // Create pool on first run
+        if (dilemmaPool == null)
+        {
+            dilemmaPool = new CSVPool(dilemmaCSV);
+        }
+
+        LoadRandomDilemma();
+    }
+
+    private void LoadRandomDilemma()
+    {
+        // Get random dilemma from pool
+        string selectedDilemma = dilemmaPool.GetRandom();
+
+        // Parse the selected dilemma
+        string[] dilemmaInfo = selectedDilemma.Split(",");
+
+        //Set UI elements
         dilemmaText.SetText(dilemmaInfo[0]);
         choice1.SetText(dilemmaInfo[1]);
         choice2.SetText(dilemmaInfo[2]);
-        // Gets the GigButton script attached to the roll button
+
+        // Gets the DilemmaButton script attached to buttons
         DilemmaButton dilemmaButtonScript1 = button1.GetComponent<DilemmaButton>();
         DilemmaButton dilemmaButtonScript2 = button2.GetComponent<DilemmaButton>();
         dilemmaButtonScript1.SetCost(int.Parse(dilemmaInfo[3]));
         dilemmaButtonScript2.SetCost(int.Parse(dilemmaInfo[4]));
-        //Set the gig image
+
+        //Set the dilemma image
         dilemmaImage.sprite = Resources.Load<Sprite>(dilemmaInfo[5].Trim());
     }
 }

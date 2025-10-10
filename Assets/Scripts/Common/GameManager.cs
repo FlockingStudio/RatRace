@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
     {
         string sceneName = GetSceneName(stage);
         StartCoroutine(CloseAllWindowsAndLoadScene(sceneName));
+        SoundManager.Instance.transitionSound.Play();
     }
 
     private string GetSceneName(Stage stage)

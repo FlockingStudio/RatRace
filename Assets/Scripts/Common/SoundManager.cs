@@ -1,5 +1,8 @@
+using System;
+using System.Diagnostics;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SoundManager : MonoBehaviour
 {
@@ -10,6 +13,7 @@ public class SoundManager : MonoBehaviour
     public AudioSource backgroundMusic;
     public AudioSource coinSoundGain;
     public AudioSource coinSoundLose;
+    public AudioSource transitionSound;
 
     private void Awake()
     {
@@ -76,11 +80,18 @@ public class SoundManager : MonoBehaviour
 
     public void PlayCoinSoundGain()
     {
-        coinSoundGain.Play();
+        if (SceneManager.GetActiveScene().name != "MainMenuScene")
+            coinSoundGain.Play();
     }
 
     public void PlayCoinSoundLose()
     {
-        coinSoundLose.Play();
+        if (SceneManager.GetActiveScene().name != "MainMenuScene")
+            coinSoundLose.Play();
+    }
+
+    public void PlayTransition()
+    {
+        transitionSound.Play();
     }
 }

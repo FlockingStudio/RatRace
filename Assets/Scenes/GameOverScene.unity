@@ -537,26 +537,6 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 1998011689586181366, guid: a45ae8fe5610bb3428f91dced6d9b6e9, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PlaySound
-      objectReference: {fileID: 0}
-    - target: {fileID: 2216354612599588664, guid: a45ae8fe5610bb3428f91dced6d9b6e9, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2216354612693405085, guid: a45ae8fe5610bb3428f91dced6d9b6e9, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2216354612772449506, guid: a45ae8fe5610bb3428f91dced6d9b6e9, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2216354613377723258, guid: a45ae8fe5610bb3428f91dced6d9b6e9, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2216354614434090963, guid: a45ae8fe5610bb3428f91dced6d9b6e9, type: 3}
       propertyPath: m_Name
       value: Screen
@@ -644,10 +624,6 @@ PrefabInstance:
     - target: {fileID: 2216354614434090975, guid: a45ae8fe5610bb3428f91dced6d9b6e9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7334038144562396574, guid: a45ae8fe5610bb3428f91dced6d9b6e9, type: 3}
-      propertyPath: m_RootOrder
-      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7518803460176377846, guid: a45ae8fe5610bb3428f91dced6d9b6e9, type: 3}
       propertyPath: m_IsActive

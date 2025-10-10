@@ -41,11 +41,18 @@ public class Player : MonoBehaviour
     public void AddMoney(int amount)
     {
         Money += amount;
-        SoundManager.Instance.PlayCoinSound();
+        SoundManager.Instance.PlayCoinSoundGain();
+        MoneyFlash.Instance.Activate(amount);
     }
 
     public void SubtractMoney(int amount)
     {
+        MoneyFlash.Instance.Activate(-amount);
+        //i'm putting it like this because i don't think we should play the sound if you don't actually lose money -craig
+        if (Money != 0)
+        {
+            SoundManager.Instance.PlayCoinSoundLose();
+        }
         if (Money <= amount)
         {
             Money = 0;

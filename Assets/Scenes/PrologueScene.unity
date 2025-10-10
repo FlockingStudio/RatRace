@@ -782,12 +782,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueSegments:
-  - This game is mouse only. In the next screen, click on nodes to enter events.
-    Different symbols will bring you into different events.
-  - It is possible to lose a turn to backtracking if you move into either of the
-    bottom two nodes before your third turn on the map; This is to demonstrate that
-    backtrakcing is possible.
-  - The goal is to reach 350 coins. You have 3 turns to reach the goal.
+  - Use your mouse to click on nodes and enter events. Different symbols mean different
+    events.
+  - Every move costs a turn, even going back to already visited events.
+  - 'Goal: Earn 450 coins within 3 turns.'
   modText: {fileID: 746439204}
 --- !u!114 &1793051655
 MonoBehaviour:

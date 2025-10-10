@@ -277,7 +277,7 @@ RectTransform:
   - {fileID: 1374014491}
   - {fileID: 520248608}
   m_Father: {fileID: 2216354613475345541}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1369,14 +1369,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Screen
       objectReference: {fileID: 0}
-    - target: {fileID: 2216354614434090974, guid: a45ae8fe5610bb3428f91dced6d9b6e9, type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 1470095911}
-    - target: {fileID: 2216354614434090974, guid: a45ae8fe5610bb3428f91dced6d9b6e9, type: 3}
-      propertyPath: m_AdditionalShaderChannelsFlag
-      value: 25
-      objectReference: {fileID: 0}
     - target: {fileID: 2216354614434090975, guid: a45ae8fe5610bb3428f91dced6d9b6e9, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1475,7 +1467,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7334038144562396574, guid: a45ae8fe5610bb3428f91dced6d9b6e9, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a45ae8fe5610bb3428f91dced6d9b6e9, type: 3}

@@ -897,6 +897,18 @@ PrefabInstance:
       propertyPath: coinSoundLose
       value: 
       objectReference: {fileID: 1433025014}
+    - target: {fileID: 2620611824207742553, guid: 1c4bff8162ef9f6488d5d3e002a1242b, type: 3}
+      propertyPath: backgroundTrack1
+      value: 
+      objectReference: {fileID: 8300000, guid: 7b0c5b33510d2654fb45c8e0b4a9c433, type: 3}
+    - target: {fileID: 2620611824207742553, guid: 1c4bff8162ef9f6488d5d3e002a1242b, type: 3}
+      propertyPath: backgroundTrack2
+      value: 
+      objectReference: {fileID: 8300000, guid: 95020cbdd625f3f419c747ce7e479cfd, type: 3}
+    - target: {fileID: 2620611824207742554, guid: 1c4bff8162ef9f6488d5d3e002a1242b, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 95020cbdd625f3f419c747ce7e479cfd, type: 3}
     - target: {fileID: 2620611824207742557, guid: 1c4bff8162ef9f6488d5d3e002a1242b, type: 3}
       propertyPath: m_Name
       value: AudioManager

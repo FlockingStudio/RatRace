@@ -38,6 +38,8 @@ public class Map : MonoBehaviour
         }
 
         UpdateAccessibleNodes();
+        // Changes the sound track playing
+        SoundManager.Instance.playTrackOne();
     }
 
     private void OnDestroy()

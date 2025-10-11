@@ -89,22 +89,22 @@ public class SoundManager : MonoBehaviour
     // Switches to track one
     public void playTrackOne()
     {
-        if (SoundManager.Instance.backgroundMusic.clip != backgroundTrack1)
+        if (backgroundMusic.clip != backgroundTrack1)
         {
             // Changes the sound track playing
-            SoundManager.Instance.backgroundMusic.clip = backgroundTrack1;
-            SoundManager.Instance.backgroundMusic.Play();
+            backgroundMusic.clip = backgroundTrack1;
+            backgroundMusic.Play();
         }
     }
 
     // Switches to track two
     public void playTrackTwo()
     {
-        if (SoundManager.Instance.backgroundMusic.clip != backgroundTrack2)
+        if (backgroundMusic.clip != backgroundTrack2)
         {
             // Changes the sound track playing
-            SoundManager.Instance.backgroundMusic.clip = backgroundTrack2;
-            SoundManager.Instance.backgroundMusic.Play();
+            backgroundMusic.clip = backgroundTrack2;
+            backgroundMusic.Play();
         }
     }
 }

@@ -728,7 +728,7 @@ MonoBehaviour:
   - Use your mouse to click on nodes and enter events. Different symbols mean different
     events.
   - Every move costs a turn, even going back to already visited events.
-  - 'Goal: Earn 450 coins within 3 turns.'
+  - 'Goal: Earn 400 coins within 3 turns.'
   modText: {fileID: 746439204}
 --- !u!114 &1793051655
 MonoBehaviour:

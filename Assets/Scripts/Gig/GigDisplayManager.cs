@@ -28,6 +28,8 @@ public class GigDisplayManager : MonoBehaviour
         LoadRandomGig();
         //Makes the continue button inactive to begin
         continueButton.gameObject.SetActive(false);
+        // Plays the correct track for the gig
+        SoundManager.Instance.playTrackTwo();
     }
 
     private void LoadRandomGig()

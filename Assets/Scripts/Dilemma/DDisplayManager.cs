@@ -27,6 +27,8 @@ public class DDisplayManager : MonoBehaviour
         }
 
         LoadRandomDilemma();
+        // Plays the correct track for the dilemma
+        SoundManager.Instance.playTrackTwo();
     }
 
     private void LoadRandomDilemma()

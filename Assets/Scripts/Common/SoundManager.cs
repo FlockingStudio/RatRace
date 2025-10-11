@@ -10,6 +10,8 @@ public class SoundManager : MonoBehaviour
     public AudioSource backgroundMusic;
     public AudioSource coinSoundGain;
     public AudioSource coinSoundLose;
+    public AudioClip backgroundTrack1;
+    public AudioClip backgroundTrack2;
 
     private void Awake()
     {
@@ -82,5 +84,27 @@ public class SoundManager : MonoBehaviour
     public void PlayCoinSoundLose()
     {
         coinSoundLose.Play();
+    }
+
+    // Switches to track one
+    public void playTrackOne()
+    {
+        if (backgroundMusic.clip != backgroundTrack1)
+        {
+            // Changes the sound track playing
+            backgroundMusic.clip = backgroundTrack1;
+            backgroundMusic.Play();
+        }
+    }
+
+    // Switches to track two
+    public void playTrackTwo()
+    {
+        if (backgroundMusic.clip != backgroundTrack2)
+        {
+            // Changes the sound track playing
+            backgroundMusic.clip = backgroundTrack2;
+            backgroundMusic.Play();
+        }
     }
 }

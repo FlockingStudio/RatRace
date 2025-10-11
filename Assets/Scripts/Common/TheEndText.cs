@@ -10,7 +10,7 @@ public class TheEndText : MonoBehaviour
     private void Start()
     {
         endText = GetComponent<TextMeshProUGUI>();
-        if (Player.Instance.GetMoney() < 450)
+        if (Player.Instance.GetMoney() < 400)
         {
             endText.SetText("You died");
             // find a button and disable it

@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,10 +7,9 @@ public class GigButton : MonoBehaviour
 {
     public Image diceButton;
     public TextMeshProUGUI gigText;
-    public Button completeButton;
     public TextMeshProUGUI rollButtonText;
+    public Button quitButton;
     private string gigInformation;
-    private bool diceRollComplete;
 
     private int timesPressed = 0;
     private int requiredRoll = 0;
@@ -17,12 +17,20 @@ public class GigButton : MonoBehaviour
     private void Start()
     {
         gigInformation = gigText.text;
-        diceRollComplete = false;
+        if (Player.Instance.GetMoney() < 50)
+        {
+            gigText.text = "You do not have enough money to attempt this gig. Press quit gig to return to map";
+            // Removes the option to roll
+            GetComponent<Button>().gameObject.SetActive(false);
+        }
     }
     public void ButtonLogic()
     {
         if (timesPressed == 0)
         {
+            // Stops the player from interacting with either button
+            GetComponent<Button>().interactable = false;
+            quitButton.interactable = false;
             // Deduct cost of dice roll
             Player.Instance.SubtractMoney(50);
 
@@ -38,12 +46,11 @@ public class GigButton : MonoBehaviour
             timesPressed = 1;
         }
         // Allows for the reroll option
-        else if (timesPressed > 0 && diceRollComplete)
+        else if (timesPressed > 0)
         {
-            // Stops the user from spamming the roll option
-            diceRollComplete = false;
-            // Removes the complete button
-            completeButton.gameObject.SetActive(false);
+            // Stops the player from interacting with either button
+            GetComponent<Button>().interactable = false;
+            quitButton.interactable = false;
             // Resets the gig text to what it was before
             gigText.text = gigInformation;
 
@@ -70,10 +77,9 @@ public class GigButton : MonoBehaviour
 
     private void DiceRoll()
     {
-        Debug.Log("Dice roll function required roll " + requiredRoll);
 
         // Roll the dice (1-6)
-        int randomPick = Random.Range(1, 7);
+        int randomPick = UnityEngine.Random.Range(1, 7);
 
         // Complete the dice animation with the result
         Dice diceScript = diceButton.GetComponent<Dice>();
@@ -83,13 +89,11 @@ public class GigButton : MonoBehaviour
         if (randomPick > requiredRoll)
         {
             // Changes the gig text to show the player won
-            gigText.text = "Success, you earned $150. Press continue to return to map.";
+            gigText.text = "Success, you earned $150. Press Quit Gig to return to map.";
             Player.Instance.AddMoney(150);
-            diceRollComplete = true;
-            // Removes the option to reroll
+            // Removes the option to reroll and allows the player to quit
             GetComponent<Button>().gameObject.SetActive(false);
-            // Adds the complete button
-            completeButton.gameObject.SetActive(true);
+            quitButton.interactable = true;
         }
         // Award money if the roll exceeds the requirement
         else
@@ -98,22 +102,18 @@ public class GigButton : MonoBehaviour
             if (Player.Instance.GetMoney() >= 50)
             {
                 // Changes the gig text to show the player won
-                gigText.text = "You failed. Reroll or press continue to go to map.";
-                diceRollComplete = true;
-                // Adds the complete button
-                completeButton.gameObject.SetActive(true);
-                // Changes the button text to say reroll
-                rollButtonText.text = "Reroll $50";
+                gigText.text = "You failed. Roll again or press Quit Gig to go to map.";
+                // Allows the player to interact with both buttons
+                GetComponent<Button>().interactable = true;
+                quitButton.interactable = true;
             }
             else
             {
                 // Changes the gig text to show the player lost and can't reroll
-                gigText.text = "You failed and can't afford to reroll. Press continue to return to the map";
-                diceRollComplete = true;
-                // Removes the option to reroll
+                gigText.text = "You failed and can't afford to roll again. Press Quit Gig to return to the map";
+                // Only allows the player to interact with the quit button
                 GetComponent<Button>().gameObject.SetActive(false);
-                // Adds the complete button
-                completeButton.gameObject.SetActive(true);
+                quitButton.interactable = true;
             }
 
         }

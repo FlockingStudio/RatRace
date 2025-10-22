@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -88,6 +90,11 @@ public class GameManager : MonoBehaviour
     {
         // instantiate menu prefab in the Screen canvas
         if (menuInstance != null) return;
+        Button[] allButtons = UnityEngine.Object.FindObjectsByType<Button>(FindObjectsSortMode.None);
+        foreach (Button button in allButtons)
+        {
+            button.enabled = false;
+        }
         menuInstance = Instantiate(MenuPrefab, GameObject.Find("Screen").transform);
         SoundManager.Instance.PauseBackgroundMusic();
     }
@@ -103,6 +110,11 @@ public class GameManager : MonoBehaviour
     public void ResumeGame()
     {
         menuInstance.GetComponent<Window>().CloseWindow();
+        Button[] allButtons = UnityEngine.Object.FindObjectsByType<Button>(FindObjectsSortMode.None);
+        foreach (Button button in allButtons)
+        {
+            button.enabled = true;
+        }
         SoundManager.Instance.PlayBackgroundMusic();
     }
 

@@ -23,14 +23,19 @@ public class Player : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    public void SubtractTurn()
+    public void SubtractTurns(int change)
     {
-        Turn -= 1;
+        Turn -= change;
 
         if (Turn <= 0)
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene("GameOverScene");
         }
+    }
+
+    public void AddTurns(int change)
+    {
+        Turn += change;
     }
 
     public int GetMoney()

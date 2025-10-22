@@ -7,7 +7,7 @@ using System;
 
 public class DDisplayManager : MonoBehaviour
 {
-    //dilemma csv order: body text, button text 1, button text 2, money effect of 1, money effect of 2, image name
+    //dilemma csv order: body text, button text 1, button text 2, money effect of 1, turn effect of 1, money effect of 2, turn effect of 2, image name
     public TextMeshProUGUI dilemmaText;
     public Image dilemmaImage;
     public TextAsset dilemmaCSV;
@@ -37,7 +37,7 @@ public class DDisplayManager : MonoBehaviour
         string selectedDilemma = dilemmaPool.GetRandom();
 
         // Parse the selected dilemma
-        string[] dilemmaInfo = selectedDilemma.Split(",");
+        string[] dilemmaInfo = selectedDilemma.Split(";");
 
         //Set UI elements
         dilemmaText.SetText(dilemmaInfo[0]);
@@ -47,10 +47,13 @@ public class DDisplayManager : MonoBehaviour
         // Gets the DilemmaButton script attached to buttons
         DilemmaButton dilemmaButtonScript1 = button1.GetComponent<DilemmaButton>();
         DilemmaButton dilemmaButtonScript2 = button2.GetComponent<DilemmaButton>();
-        dilemmaButtonScript1.SetCost(int.Parse(dilemmaInfo[3]));
-        dilemmaButtonScript2.SetCost(int.Parse(dilemmaInfo[4]));
+        dilemmaButtonScript1.SetMoneyCost(int.Parse(dilemmaInfo[3]));
+        dilemmaButtonScript1.SetTurnCost(int.Parse(dilemmaInfo[4]));
+
+        dilemmaButtonScript2.SetMoneyCost(int.Parse(dilemmaInfo[5]));
+        dilemmaButtonScript2.SetTurnCost(int.Parse(dilemmaInfo[6]));
 
         //Set the dilemma image
-        dilemmaImage.sprite = Resources.Load<Sprite>(dilemmaInfo[5].Trim());
+        dilemmaImage.sprite = Resources.Load<Sprite>(dilemmaInfo[7].Trim());
     }
 }

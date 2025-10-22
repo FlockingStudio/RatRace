@@ -7,7 +7,7 @@ using TMPro;
 
 public class PrologueButton : MonoBehaviour
 {
-    int counter = 0;
+    int counter = 3;//change this to 0 and un-comment the bottom text if we want to scroll
     public string[] dialogueSegments;
     public TextMeshProUGUI modText;
     public void PressButton()
@@ -27,7 +27,7 @@ public class PrologueButton : MonoBehaviour
 
     void Start()
     {
-        modText.text = dialogueSegments[counter];
+        //modText.text = dialogueSegments[counter];
         counter++;
     }
 }

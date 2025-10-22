@@ -5,18 +5,24 @@ using UnityEngine.UI;
 
 public class DilemmaButton : MonoBehaviour
 {
-    int cost;
+    int moneyCost;
+    int turnCost;
     public Button self;
     public Button other;
 
-    public void SetCost(int num)
+    public void SetMoneyCost(int num)
     {
-        cost = num;
+        moneyCost = num;
     }
 
-    public int GetCost()
+    public int GetMoneyCost()
     {
-        return cost;
+        return moneyCost;
+    }
+
+    public void SetTurnCost(int num)
+    {
+        turnCost = num;
     }
 
     void SwitchToMap()
@@ -26,16 +32,24 @@ public class DilemmaButton : MonoBehaviour
     //main fuctionality. changes money, plays audio, switches to map, and disables the button (prevent spamming to get a lot of money)
     public void ModMoney()
     {
-        if (cost < 0)
+        if (moneyCost < 0)
         {
-            Player.Instance.SubtractMoney(-cost);
+            Player.Instance.SubtractMoney(-moneyCost);
+        }
+        else if (moneyCost > 0)
+        {
+            Player.Instance.AddMoney(moneyCost);
+        }
+        if (turnCost < 0)
+        {
+            Player.Instance.SubtractTurns(-turnCost);
 
         }
-        else if (cost > 0)
+        else if (turnCost > 0)
         {
-            Player.Instance.AddMoney(cost);
+            Player.Instance.AddTurns(turnCost);
         }
-        
+
         Invoke("SwitchToMap", 1.0f);
         self.enabled = false;
         other.enabled = false;

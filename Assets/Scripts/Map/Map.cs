@@ -28,7 +28,7 @@ public class Map : MonoBehaviour
         // Check if map state was previously saved
         if (GameManager.Instance.NodeStates.Count == MapNodes.Length)
         {
-            Player.Instance.SubtractTurn();
+            Player.Instance.SubtractTurns(1);
             RestoreMapState();
         }
         else
@@ -151,7 +151,7 @@ public class Map : MonoBehaviour
 
         // Update player position
         PlayerNode = newNode;
-        Player.Instance.SubtractTurn();
+        Player.Instance.SubtractTurns(1);
 
         UpdateAccessibleNodes();
     }

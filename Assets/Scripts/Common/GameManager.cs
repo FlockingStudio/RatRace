@@ -76,15 +76,15 @@ public class GameManager : MonoBehaviour
     {
         Window[] allWindows = FindObjectsOfType<Window>();
 
-        foreach (Window window in allWindows)
-        {
-            window.CloseWindow();
-        }
-
-        // Wait for window close animation to complete (0.8s standard duration)
         if (allWindows.Length > 0)
         {
-            yield return new WaitForSeconds(1.5f);
+            float delayBetweenWindows = 1.5f / allWindows.Length;
+
+            foreach (Window window in allWindows)
+            {
+                window.CloseWindow();
+                yield return new WaitForSeconds(delayBetweenWindows);
+            }
         }
 
         SceneManager.LoadScene(sceneName);

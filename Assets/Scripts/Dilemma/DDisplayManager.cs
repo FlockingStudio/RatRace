@@ -14,10 +14,10 @@ public class DDisplayManager : MonoBehaviour
     public TextAsset dilemmaCSV;
     public TextMeshProUGUI choice1;
     public TextMeshProUGUI choice2;
-    public Button button1;
-    public Button button2;
+    public GameObject resultWindowPrefab;
 
     private static CSVPool dilemmaPool;
+    private string[] dilemmaInfo;
 
     void Start()
     {
@@ -38,21 +38,12 @@ public class DDisplayManager : MonoBehaviour
         string selectedDilemma = dilemmaPool.GetRandom();
 
         // Parse the selected dilemma
-        string[] dilemmaInfo = selectedDilemma.Split(";");
+        dilemmaInfo = selectedDilemma.Split(";");
 
         //Set UI elements
         dilemmaText.SetText(dilemmaInfo[0]);
         choice1.SetText(dilemmaInfo[1]);
         choice2.SetText(dilemmaInfo[2]);
-
-        // Gets the DilemmaButton script attached to buttons
-        DilemmaButton dilemmaButtonScript1 = button1.GetComponent<DilemmaButton>();
-        DilemmaButton dilemmaButtonScript2 = button2.GetComponent<DilemmaButton>();
-        dilemmaButtonScript1.SetMoneyCost(int.Parse(dilemmaInfo[3]));
-        dilemmaButtonScript1.SetTurnCost(int.Parse(dilemmaInfo[4]));
-
-        dilemmaButtonScript2.SetMoneyCost(int.Parse(dilemmaInfo[5]));
-        dilemmaButtonScript2.SetTurnCost(int.Parse(dilemmaInfo[6]));
 
         //Set the dilemma image
         dilemmaImage.sprite = Resources.Load<Sprite>(dilemmaInfo[7].Trim());
@@ -65,5 +56,79 @@ public class DDisplayManager : MonoBehaviour
             GameManager.Instance.IsDayOver = true;
             GameManager.Instance.OpenGameOver();
         }
+    }
+
+    public void LeftButtonClick()
+    {
+        int moneyCost = int.Parse(dilemmaInfo[3]);
+        int turnCost = int.Parse(dilemmaInfo[4]);
+
+        HandleButtonClick(moneyCost, turnCost, true);
+    }
+
+    public void RightButtonClick()
+    {
+        int moneyCost = int.Parse(dilemmaInfo[5]);
+        int turnCost = int.Parse(dilemmaInfo[6]);
+
+        HandleButtonClick(moneyCost, turnCost, false);
+    }
+
+    private void HandleButtonClick(int moneyCost, int turnCost, bool leftChoice)
+    {
+        if (moneyCost > 0)
+        {
+            Player.Instance.AddMoney(moneyCost);
+        }
+        else
+        {
+            Player.Instance.SubtractMoney(-moneyCost);
+        }
+
+        if (turnCost > 0)
+        {
+            Player.Instance.AddTurn(turnCost);
+        }
+        else
+        {
+            Player.Instance.SubtractTurn(-turnCost);
+        }
+
+        ShowResult(leftChoice);
+    }
+
+    private void ShowResult(bool leftChoice)
+    {
+        if (resultWindowPrefab == null)
+        {
+            Debug.LogError("resultWindowPrefab is not assigned in the Inspector!");
+            return;
+        }
+
+        GameObject resultWindow = Instantiate(resultWindowPrefab, GameObject.Find("Screen").transform);
+        TextMeshProUGUI resultText = resultWindow.GetComponentInChildren<TextMeshProUGUI>();
+
+        if (resultText != null)
+        {
+            if (leftChoice)
+            {
+                resultText.text = dilemmaInfo[8];
+            }
+            else
+            {
+                resultText.text = dilemmaInfo[9];
+            }
+        }
+
+        Button resultButton = resultWindow.GetComponentInChildren<Button>();
+        if (resultButton != null)
+        {
+            resultButton.onClick.AddListener(OpenMap);
+        }
+    }
+
+    private void OpenMap()
+    {
+        GameManager.Instance.OpenMap();
     }
 }

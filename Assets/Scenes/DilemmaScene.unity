@@ -134,10 +134,9 @@ GameObject:
   - component: {fileID: 318609845}
   - component: {fileID: 318609844}
   - component: {fileID: 318609843}
-  - component: {fileID: 318609847}
   - component: {fileID: 318609848}
   m_Layer: 5
-  m_Name: Button2
+  m_Name: Right Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -199,9 +198,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 318609847}
-        m_TargetAssemblyTypeName: DilemmaButton, Assembly-CSharp
-        m_MethodName: ModMoney
+      - m_Target: {fileID: 458025174}
+        m_TargetAssemblyTypeName: DDisplayManager, Assembly-CSharp
+        m_MethodName: RightButtonClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -270,20 +269,6 @@ RectTransform:
   m_AnchoredPosition: {x: 445, y: -290}
   m_SizeDelta: {x: 515, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &318609847
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 318609842}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97d509b7961f1154da1713a7fc9b4b72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  self: {fileID: 318609843}
-  other: {fileID: 1187609576}
 --- !u!114 &318609848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -345,8 +330,7 @@ MonoBehaviour:
   dilemmaCSV: {fileID: 4900000, guid: 02eb8e09dc863374c85dad5b9590b5db, type: 3}
   choice1: {fileID: 1963154055}
   choice2: {fileID: 1381946088}
-  button1: {fileID: 1187609576}
-  button2: {fileID: 318609843}
+  resultWindowPrefab: {fileID: 7213127021764760643, guid: dbb5fb2632d51e84aa648f477be56879, type: 3}
 --- !u!1 &739307228
 GameObject:
   m_ObjectHideFlags: 0
@@ -562,10 +546,9 @@ GameObject:
   - component: {fileID: 1187609575}
   - component: {fileID: 1187609574}
   - component: {fileID: 1187609576}
-  - component: {fileID: 1187609577}
   - component: {fileID: 1187609578}
   m_Layer: 5
-  m_Name: Button1
+  m_Name: Left Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -674,7 +657,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 318609848}
+      - m_Target: {fileID: 1187609578}
         m_TargetAssemblyTypeName: ButtonSound, Assembly-CSharp
         m_MethodName: PlaySound
         m_Mode: 1
@@ -686,9 +669,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1187609577}
-        m_TargetAssemblyTypeName: DilemmaButton, Assembly-CSharp
-        m_MethodName: ModMoney
+      - m_Target: {fileID: 458025174}
+        m_TargetAssemblyTypeName: DDisplayManager, Assembly-CSharp
+        m_MethodName: LeftButtonClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -698,20 +681,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1187609577
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1187609572}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97d509b7961f1154da1713a7fc9b4b72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  self: {fileID: 1187609576}
-  other: {fileID: 318609843}
 --- !u!114 &1187609578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1101,7 +1070,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 176.78537, y: -367.7245, z: -200.19511, w: 48.586044}
+  m_margin: {x: 189.89044, y: -354.61926, z: -190.83427, w: 61.69116}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

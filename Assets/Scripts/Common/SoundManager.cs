@@ -10,6 +10,10 @@ public class SoundManager : MonoBehaviour
     public AudioSource coinSoundLose;
     public AudioSource MapBackground;
     public AudioSource OtherBackground; // need to change this with other background track
+    public AudioSource MainMenuBackground;
+    public AudioSource trashBinSound;
+    public AudioSource browserSound;
+    public float volume = 1;
 
     private AudioSource BackgroundMusic;
 
@@ -18,7 +22,13 @@ public class SoundManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            BackgroundMusic = OtherBackground;
+            BackgroundMusic = MainMenuBackground;
+
+            // Set all background music to loop
+            if (MapBackground != null) MapBackground.loop = true;
+            if (OtherBackground != null) OtherBackground.loop = true;
+            if (MainMenuBackground != null) MainMenuBackground.loop = true;
+
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -100,5 +110,31 @@ public class SoundManager : MonoBehaviour
                 break;
         }
         BackgroundMusic.Play();
+    }
+
+    public void PlayTrashBinSound()
+    {
+        trashBinSound.Play();
+    }
+
+    public void PlayBrowserSound()
+    {
+        browserSound.Play();
+    }
+
+    public void SetVolume(float newVolume)
+    {
+        volume = newVolume;
+
+        if (buttonClickSound != null) buttonClickSound.volume = volume;
+        if (diceRollSound != null) diceRollSound.volume = volume;
+        if (diceShakeSound != null) diceShakeSound.volume = volume;
+        if (coinSoundGain != null) coinSoundGain.volume = volume;
+        if (coinSoundLose != null) coinSoundLose.volume = volume;
+        if (MapBackground != null) MapBackground.volume = volume;
+        if (OtherBackground != null) OtherBackground.volume = volume;
+        if (MainMenuBackground != null) MainMenuBackground.volume = volume;
+        if (trashBinSound != null) trashBinSound.volume = volume;
+        if (browserSound != null) browserSound.volume = volume;
     }
 }

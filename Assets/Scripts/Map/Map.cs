@@ -143,7 +143,7 @@ public class Map : MonoBehaviour
     {
         Player.Instance.SubtractTurn(1);
 
-        if (Player.Instance.Turn <= 1)
+        if (Player.Instance.Turn < 1)
         {
             GameManager.Instance.OpenGameOver();
             return;

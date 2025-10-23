@@ -60,7 +60,7 @@ public class DDisplayManager : MonoBehaviour
 
     void OnDestroy()
     {
-        if (Player.Instance.Turn <= 0)
+        if (Player.Instance != null && Player.Instance.Turn <= 0 && GameManager.Instance != null)
         {
             GameManager.Instance.IsDayOver = true;
             GameManager.Instance.OpenGameOver();

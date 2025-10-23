@@ -33,6 +33,10 @@ public class Player : MonoBehaviour
     public void SubtractTurn(int amount)
     {
         Turn -= amount;
+        if (Turn < 0)
+        {
+            Turn = 0;
+        }
         NumberFlash TurnFlash = GameObject.Find("TurnFlash").GetComponent<NumberFlash>();
         TurnFlash.Activate(-amount);
     }

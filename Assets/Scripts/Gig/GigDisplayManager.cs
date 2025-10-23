@@ -9,8 +9,6 @@ public class GigDisplayManager : MonoBehaviour
 
     public TextMeshProUGUI greaterThanText;
 
-    public Image gigImage;
-
     public TextAsset gigCSV;
 
     public Button rollButton;
@@ -37,7 +35,7 @@ public class GigDisplayManager : MonoBehaviour
         string selectedGig = gigPool.GetRandom();
 
         // Parse the selected gig
-        string[] gigInfo = selectedGig.Split(",");
+        string[] gigInfo = selectedGig.Split(";");
 
         // Update UI elements
         gigText.SetText(gigInfo[0]);
@@ -46,9 +44,7 @@ public class GigDisplayManager : MonoBehaviour
         // Set required roll value on the button
         GigButton gigButtonScript = rollButton.GetComponent<GigButton>();
         gigButtonScript.setRequiredRoll(int.Parse(gigInfo[1]));
-
-        // Load and set the gig image from Resources
-        gigImage.sprite = Resources.Load<Sprite>(gigInfo[2].Trim());
+        gigButtonScript.setPayoutAmount(int.Parse(gigInfo[2]));
 
         Debug.Log("Loaded gig with image: " + gigInfo[2]);
     }

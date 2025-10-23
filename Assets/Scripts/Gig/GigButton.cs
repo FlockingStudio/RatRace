@@ -13,6 +13,7 @@ public class GigButton : MonoBehaviour
 
     private int timesPressed = 0;
     private int requiredRoll = 0;
+    private int payoutAmout = 0;
 
     private void Start()
     {
@@ -75,6 +76,11 @@ public class GigButton : MonoBehaviour
         requiredRoll = num;
     }
 
+    public void setPayoutAmount(int num)
+    {
+        payoutAmout = num;
+    }
+
     private void DiceRoll()
     {
 
@@ -89,8 +95,8 @@ public class GigButton : MonoBehaviour
         if (randomPick > requiredRoll)
         {
             // Changes the gig text to show the player won
-            gigText.text = "Success, you earned $150. Press Quit Gig to return to map.";
-            Player.Instance.AddMoney(150);
+            gigText.text = "Success, you earned $" + payoutAmout.ToString() + ". Press Quit Gig to return to map.";
+            Player.Instance.AddMoney(payoutAmout);
             // Removes the option to reroll and allows the player to quit
             GetComponent<Button>().gameObject.SetActive(false);
             quitButton.interactable = true;

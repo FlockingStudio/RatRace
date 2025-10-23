@@ -30,6 +30,16 @@ public class DDisplayManager : MonoBehaviour
         }
 
         LoadRandomDilemma();
+        // Disables the left button if the cost of pressing it is more than the player has
+        if (Player.Instance.GetMoney() + int.Parse(dilemmaInfo[3]) < 0)
+        {
+            leftButton.interactable = false;
+        }
+        // Disables the right button if the cost of pressing it is more than the player has
+        if (Player.Instance.GetMoney() + int.Parse(dilemmaInfo[5]) < 0)
+        {
+            rightButton.interactable = false;
+        }
         // Plays the correct track for the dilemma
         SoundManager.Instance.SwitchBackgroundMusic(Stage.dilemma);
     }

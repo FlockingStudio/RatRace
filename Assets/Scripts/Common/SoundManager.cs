@@ -1,4 +1,3 @@
-using TMPro;
 using UnityEngine;
 
 public class SoundManager : MonoBehaviour
@@ -7,17 +6,29 @@ public class SoundManager : MonoBehaviour
     public AudioSource buttonClickSound;
     public AudioSource diceRollSound;
     public AudioSource diceShakeSound;
-    public AudioSource backgroundMusic;
     public AudioSource coinSoundGain;
     public AudioSource coinSoundLose;
-    public AudioClip backgroundTrack1;
-    public AudioClip backgroundTrack2;
+    public AudioSource MapBackground;
+    public AudioSource OtherBackground; // need to change this with other background track
+    public AudioSource MainMenuBackground;
+    public AudioSource trashBinSound;
+    public AudioSource browserSound;
+    public float volume = 1;
+
+    private AudioSource BackgroundMusic;
 
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
+            BackgroundMusic = MainMenuBackground;
+
+            // Set all background music to loop
+            if (MapBackground != null) MapBackground.loop = true;
+            if (OtherBackground != null) OtherBackground.loop = true;
+            if (MainMenuBackground != null) MainMenuBackground.loop = true;
+
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -54,25 +65,25 @@ public class SoundManager : MonoBehaviour
 
     public void PlayBackgroundMusic()
     {
-        if (!backgroundMusic.isPlaying)
+        if (!BackgroundMusic.isPlaying)
         {
-            backgroundMusic.Play();
+            BackgroundMusic.Play();
         }
     }
 
     public void PauseBackgroundMusic()
     {
-        if (backgroundMusic.isPlaying)
+        if (BackgroundMusic.isPlaying)
         {
-            backgroundMusic.Pause();
+            BackgroundMusic.Pause();
         }
     }
 
     public void ResumeBackgroundMusic()
     {
-        if (!backgroundMusic.isPlaying)
+        if (!BackgroundMusic.isPlaying)
         {
-            backgroundMusic.UnPause();
+            BackgroundMusic.UnPause();
         }
     }
 
@@ -86,25 +97,44 @@ public class SoundManager : MonoBehaviour
         coinSoundLose.Play();
     }
 
-    // Switches to track one
-    public void playTrackOne()
+    public void SwitchBackgroundMusic(GameManager.Stage stage)
     {
-        if (backgroundMusic.clip != backgroundTrack1)
+        BackgroundMusic.Pause();
+        switch (stage)
         {
-            // Changes the sound track playing
-            backgroundMusic.clip = backgroundTrack1;
-            backgroundMusic.Play();
+            case GameManager.Stage.map:
+                BackgroundMusic = MapBackground;
+                break;
+            default:
+                BackgroundMusic = OtherBackground;
+                break;
         }
+        BackgroundMusic.Play();
     }
 
-    // Switches to track two
-    public void playTrackTwo()
+    public void PlayTrashBinSound()
     {
-        if (backgroundMusic.clip != backgroundTrack2)
-        {
-            // Changes the sound track playing
-            backgroundMusic.clip = backgroundTrack2;
-            backgroundMusic.Play();
-        }
+        trashBinSound.Play();
+    }
+
+    public void PlayBrowserSound()
+    {
+        browserSound.Play();
+    }
+
+    public void SetVolume(float newVolume)
+    {
+        volume = newVolume;
+
+        if (buttonClickSound != null) buttonClickSound.volume = volume;
+        if (diceRollSound != null) diceRollSound.volume = volume;
+        if (diceShakeSound != null) diceShakeSound.volume = volume;
+        if (coinSoundGain != null) coinSoundGain.volume = volume;
+        if (coinSoundLose != null) coinSoundLose.volume = volume;
+        if (MapBackground != null) MapBackground.volume = volume;
+        if (OtherBackground != null) OtherBackground.volume = volume;
+        if (MainMenuBackground != null) MainMenuBackground.volume = volume;
+        if (trashBinSound != null) trashBinSound.volume = volume;
+        if (browserSound != null) browserSound.volume = volume;
     }
 }

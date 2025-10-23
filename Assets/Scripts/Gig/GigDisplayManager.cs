@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static GameManager;
 
 public class GigDisplayManager : MonoBehaviour
 {
@@ -27,7 +28,7 @@ public class GigDisplayManager : MonoBehaviour
 
         LoadRandomGig();
         // Plays the correct track for the gig
-        SoundManager.Instance.playTrackTwo();
+        SoundManager.Instance.SwitchBackgroundMusic(Stage.gig);
     }
 
     private void LoadRandomGig()
@@ -50,5 +51,14 @@ public class GigDisplayManager : MonoBehaviour
         gigImage.sprite = Resources.Load<Sprite>(gigInfo[2].Trim());
 
         Debug.Log("Loaded gig with image: " + gigInfo[2]);
+    }
+
+    void OnDestroy()
+    {
+        if (Player.Instance.Turn <= 0)
+        {
+            GameManager.Instance.IsDayOver = true;
+            GameManager.Instance.OpenGameOver();
+        }
     }
 }

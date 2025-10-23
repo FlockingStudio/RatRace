@@ -20,4 +20,14 @@ public class ButtonSound : MonoBehaviour
     {
         SoundManager.Instance.PlayButtonClick();
     }
+
+    public void TrashBinSound()
+    {
+        SoundManager.Instance.PlayTrashBinSound();
+    }
+
+    public void BrowserSound()
+    {
+        SoundManager.Instance.PlayBrowserSound();
+    }
 }

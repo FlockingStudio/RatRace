@@ -134,10 +134,9 @@ GameObject:
   - component: {fileID: 318609845}
   - component: {fileID: 318609844}
   - component: {fileID: 318609843}
-  - component: {fileID: 318609847}
   - component: {fileID: 318609848}
   m_Layer: 5
-  m_Name: Button2
+  m_Name: Right Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -199,9 +198,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 318609847}
-        m_TargetAssemblyTypeName: DilemmaButton, Assembly-CSharp
-        m_MethodName: ModMoney
+      - m_Target: {fileID: 458025174}
+        m_TargetAssemblyTypeName: DDisplayManager, Assembly-CSharp
+        m_MethodName: RightButtonClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -231,7 +230,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6bbfecf45a8d934438230863f057d55b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2d19dabdeeadb764db21df2ea31691e2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -267,23 +266,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 247.67, y: -343.21667}
-  m_SizeDelta: {x: 495.35, y: 115.9725}
+  m_AnchoredPosition: {x: 445, y: -290}
+  m_SizeDelta: {x: 515, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &318609847
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 318609842}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97d509b7961f1154da1713a7fc9b4b72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  self: {fileID: 318609843}
-  other: {fileID: 1187609576}
 --- !u!114 &318609848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -345,8 +330,7 @@ MonoBehaviour:
   dilemmaCSV: {fileID: 4900000, guid: 02eb8e09dc863374c85dad5b9590b5db, type: 3}
   choice1: {fileID: 1963154055}
   choice2: {fileID: 1381946088}
-  button1: {fileID: 1187609576}
-  button2: {fileID: 318609843}
+  resultWindowPrefab: {fileID: 7213127021764760643, guid: dbb5fb2632d51e84aa648f477be56879, type: 3}
 --- !u!1 &739307228
 GameObject:
   m_ObjectHideFlags: 0
@@ -382,8 +366,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 137}
-  m_SizeDelta: {x: 300, y: 300}
+  m_AnchoredPosition: {x: -553.13007, y: -125.45757}
+  m_SizeDelta: {x: 291.1322, y: 420.571}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &739307230
 MonoBehaviour:
@@ -433,6 +417,10 @@ PrefabInstance:
     - target: {fileID: 917968385885916638, guid: a45ae8fe5610bb3428f91dced6d9b6e9, type: 3}
       propertyPath: m_RootOrder
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2216354614229506801, guid: a45ae8fe5610bb3428f91dced6d9b6e9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2216354614434090963, guid: a45ae8fe5610bb3428f91dced6d9b6e9, type: 3}
       propertyPath: m_Name
@@ -522,9 +510,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5674239152137215373, guid: a45ae8fe5610bb3428f91dced6d9b6e9, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7334038144562396574, guid: a45ae8fe5610bb3428f91dced6d9b6e9, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7483925556663407978, guid: a45ae8fe5610bb3428f91dced6d9b6e9, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a45ae8fe5610bb3428f91dced6d9b6e9, type: 3}
@@ -550,10 +546,9 @@ GameObject:
   - component: {fileID: 1187609575}
   - component: {fileID: 1187609574}
   - component: {fileID: 1187609576}
-  - component: {fileID: 1187609577}
   - component: {fileID: 1187609578}
   m_Layer: 5
-  m_Name: Button1
+  m_Name: Left Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -577,8 +572,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -294.9538, y: -343.22}
-  m_SizeDelta: {x: 498.852, y: 115.97}
+  m_AnchoredPosition: {x: -124, y: -290}
+  m_SizeDelta: {x: 515, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1187609574
 MonoBehaviour:
@@ -600,7 +595,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6bbfecf45a8d934438230863f057d55b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2d19dabdeeadb764db21df2ea31691e2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -662,7 +657,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 318609848}
+      - m_Target: {fileID: 1187609578}
         m_TargetAssemblyTypeName: ButtonSound, Assembly-CSharp
         m_MethodName: PlaySound
         m_Mode: 1
@@ -674,9 +669,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1187609577}
-        m_TargetAssemblyTypeName: DilemmaButton, Assembly-CSharp
-        m_MethodName: ModMoney
+      - m_Target: {fileID: 458025174}
+        m_TargetAssemblyTypeName: DDisplayManager, Assembly-CSharp
+        m_MethodName: LeftButtonClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -686,20 +681,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1187609577
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1187609572}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97d509b7961f1154da1713a7fc9b4b72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  self: {fileID: 1187609576}
-  other: {fileID: 318609843}
 --- !u!114 &1187609578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -741,7 +722,7 @@ RectTransform:
   m_GameObject: {fileID: 1313373485}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 739307229}
@@ -753,8 +734,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -100, y: 50}
-  m_SizeDelta: {x: 1200, y: 900}
+  m_AnchoredPosition: {x: -21, y: 19}
+  m_SizeDelta: {x: 1485, y: 760}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1313373487
 MonoBehaviour:
@@ -782,7 +763,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.9359436, y: 0.93603516}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -793,7 +774,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1200, y: 900}
+  m_Size: {x: 1486.4409, y: 759.58777}
   m_EdgeRadius: 0
 --- !u!114 &1313373489
 MonoBehaviour:
@@ -815,7 +796,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d18a51d25f6b98b4dac01d7240138d1e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a8642779bf4c4b246a686b2896eed110, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1053,10 +1034,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
-  m_fontSizeBase: 32
+  m_fontSize: 45
+  m_fontSizeBase: 45
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -1089,7 +1070,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 22.231659, y: 9.000168, z: 12.316055, w: 9.947617}
+  m_margin: {x: 189.89044, y: -354.61926, z: -190.83427, w: 61.69116}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

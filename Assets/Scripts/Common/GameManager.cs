@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,11 +15,12 @@ public class GameManager : MonoBehaviour
         map = 0,
         gig = 1,
         dilemma = 2,
-        prologue= 3
+        prologue = 3,
+        gameOver = 4,
     }
 
     public Dictionary<string, MapNode.NodeType> NodeStates { get; set; }
-    public bool IsGameOver { get; set; } = false;
+    public bool IsDayOver { get; set; } = false;
     private GameObject menuInstance;
 
     private void Awake()
@@ -42,6 +45,7 @@ public class GameManager : MonoBehaviour
 
     public void OpenMap() => OpenScene(Stage.map);
     public void OpenPrologue() => OpenScene(Stage.prologue);
+    public void OpenGameOver() => OpenScene(Stage.gameOver);
 
     private void OpenScene(Stage stage)
     {
@@ -61,6 +65,8 @@ public class GameManager : MonoBehaviour
                 return "DilemmaScene";
             case Stage.prologue:
                 return "PrologueScene";
+            case Stage.gameOver:
+                return "GameOverScene";
             default:
                 return "MapScene";
         }
@@ -70,15 +76,15 @@ public class GameManager : MonoBehaviour
     {
         Window[] allWindows = FindObjectsOfType<Window>();
 
-        foreach (Window window in allWindows)
-        {
-            window.CloseWindow();
-        }
-
-        // Wait for window close animation to complete (0.8s standard duration)
         if (allWindows.Length > 0)
         {
-            yield return new WaitForSeconds(0.8f);
+            float delayBetweenWindows = 1.5f / allWindows.Length;
+
+            foreach (Window window in allWindows)
+            {
+                window.CloseWindow();
+                yield return new WaitForSeconds(delayBetweenWindows);
+            }
         }
 
         SceneManager.LoadScene(sceneName);
@@ -88,6 +94,11 @@ public class GameManager : MonoBehaviour
     {
         // instantiate menu prefab in the Screen canvas
         if (menuInstance != null) return;
+        Button[] allButtons = UnityEngine.Object.FindObjectsByType<Button>(FindObjectsSortMode.None);
+        foreach (Button button in allButtons)
+        {
+            button.enabled = false;
+        }
         menuInstance = Instantiate(MenuPrefab, GameObject.Find("Screen").transform);
         SoundManager.Instance.PauseBackgroundMusic();
     }
@@ -103,6 +114,11 @@ public class GameManager : MonoBehaviour
     public void ResumeGame()
     {
         menuInstance.GetComponent<Window>().CloseWindow();
+        Button[] allButtons = UnityEngine.Object.FindObjectsByType<Button>(FindObjectsSortMode.None);
+        foreach (Button button in allButtons)
+        {
+            button.enabled = true;
+        }
         SoundManager.Instance.PlayBackgroundMusic();
     }
 
@@ -111,7 +127,7 @@ public class GameManager : MonoBehaviour
         NodeStates.Clear();
         Player.Instance.Day += 1;
         Player.Instance.Turn = 3;
-        IsGameOver = true;
+        IsDayOver = true;
         OpenMap();
     }
 }

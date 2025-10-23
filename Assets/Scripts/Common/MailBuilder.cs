@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class MailBuilder : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class MailBuilder : MonoBehaviour
     private TextMeshProUGUI subjectText;
     private TextMeshProUGUI bodyText;
     private TextMeshProUGUI fromText;
+    private TextMeshProUGUI buttonText;
+    private Button button;
 
     void Start()
     {
@@ -20,6 +23,8 @@ public class MailBuilder : MonoBehaviour
         subjectText = transform.Find("Subject").GetComponent<TextMeshProUGUI>();
         bodyText = transform.Find("Body").GetComponent<TextMeshProUGUI>();
         fromText = transform.Find("From").GetComponent<TextMeshProUGUI>();
+        button = transform.Find("Button").GetComponent<Button>();
+        buttonText = transform.Find("Button").Find("ButtonText").GetComponent<TextMeshProUGUI>();
 
         if (GameManager.Instance.IsDayOver)
         {
@@ -56,12 +61,20 @@ public class MailBuilder : MonoBehaviour
         string line = lines[mailIndex];
         string[] columns = ParseCSVLine(line);
 
-        if (columns.Length >= 4)
+        if (columns.Length >= 5)
         {
             toText.text = columns[0];
             subjectText.text = columns[1];
             bodyText.text = columns[2].Replace("\\n", "\n");
             fromText.text = columns[3];
+            buttonText.text = columns[4];
+            if (mailIndex == 0)
+            {
+                button.onClick.AddListener(GameManager.Instance.OpenMap);
+            } else
+            {
+                button.onClick.AddListener(GameManager.Instance.RestartGame);
+            }
         }
     }
 

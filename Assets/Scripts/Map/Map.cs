@@ -37,7 +37,10 @@ public class Map : MonoBehaviour
             InitializeNewMap();
         }
 
-        UpdateAccessibleNodes();
+        if (PlayerNode != null)
+        {
+            UpdateAccessibleNodes();
+        }
         // Changes the sound track playing
         SoundManager.Instance.SwitchBackgroundMusic(GameManager.Stage.map);
     }
@@ -53,11 +56,12 @@ public class Map : MonoBehaviour
         foreach (MapNode node in MapNodes)
         {
             MapNode.NodeType state = GameManager.Instance.NodeStates[node.name];
+            node.AssignEvent(state);
+
             if (state == MapNode.NodeType.Player)
             {
                 PlayerNode = node;
             }
-            node.AssignEvent(state);
         }
     }
 
@@ -141,22 +145,18 @@ public class Map : MonoBehaviour
 
     public void MoveToNode(MapNode newNode)
     {
-        Player.Instance.SubtractTurn(1);
-
-        if (Player.Instance.Turn < 1)
+        // Mark old player node as completed
+        if (PlayerNode != null)
         {
-            GameManager.Instance.IsDayOver = true;
-            GameManager.Instance.OpenGameOver();
-            return;
-        } 
+            PlayerNode.nodeType = MapNode.NodeType.Completed;
+            PlayerNode.UpdateVisual();
+            GameManager.Instance.NodeStates[PlayerNode.name] = MapNode.NodeType.Completed;
+        }
 
         // Update new node to player
         newNode.nodeType = MapNode.NodeType.Player;
         newNode.UpdateVisual();
-
-        // Mark old node as completed
-        PlayerNode.nodeType = MapNode.NodeType.Completed;
-        PlayerNode.UpdateVisual();
+        GameManager.Instance.NodeStates[newNode.name] = MapNode.NodeType.Player;
 
         // Update player position
         PlayerNode = newNode;
@@ -166,25 +166,9 @@ public class Map : MonoBehaviour
 
     private void SaveMapState()
     {
-        for (int index = 0; index < MapNodes.Length; index++)
+        foreach (MapNode node in MapNodes)
         {
-            MapNode node = MapNodes[index];
-
-            if (node == PlayerNode)
-            {
-                GameManager.Instance.NodeStates[node.name] = MapNode.NodeType.Completed;
-            }
-            else
-            {
-                if (!GameManager.Instance.NodeStates.ContainsKey(node.name))
-                {
-                    GameManager.Instance.NodeStates[node.name] = node.nodeType;
-                }
-                else if (GameManager.Instance.NodeStates[node.name] != MapNode.NodeType.Player)
-                {
-                    GameManager.Instance.NodeStates[node.name] = node.nodeType;
-                }
-            }
+            GameManager.Instance.NodeStates[node.name] = node.nodeType;
         }
     }
 }

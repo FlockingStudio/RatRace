@@ -367,7 +367,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Money: 200
-  Turn: 3
+  Turn: 6
   Day: 1
 --- !u!4 &635546173
 Transform:

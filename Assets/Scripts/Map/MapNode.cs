@@ -104,22 +104,35 @@ public class MapNode : MonoBehaviour
     {
         if (IsAccessible() && nodeType != NodeType.Player)
         {
-            switch (nodeType)
+            // Remember the original node type before moving
+            NodeType originalType = nodeType;
+
+            // Move to the node first
+            Map.Instance.MoveToNode(this);
+
+            // Subtract turn
+            Player.Instance.SubtractTurn(1);
+
+            if (Player.Instance.Turn < 1)
+            {
+                GameManager.Instance.IsDayOver = true;
+                GameManager.Instance.OpenGameOver();
+                return;
+            }
+
+            // Open appropriate scene based on original node type
+            switch (originalType)
             {
                 case NodeType.Gig:
-                    GameManager.Instance.NodeStates[this.name] = NodeType.Player;
                     GameManager.Instance.OpenGig();
-                    Player.Instance.SubtractTurn(1);
                     break;
 
                 case NodeType.Dilemma:
-                    GameManager.Instance.NodeStates[this.name] = NodeType.Player;
                     GameManager.Instance.OpenDilemma();
-                    Player.Instance.SubtractTurn(1);
                     break;
 
                 case NodeType.Completed:
-                    Map.Instance.MoveToNode(this);
+                    // Just stay on map, already moved
                     break;
 
                 default:

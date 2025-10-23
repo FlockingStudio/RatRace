@@ -210,6 +210,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 318609843}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &318609844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -331,6 +343,8 @@ MonoBehaviour:
   choice1: {fileID: 1963154055}
   choice2: {fileID: 1381946088}
   resultWindowPrefab: {fileID: 7213127021764760643, guid: dbb5fb2632d51e84aa648f477be56879, type: 3}
+  leftButton: {fileID: 1187609576}
+  rightButton: {fileID: 318609843}
 --- !u!1 &739307228
 GameObject:
   m_ObjectHideFlags: 0
@@ -680,6 +694,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 318609843}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1187609578
 MonoBehaviour:

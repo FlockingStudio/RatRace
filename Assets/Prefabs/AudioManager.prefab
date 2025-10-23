@@ -61,8 +61,10 @@ MonoBehaviour:
   coinSoundLose: {fileID: 6730611031186079665}
   MapBackground: {fileID: 5293961660145357380}
   OtherBackground: {fileID: 6303246616460434585}
+  MainMenuBackground: {fileID: 3730423146016235028}
   trashBinSound: {fileID: 7301044446000281755}
   browserSound: {fileID: 6589365686490602834}
+  volume: 1
 --- !u!82 &2620611824207742555
 AudioSource:
   m_ObjectHideFlags: 0

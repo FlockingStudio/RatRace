@@ -145,6 +145,7 @@ public class Map : MonoBehaviour
 
         if (Player.Instance.Turn < 1)
         {
+            GameManager.Instance.IsDayOver = true;
             GameManager.Instance.OpenGameOver();
             return;
         } 

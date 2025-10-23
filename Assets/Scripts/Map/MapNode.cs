@@ -109,11 +109,13 @@ public class MapNode : MonoBehaviour
                 case NodeType.Gig:
                     GameManager.Instance.NodeStates[this.name] = NodeType.Player;
                     GameManager.Instance.OpenGig();
+                    Player.Instance.SubtractTurn(1);
                     break;
 
                 case NodeType.Dilemma:
                     GameManager.Instance.NodeStates[this.name] = NodeType.Player;
                     GameManager.Instance.OpenDilemma();
+                    Player.Instance.SubtractTurn(1);
                     break;
 
                 case NodeType.Completed:

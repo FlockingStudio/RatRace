@@ -17,7 +17,8 @@ public class Map : MonoBehaviour
 
     private void Start()
     {
-        if (GameManager.Instance.IsGameOver) {
+        if (Player.Instance.Day > 1)
+        {
             Instantiate(TechDemoEndPrefab, FindObjectOfType<Canvas>().transform);
             return;
         }
@@ -28,7 +29,6 @@ public class Map : MonoBehaviour
         // Check if map state was previously saved
         if (GameManager.Instance.NodeStates.Count == MapNodes.Length)
         {
-            Player.Instance.SubtractTurns(1);
             RestoreMapState();
         }
         else
@@ -39,12 +39,12 @@ public class Map : MonoBehaviour
 
         UpdateAccessibleNodes();
         // Changes the sound track playing
-        SoundManager.Instance.playTrackOne();
+        SoundManager.Instance.SwitchBackgroundMusic(GameManager.Stage.map);
     }
 
     private void OnDestroy()
     {
-        if (!GameManager.Instance.IsGameOver)
+        if (!GameManager.Instance.IsDayOver)
             SaveMapState();
     }
 
@@ -141,6 +141,14 @@ public class Map : MonoBehaviour
 
     public void MoveToNode(MapNode newNode)
     {
+        Player.Instance.SubtractTurn(1);
+
+        if (Player.Instance.Turn <= 1)
+        {
+            GameManager.Instance.OpenGameOver();
+            return;
+        } 
+
         // Update new node to player
         newNode.nodeType = MapNode.NodeType.Player;
         newNode.UpdateVisual();
@@ -151,7 +159,6 @@ public class Map : MonoBehaviour
 
         // Update player position
         PlayerNode = newNode;
-        Player.Instance.SubtractTurns(1);
 
         UpdateAccessibleNodes();
     }

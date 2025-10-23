@@ -15,11 +15,12 @@ public class GameManager : MonoBehaviour
         map = 0,
         gig = 1,
         dilemma = 2,
-        prologue= 3
+        prologue = 3,
+        gameOver = 4,
     }
 
     public Dictionary<string, MapNode.NodeType> NodeStates { get; set; }
-    public bool IsGameOver { get; set; } = false;
+    public bool IsDayOver { get; set; } = false;
     private GameObject menuInstance;
 
     private void Awake()
@@ -44,6 +45,7 @@ public class GameManager : MonoBehaviour
 
     public void OpenMap() => OpenScene(Stage.map);
     public void OpenPrologue() => OpenScene(Stage.prologue);
+    public void OpenGameOver() => OpenScene(Stage.gameOver);
 
     private void OpenScene(Stage stage)
     {
@@ -63,6 +65,8 @@ public class GameManager : MonoBehaviour
                 return "DilemmaScene";
             case Stage.prologue:
                 return "PrologueScene";
+            case Stage.gameOver:
+                return "GameOverScene";
             default:
                 return "MapScene";
         }
@@ -80,7 +84,7 @@ public class GameManager : MonoBehaviour
         // Wait for window close animation to complete (0.8s standard duration)
         if (allWindows.Length > 0)
         {
-            yield return new WaitForSeconds(0.8f);
+            yield return new WaitForSeconds(1.5f);
         }
 
         SceneManager.LoadScene(sceneName);
@@ -123,7 +127,7 @@ public class GameManager : MonoBehaviour
         NodeStates.Clear();
         Player.Instance.Day += 1;
         Player.Instance.Turn = 3;
-        IsGameOver = true;
+        IsDayOver = true;
         OpenMap();
     }
 }

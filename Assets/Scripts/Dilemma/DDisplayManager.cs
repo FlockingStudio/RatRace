@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using static GameManager;
 
 public class DDisplayManager : MonoBehaviour
 {
@@ -28,7 +29,7 @@ public class DDisplayManager : MonoBehaviour
 
         LoadRandomDilemma();
         // Plays the correct track for the dilemma
-        SoundManager.Instance.playTrackTwo();
+        SoundManager.Instance.SwitchBackgroundMusic(Stage.dilemma);
     }
 
     private void LoadRandomDilemma()
@@ -55,5 +56,14 @@ public class DDisplayManager : MonoBehaviour
 
         //Set the dilemma image
         dilemmaImage.sprite = Resources.Load<Sprite>(dilemmaInfo[7].Trim());
+    }
+
+    void OnDestroy()
+    {
+        if (Player.Instance.Turn <= 0)
+        {
+            GameManager.Instance.IsDayOver = true;
+            GameManager.Instance.OpenGameOver();
+        }
     }
 }

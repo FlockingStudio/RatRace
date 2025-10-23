@@ -42,12 +42,12 @@ public class DilemmaButton : MonoBehaviour
         }
         if (turnCost < 0)
         {
-            Player.Instance.SubtractTurns(-turnCost);
+            Player.Instance.SubtractTurn(turnCost);
 
         }
         else if (turnCost > 0)
         {
-            Player.Instance.AddTurns(turnCost);
+            Player.Instance.AddTurn(turnCost);
         }
 
         Invoke("SwitchToMap", 1.0f);

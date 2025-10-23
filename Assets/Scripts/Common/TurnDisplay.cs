@@ -12,6 +12,9 @@ public class TurnDisplay : MonoBehaviour
 
     private void Update()
     {
-        turnText.SetText("Turns left: " + Player.Instance.Turn.ToString());
+        int remainingTurns = Player.Instance.Turn;
+        turnText.SetText("Turns left: " + remainingTurns.ToString());
+        turnText.color = Player.Instance.Turn <= 1 ? new Color(0.8f, 0f, 0f) : Color.white;
+
     }
 }

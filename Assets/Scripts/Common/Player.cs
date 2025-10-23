@@ -23,19 +23,18 @@ public class Player : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    public void SubtractTurns(int change)
+    public void AddTurn(int amount)
     {
-        Turn -= change;
-
-        if (Turn <= 0)
-        {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("GameOverScene");
-        }
+        Turn += amount;
+        NumberFlash TurnFlash = GameObject.Find("TurnFlash").GetComponent<NumberFlash>();
+        TurnFlash.Activate(amount);
     }
 
-    public void AddTurns(int change)
+    public void SubtractTurn(int amount)
     {
-        Turn += change;
+        Turn -= amount;
+        NumberFlash TurnFlash = GameObject.Find("TurnFlash").GetComponent<NumberFlash>();
+        TurnFlash.Activate(-amount);
     }
 
     public int GetMoney()
@@ -47,12 +46,14 @@ public class Player : MonoBehaviour
     {
         Money += amount;
         SoundManager.Instance.PlayCoinSoundGain();
-        MoneyFlash.Instance.Activate(amount);
+        NumberFlash MoneyFlash = GameObject.Find("MoneyFlash").GetComponent<NumberFlash>();
+        MoneyFlash.Activate(amount);
     }
 
     public void SubtractMoney(int amount)
     {
-        MoneyFlash.Instance.Activate(-amount);
+        NumberFlash MoneyFlash = GameObject.Find("MoneyFlash").GetComponent<NumberFlash>();
+        MoneyFlash.Activate(-amount);
         //i'm putting it like this because i don't think we should play the sound if you don't actually lose money -craig
         if (Money != 0)
         {

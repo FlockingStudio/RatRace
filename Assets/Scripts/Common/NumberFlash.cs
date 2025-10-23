@@ -5,26 +5,24 @@ using TMPro;
 using UnityEngine.UI;
 using System.Threading;
 
-public class MoneyFlash : MonoBehaviour
+public class NumberFlash : MonoBehaviour
 {
-    public static MoneyFlash Instance { get; private set; }
     public TextMeshProUGUI text;
 
     public void Activate(int money)
     {
-        Debug.Log(money);
         string display;
 
         if (money > 0)
         {
             display = "+" + money.ToString();
-            text.color = Color.green;
+            text.color = new Color(0f, 0.5f, 0f); // dark green
             text.SetText(display);
         }
         else if (money < 0)
         {
             display = money.ToString();
-            text.color = Color.red;
+            text.color = new Color(0.5f, 0f, 0f); // dark red
             text.SetText(display);
         }
 
@@ -50,18 +48,6 @@ public class MoneyFlash : MonoBehaviour
         }
 
         text.color = new Color(1f, 1f, 1f, 0f);
-    }
-
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
     }
 
     void Start()

@@ -526,9 +526,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5674239152137215373, guid: a45ae8fe5610bb3428f91dced6d9b6e9, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7334038144562396574, guid: a45ae8fe5610bb3428f91dced6d9b6e9, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7483925556663407978, guid: a45ae8fe5610bb3428f91dced6d9b6e9, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a45ae8fe5610bb3428f91dced6d9b6e9, type: 3}
@@ -757,7 +765,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -100, y: 50}
+  m_AnchoredPosition: {x: -21, y: 19}
   m_SizeDelta: {x: 1485, y: 760}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1313373487
@@ -786,7 +794,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.9359436, y: 0.93603516}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -797,7 +805,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1200, y: 900}
+  m_Size: {x: 1486.4409, y: 759.58777}
   m_EdgeRadius: 0
 --- !u!114 &1313373489
 MonoBehaviour:

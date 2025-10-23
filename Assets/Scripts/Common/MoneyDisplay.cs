@@ -13,5 +13,6 @@ public class MoneyDisplay : MonoBehaviour
     private void Update()
     {
         moneyText.SetText(Player.Instance.GetMoney().ToString());
+        moneyText.color = Player.Instance.GetMoney() >= 400 ? new Color(0f, 0.5f, 0f) : Color.white;
     }
 }

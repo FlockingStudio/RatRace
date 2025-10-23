@@ -15,6 +15,8 @@ public class DDisplayManager : MonoBehaviour
     public TextMeshProUGUI choice1;
     public TextMeshProUGUI choice2;
     public GameObject resultWindowPrefab;
+    [SerializeField] private Button leftButton;
+    [SerializeField] private Button rightButton;
 
     private static CSVPool dilemmaPool;
     private string[] dilemmaInfo;
@@ -76,11 +78,14 @@ public class DDisplayManager : MonoBehaviour
 
     private void HandleButtonClick(int moneyCost, int turnCost, bool leftChoice)
     {
+        leftButton.enabled = false;
+        rightButton.enabled = false;
+        
         if (moneyCost > 0)
         {
             Player.Instance.AddMoney(moneyCost);
         }
-        else
+        else if (moneyCost < 0)
         {
             Player.Instance.SubtractMoney(-moneyCost);
         }
@@ -89,7 +94,7 @@ public class DDisplayManager : MonoBehaviour
         {
             Player.Instance.AddTurn(turnCost);
         }
-        else
+        else if (turnCost < 0)
         {
             Player.Instance.SubtractTurn(-turnCost);
         }

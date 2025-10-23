@@ -17,12 +17,6 @@ public class Map : MonoBehaviour
 
     private void Start()
     {
-        if (Player.Instance.Day > 1)
-        {
-            Instantiate(TechDemoEndPrefab, FindObjectOfType<Canvas>().transform);
-            return;
-        }
-
         MapNodes = FindObjectsOfType<MapNode>();
         Instance = this;
 

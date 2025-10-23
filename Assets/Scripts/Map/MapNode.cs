@@ -113,7 +113,7 @@ public class MapNode : MonoBehaviour
             // Subtract turn
             Player.Instance.SubtractTurn(1);
 
-            if (Player.Instance.Turn < 1)
+            if (Player.Instance.Turn < 1 && originalType == NodeType.Completed)
             {
                 GameManager.Instance.IsDayOver = true;
                 GameManager.Instance.OpenGameOver();

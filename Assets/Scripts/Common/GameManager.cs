@@ -100,7 +100,7 @@ public class GameManager : MonoBehaviour
             button.enabled = false;
         }
         menuInstance = Instantiate(MenuPrefab, GameObject.Find("Screen").transform);
-        SoundManager.Instance.PauseBackgroundMusic();
+        //SoundManager.Instance.PauseBackgroundMusic();
     }
 
     public void RestartGame()

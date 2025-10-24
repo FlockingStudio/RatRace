@@ -376,6 +376,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1107782268}
     m_Modifications:
+    - target: {fileID: 375005798, guid: c4fdc2db134efe24b8c676aef8d30705, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 175.046
+      objectReference: {fileID: 0}
+    - target: {fileID: 375005798, guid: c4fdc2db134efe24b8c676aef8d30705, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 101.033
+      objectReference: {fileID: 0}
+    - target: {fileID: 375005798, guid: c4fdc2db134efe24b8c676aef8d30705, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 393.00644
+      objectReference: {fileID: 0}
+    - target: {fileID: 375005798, guid: c4fdc2db134efe24b8c676aef8d30705, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -286.5415
+      objectReference: {fileID: 0}
+    - target: {fileID: 375005799, guid: c4fdc2db134efe24b8c676aef8d30705, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6bbfecf45a8d934438230863f057d55b, type: 3}
+    - target: {fileID: 375005799, guid: c4fdc2db134efe24b8c676aef8d30705, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2047614281, guid: c4fdc2db134efe24b8c676aef8d30705, type: 3}
+      propertyPath: m_fontSize
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 2047614281, guid: c4fdc2db134efe24b8c676aef8d30705, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 35
+      objectReference: {fileID: 0}
     - target: {fileID: 9147444226431449344, guid: c4fdc2db134efe24b8c676aef8d30705, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

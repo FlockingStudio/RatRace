@@ -49,6 +49,8 @@ public class GigDisplayManager : MonoBehaviour
         Debug.Log("Loaded gig with image: " + gigInfo[2]);
     }
 
+
+
     void OnDestroy()
     {
         if (Player.Instance.Turn <= 0)

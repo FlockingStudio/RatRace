@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -7,8 +8,11 @@ public class Player : MonoBehaviour
     [SerializeField] private int Money;
 
     public int Turn;
+    public Difficulty EventDifficulty;
 
     public int Day;
+    // Sets the prices of the dice index 0->6 1->8 2->12
+    public List<int> DicePrices;
 
     private void Awake()
     {
@@ -18,7 +22,7 @@ public class Player : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
+        
         Instance = this;
         DontDestroyOnLoad(gameObject);
     }
@@ -71,5 +75,19 @@ public class Player : MonoBehaviour
         {
             Money -= amount;
         }
+    }
+
+    public List<int> GetDicePrices()
+    {
+        return DicePrices;
+    }
+
+    public Difficulty GetEventDifficulty()
+    {
+        return EventDifficulty;
+    }
+    public void SetEventDifficulty(Difficulty difficulty)
+    {
+        EventDifficulty = difficulty;
     }
 }

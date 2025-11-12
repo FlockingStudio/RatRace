@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
@@ -13,9 +14,7 @@ public class GigButton : MonoBehaviour
     public Button sixButton;
     public Button eightButton;
     public Button twelveButton;
-    private string gigInformation;
 
-    private int timesPressed = 0;
     private int requiredRoll = 0;
     private int payoutAmout = 0;
     private int diceType;
@@ -23,13 +22,7 @@ public class GigButton : MonoBehaviour
 
     private void Start()
     {
-        gigInformation = gigText.text;
-        if (Player.Instance.GetMoney() < Player.Instance.GetDicePrices().Min())
-        {
-            //gigText.text = "You do not have enough money to attempt this gig. Press quit gig to return to map";
-            // Removes the option to roll
-            GetComponent<Button>().gameObject.SetActive(false);
-        }
+        
     }
     public void ButtonLogic()
     {
@@ -50,9 +43,6 @@ public class GigButton : MonoBehaviour
         // Schedule dice roll and scene transition
         Invoke("DiceRoll", 2.0f);
         Invoke("PlayRollSound", 2.0f);
-
-        timesPressed = 1;
-
     }
 
     public void setRequiredRoll(int num)
@@ -76,7 +66,7 @@ public class GigButton : MonoBehaviour
         diceScript.Complete(randomPick);
 
         // Award money if the roll exceeds the requirement
-        if (randomPick > requiredRoll)
+        if (randomPick >= requiredRoll)
         {
             // Changes the gig text to show the player won
             //gigText.text = "Success, you earned $" + payoutAmout.ToString() + ". Press Quit Gig to return to map.";
@@ -95,15 +85,13 @@ public class GigButton : MonoBehaviour
                 //gigText.text = "You failed. Roll again or press Quit Gig to go to map.";
                 // Allows the player to interact with both buttons
                 GetComponent<Button>().interactable = true;
-                sixButton.interactable = true;
-                eightButton.interactable = true;
-                twelveButton.interactable = true;
+                MakeDiceButtonsInteractable();
                 quitButton.interactable = true;
             }
             else
             {
                 // Changes the gig text to show the player lost and can't reroll
-                //gigText.text = "You failed and can't afford to roll again. Press Quit Gig to return to the map";
+                gigText.text = "You can't afford to roll again. Please Leave the casino.";
                 // Only allows the player to interact with the quit button
                 GetComponent<Button>().gameObject.SetActive(false);
                 quitButton.interactable = true;
@@ -124,5 +112,24 @@ public class GigButton : MonoBehaviour
     public void SetDicePrice(int price)
     {
         dicePrice = price;
+    }
+
+    // Makes only dice buttons that the player can afford interactable
+    public void MakeDiceButtonsInteractable()
+    {
+        List<int> dicePrices = Player.Instance.GetDicePrices();
+        int playerMoney = Player.Instance.GetMoney();
+        if (dicePrices[0] <= playerMoney)
+        {
+            sixButton.interactable = true;
+        }
+        if (dicePrices[1] <= playerMoney)
+        {
+            eightButton.interactable = true;
+        }
+        if (dicePrices[2] <= playerMoney)
+        {
+            twelveButton.interactable = true;
+        }
     }
 }

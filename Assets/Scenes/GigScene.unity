@@ -709,7 +709,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gigText: {fileID: 609153878}
   greaterThanText: {fileID: 2108729952}
-  gigCSV: {fileID: 4900000, guid: 2645aae0b2cbade48acb534722fc652c, type: 3}
+  easyGigCSV: {fileID: 4900000, guid: 2645aae0b2cbade48acb534722fc652c, type: 3}
+  hardGigCSV: {fileID: 4900000, guid: 87e2884958c78214d85e6137f651fb46, type: 3}
   rollButton: {fileID: 1488477485}
   continueButton: {fileID: 1488353995}
 --- !u!4 &307697705
@@ -2588,8 +2589,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -71.057, y: 79}
-  m_SizeDelta: {x: 204.0344, y: 18.509}
+  m_AnchoredPosition: {x: -59.751, y: 87.326}
+  m_SizeDelta: {x: 213.46, y: 18.509}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2108729952
 MonoBehaviour:
@@ -2611,7 +2612,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Roll greater than > #
+  m_text: Roll # or more to win.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9a14a8a1184c5f14fbce3338ea4d7a35, type: 2}
   m_sharedMaterial: {fileID: 4485435423566117028, guid: 9a14a8a1184c5f14fbce3338ea4d7a35, type: 2}
@@ -2638,8 +2639,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 21
-  m_fontSizeBase: 21
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2674,7 +2675,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -0.022186266, y: -0.0000209667, z: 0.002403259, w: 0.0028610232}
+  m_margin: {x: -0.022186266, y: -0.0000209667, z: 0.36550137, w: 0.0028610232}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

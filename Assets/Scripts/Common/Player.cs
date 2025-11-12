@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     [SerializeField] private int Money;
 
     public int Turn;
+    public Difficulty EventDifficulty;
 
     public int Day;
     // Sets the prices of the dice index 0->6 1->8 2->12
@@ -79,5 +80,14 @@ public class Player : MonoBehaviour
     public List<int> GetDicePrices()
     {
         return DicePrices;
+    }
+
+    public Difficulty GetEventDifficulty()
+    {
+        return EventDifficulty;
+    }
+    public void SetEventDifficulty(Difficulty difficulty)
+    {
+        EventDifficulty = difficulty;
     }
 }

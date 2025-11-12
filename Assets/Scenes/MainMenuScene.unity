@@ -369,6 +369,7 @@ MonoBehaviour:
   Money: 200
   Turn: 3
   Day: 1
+  DicePrices: 320000003c00000050000000
 --- !u!4 &635546173
 Transform:
   m_ObjectHideFlags: 0

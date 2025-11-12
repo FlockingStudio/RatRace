@@ -368,6 +368,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Money: 200
   Turn: 3
+  EventDifficulty: 0
   Day: 1
   DicePrices: 320000003c00000050000000
 --- !u!4 &635546173

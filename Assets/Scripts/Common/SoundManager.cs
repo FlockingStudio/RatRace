@@ -13,6 +13,7 @@ public class SoundManager : MonoBehaviour
     public AudioSource MainMenuBackground;
     public AudioSource trashBinSound;
     public AudioSource browserSound;
+    public AudioSource gigBackground;
     public float volume = 1;
 
     private AudioSource BackgroundMusic;
@@ -104,6 +105,9 @@ public class SoundManager : MonoBehaviour
         {
             case GameManager.Stage.map:
                 BackgroundMusic = MapBackground;
+                break;
+            case GameManager.Stage.gig:
+                BackgroundMusic = gigBackground;
                 break;
             default:
                 BackgroundMusic = OtherBackground;

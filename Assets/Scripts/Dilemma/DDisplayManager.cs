@@ -58,7 +58,7 @@ public class DDisplayManager : MonoBehaviour
         choice2.SetText(dilemmaInfo[2]);
 
         //Set the dilemma image
-        dilemmaImage.sprite = Resources.Load<Sprite>(dilemmaInfo[7].Trim());
+        dilemmaImage.sprite = Resources.Load<Sprite>("Sprites/" + dilemmaInfo[7].Trim());
     }
 
     void OnDestroy()

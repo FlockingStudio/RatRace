@@ -56,16 +56,16 @@ public class MapNode : MonoBehaviour
         switch (nodeType)
         {
             case NodeType.Gig:
-                img.sprite = Resources.Load<Sprite>("Map_Icon_Gig");
+                img.sprite = Resources.Load<Sprite>("Sprites/Map_Icon_Gig");
                 break;
             case NodeType.Dilemma:
-                img.sprite = Resources.Load<Sprite>("Map_Icon_Dilemma");
+                img.sprite = Resources.Load<Sprite>("Sprites/Map_Icon_Dilemma");
                 break;
             case NodeType.Player:
-                img.sprite = Resources.Load<Sprite>("Map_Icon_Player");
+                img.sprite = Resources.Load<Sprite>("Sprites/Map_Icon_Player");
                 break;
             case NodeType.Completed:
-                img.sprite = Resources.Load<Sprite>("Map_Icon_Complete");
+                img.sprite = Resources.Load<Sprite>("Sprites/Map_Icon_Complete");
                 break;
         }
     }

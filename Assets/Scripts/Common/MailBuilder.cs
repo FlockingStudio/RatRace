@@ -43,7 +43,7 @@ public class MailBuilder : MonoBehaviour
 
     void LoadMailData()
     {
-        TextAsset csvFile = Resources.Load<TextAsset>("Mail");
+        TextAsset csvFile = Resources.Load<TextAsset>("CSV/Mail");
         if (csvFile == null)
         {
             Debug.LogError("Mail.csv not found in Resources folder");

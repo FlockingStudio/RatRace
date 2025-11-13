@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
         dilemma = 2,
         prologue = 3,
         gameOver = 4,
+        home = 5
     }
 
     public Dictionary<string, MapNode.NodeType> NodeStates { get; set; }
@@ -46,6 +47,7 @@ public class GameManager : MonoBehaviour
     public void OpenMap() => OpenScene(Stage.map);
     public void OpenPrologue() => OpenScene(Stage.prologue);
     public void OpenGameOver() => OpenScene(Stage.gameOver);
+    public void OpenHome() => OpenScene(Stage.home);
 
     private void OpenScene(Stage stage)
     {
@@ -68,6 +70,8 @@ public class GameManager : MonoBehaviour
             case Stage.gameOver:
                 //return "GameOverScene";
                 return "LeaderboardScene";
+            case Stage.home:
+                return "Desktop";
             default:
                 return "MapScene";
         }

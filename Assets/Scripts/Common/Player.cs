@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -13,6 +14,7 @@ public class Player : MonoBehaviour
     public int Day;
     // Sets the prices of the dice index 0->6 1->8 2->12
     public List<int> DicePrices;
+    public string Username;
 
     private void Awake()
     {
@@ -89,5 +91,10 @@ public class Player : MonoBehaviour
     public void SetEventDifficulty(Difficulty difficulty)
     {
         EventDifficulty = difficulty;
+    }
+
+    public void SetUserName()
+    {
+        Username = GameObject.Find("InputField (TMP)").GetComponent<TMP_InputField>().text;
     }
 }

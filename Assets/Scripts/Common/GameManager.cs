@@ -66,7 +66,8 @@ public class GameManager : MonoBehaviour
             case Stage.prologue:
                 return "PrologueScene";
             case Stage.gameOver:
-                return "GameOverScene";
+                //return "GameOverScene";
+                return "LeaderboardScene";
             default:
                 return "MapScene";
         }

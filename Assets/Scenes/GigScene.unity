@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 4956139}
   - component: {fileID: 4956138}
   - component: {fileID: 4956141}
+  - component: {fileID: 4956142}
   m_Layer: 5
   m_Name: DEightButton
   m_TagString: Untagged
@@ -219,6 +220,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4956142}
+        m_TargetAssemblyTypeName: ButtonSound, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &4956139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -273,6 +286,18 @@ MonoBehaviour:
   buttonText: {fileID: 259818987}
   dice: {fileID: 806608513}
   rollButton: {fileID: 1488477485}
+--- !u!114 &4956142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4956136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9595a54c856e19c438c9f4f26e8d1e1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &32655268
 GameObject:
   m_ObjectHideFlags: 0
@@ -1088,12 +1113,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SixSides:
-  - {fileID: -1802186726, guid: 2d543a6ed91cfbb4686f80723f06692d, type: 3}
-  - {fileID: 518436816, guid: 2d543a6ed91cfbb4686f80723f06692d, type: 3}
-  - {fileID: 40216673, guid: 2d543a6ed91cfbb4686f80723f06692d, type: 3}
-  - {fileID: 763547064, guid: 2d543a6ed91cfbb4686f80723f06692d, type: 3}
-  - {fileID: -1224710234, guid: 2d543a6ed91cfbb4686f80723f06692d, type: 3}
-  - {fileID: 640681607, guid: 2d543a6ed91cfbb4686f80723f06692d, type: 3}
+  - {fileID: 21300000, guid: 17b7a6a5719f6ae4287f569d5afe74cf, type: 3}
+  - {fileID: 21300000, guid: b96cedd9a3311604e9c7f095e88ae851, type: 3}
+  - {fileID: 21300000, guid: e4ee3d48c05203a4895a81d89896e287, type: 3}
+  - {fileID: 21300000, guid: b4ee31cb445deae47a25c69e8e61303b, type: 3}
+  - {fileID: 21300000, guid: 622ddbfaf7c8898448225de1adea1e9e, type: 3}
+  - {fileID: 21300000, guid: acf5d5ecd17ac58478aef50d8a03f236, type: 3}
   EightSides:
   - {fileID: 21300000, guid: 4b8880375c558c848911c2e1aa6cc2a0, type: 3}
   - {fileID: 21300000, guid: b328ac9d9c51ead44b6d3bcb7839b2ea, type: 3}
@@ -1457,6 +1482,7 @@ GameObject:
   - component: {fileID: 1444532093}
   - component: {fileID: 1444532092}
   - component: {fileID: 1444532095}
+  - component: {fileID: 1444532096}
   m_Layer: 5
   m_Name: DTwelveButton
   m_TagString: Untagged
@@ -1541,6 +1567,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1444532096}
+        m_TargetAssemblyTypeName: ButtonSound, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1444532093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1595,6 +1633,18 @@ MonoBehaviour:
   buttonText: {fileID: 590333086}
   dice: {fileID: 806608513}
   rollButton: {fileID: 1488477485}
+--- !u!114 &1444532096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1444532090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9595a54c856e19c438c9f4f26e8d1e1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1461107215
 GameObject:
   m_ObjectHideFlags: 0
@@ -2213,6 +2263,7 @@ GameObject:
   - component: {fileID: 1794925138}
   - component: {fileID: 1794925137}
   - component: {fileID: 1794925140}
+  - component: {fileID: 1794925141}
   m_Layer: 5
   m_Name: DSixButton
   m_TagString: Untagged
@@ -2297,6 +2348,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1794925141}
+        m_TargetAssemblyTypeName: ButtonSound, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1794925138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2351,6 +2414,18 @@ MonoBehaviour:
   buttonText: {fileID: 32655270}
   dice: {fileID: 806608513}
   rollButton: {fileID: 1488477485}
+--- !u!114 &1794925141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1794925135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9595a54c856e19c438c9f4f26e8d1e1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1933890645
 GameObject:
   m_ObjectHideFlags: 0

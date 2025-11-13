@@ -26,7 +26,6 @@ public class ChildToggle : MonoBehaviour
         // Validate
         if (childOne == null || childTwo == null)
         {
-            Debug.LogError("ChildToggle: Both children must be assigned or exist!", this);
             enabled = false;
             return;
         }

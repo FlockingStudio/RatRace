@@ -49,5 +49,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 691d67b265a20c546afb3832fffe67bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GigWindow: {fileID: 573879199441314173, guid: 998fe820b7270094d8d9e79595fd097c, type: 3}
-  MailWindow: {fileID: 8251425431729956244, guid: 0a8119dde0785f44dbbc5a0ea39abe75, type: 3}
+  GigWindowPrefab: {fileID: 573879199441314173, guid: 998fe820b7270094d8d9e79595fd097c, type: 3}
+  MailWindowPrefab: {fileID: 8251425431729956244, guid: 0a8119dde0785f44dbbc5a0ea39abe75, type: 3}
+  MapWindowPrefab: {fileID: 6596226111372293855, guid: b11c8aacf2f80574d8a5e73e7df5c41e, type: 3}

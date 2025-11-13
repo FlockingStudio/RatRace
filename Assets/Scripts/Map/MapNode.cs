@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class MapNode : MonoBehaviour
 {
-    public enum NodeType { None, Gig, Dilemma, Player, Completed }
+    public enum NodeType { None, EasyGig, HardGig, EasyDilemma, HardDilemma, Player, Completed }
 
     public MapNode[] accessibleNodes;
 
@@ -55,17 +55,23 @@ public class MapNode : MonoBehaviour
         Image img = GetComponent<Image>();
         switch (nodeType)
         {
-            case NodeType.Gig:
-                img.sprite = Resources.Load<Sprite>("Sprites/Map_Icon_Gig");
+            case NodeType.EasyDilemma:
+                img.sprite = Resources.Load<Sprite>("Sprites/Map/Green_QuestionMark");
                 break;
-            case NodeType.Dilemma:
-                img.sprite = Resources.Load<Sprite>("Sprites/Map_Icon_Dilemma");
+            case NodeType.HardDilemma:
+                img.sprite = Resources.Load<Sprite>("Sprites/Map/Red_QuestionMark");
+                break;
+            case NodeType.EasyGig:
+                img.sprite = Resources.Load<Sprite>("Sprites/Map/Green_Dice");
+                break;
+            case NodeType.HardGig:
+                img.sprite = Resources.Load<Sprite>("Sprites/Map/Red_Dice");
                 break;
             case NodeType.Player:
-                img.sprite = Resources.Load<Sprite>("Sprites/Map_Icon_Player");
+                img.sprite = Resources.Load<Sprite>("Sprites/Map/PlayerIcon");
                 break;
             case NodeType.Completed:
-                img.sprite = Resources.Load<Sprite>("Sprites/Map_Icon_Complete");
+                img.sprite = Resources.Load<Sprite>("Sprites/Map/Map_Icon_Complete");
                 break;
         }
     }
@@ -73,9 +79,6 @@ public class MapNode : MonoBehaviour
     public void DisableNode()
     {
         InitializeRectTransform();
-
-        Image img = GetComponent<Image>();
-        img.color = new Color(img.color.r, img.color.g, img.color.b, 0.25f);
 
         Button btn = GetComponent<Button>();
         btn.interactable = false;
@@ -86,23 +89,15 @@ public class MapNode : MonoBehaviour
 
     public void EnableNode()
     {
-        Image img = GetComponent<Image>();
-        img.color = new Color(img.color.r, img.color.g, img.color.b, 1f);
-
         Button btn = GetComponent<Button>();
         btn.interactable = true;
 
         isFloating = nodeType != NodeType.Player && nodeType != NodeType.Completed;
     }
 
-    public bool IsAccessible()
-    {
-        return GetComponent<Button>().interactable;
-    }
-
     public void OnNodeClicked()
     {
-        if (IsAccessible() && nodeType != NodeType.Player)
+        if (nodeType != NodeType.Player)
         {
             // Remember the original node type before moving
             NodeType originalType = nodeType;
@@ -113,30 +108,38 @@ public class MapNode : MonoBehaviour
             // Subtract turn
             Player.Instance.SubtractTurn(1);
 
+            // out of turn + clicking visited node
             if (Player.Instance.Turn < 1 && originalType == NodeType.Completed)
             {
-                GameManager.Instance.IsDayOver = true;
-                GameManager.Instance.OpenGameOver();
-                return;
+                GameManager.Instance.OpenLeaderBoard();
             }
 
             // Open appropriate scene based on original node type
             switch (originalType)
             {
-                case NodeType.Gig:
-                    GameManager.Instance.OpenGig();
+                case NodeType.EasyGig:
+                    Player.Instance.EventDifficulty = Difficulty.EASY;
+                    DesktopManager.Instance.OpenGig();
+                    break;
+                case NodeType.HardGig:
+                    Player.Instance.EventDifficulty = Difficulty.HARD;
+                    DesktopManager.Instance.OpenGig();
                     break;
 
-                case NodeType.Dilemma:
-                    GameManager.Instance.OpenDilemma();
+                case NodeType.EasyDilemma:
+                    Player.Instance.EventDifficulty = Difficulty.EASY;
+                    DesktopManager.Instance.OpenDilemma();
+                    break;
+                case NodeType.HardDilemma:
+                    Player.Instance.EventDifficulty = Difficulty.HARD;
+                    DesktopManager.Instance.OpenDilemma();
                     break;
 
                 case NodeType.Completed:
-                    // Just stay on map, already moved
                     break;
 
                 default:
-                    throw new Exception("Node type not recognized");
+                    throw new Exception("Node type not recognized: " + originalType);
             }
         }
     }

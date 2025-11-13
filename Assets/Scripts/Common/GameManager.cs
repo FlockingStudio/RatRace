@@ -16,8 +16,9 @@ public class GameManager : MonoBehaviour
         gig = 1,
         dilemma = 2,
         prologue = 3,
-        gameOver = 4,
-        home = 5
+        login = 4,
+        gameOver = 5,
+        home = 6
     }
 
     public Dictionary<string, MapNode.NodeType> NodeStates { get; set; }
@@ -40,14 +41,8 @@ public class GameManager : MonoBehaviour
         NodeStates = new Dictionary<string, MapNode.NodeType>();
     }
 
-    public void OpenGig() => OpenScene(Stage.gig);
-
-    public void OpenDilemma() => OpenScene(Stage.dilemma);
-
-    public void OpenMap() => OpenScene(Stage.map);
-    public void OpenPrologue() => OpenScene(Stage.prologue);
-    public void OpenGameOver() => OpenScene(Stage.gameOver);
     public void OpenHome() => OpenScene(Stage.home);
+    public void OpenLeaderBoard() => OpenScene(Stage.gameOver);
 
     private void OpenScene(Stage stage)
     {
@@ -59,21 +54,14 @@ public class GameManager : MonoBehaviour
     {
         switch (stage)
         {
-            case Stage.map:
-                return "MapScene";
-            case Stage.gig:
-                return "GigScene";
-            case Stage.dilemma:
-                return "DilemmaScene";
-            case Stage.prologue:
-                return "PrologueScene";
+            case Stage.login:
+                return "Login";
             case Stage.gameOver:
-                //return "GameOverScene";
                 return "LeaderboardScene";
             case Stage.home:
                 return "Desktop";
             default:
-                return "MapScene";
+                throw new ArgumentOutOfRangeException();
         }
     }
 
@@ -113,7 +101,7 @@ public class GameManager : MonoBehaviour
         Destroy(Player.Instance.gameObject);
         Destroy(SoundManager.Instance.gameObject);
         Destroy(Instance.gameObject);
-        SceneManager.LoadScene("MainMenuScene");
+        SceneManager.LoadScene("Login");
     }
 
     public void ResumeGame()
@@ -125,14 +113,5 @@ public class GameManager : MonoBehaviour
             button.enabled = true;
         }
         SoundManager.Instance.PlayBackgroundMusic();
-    }
-
-    public void MoveToNextDay()
-    {
-        NodeStates.Clear();
-        Player.Instance.Day += 1;
-        Player.Instance.Turn = 3;
-        IsDayOver = true;
-        OpenMap();
     }
 }

@@ -1,97 +1,71 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Map : MonoBehaviour
 {
     public static Map Instance;
-    public GameObject TechDemoEndPrefab;
+    public MapNode playerStartNode;
+    public MapNode[] eventNodes;
+    public int NumberOfEasyDilemmas = 2;
+    public int NumberOfHardDilemmas = 2;
+    public int NumberOfEasyGigs = 1;
+    public int NumberOfHardGigs = 2;
 
-    public int NumberOfDilemmas;
-
-    public int NumberOfGigs;
-
-    private MapNode[] MapNodes;
+    private List<MapNode> MapNodes = new List<MapNode>();
     private MapNode PlayerNode;
 
     private void Start()
     {
-        MapNodes = FindObjectsOfType<MapNode>();
+        // Singleton pattern implementation
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         Instance = this;
 
-        // Check if map state was previously saved
-        if (GameManager.Instance.NodeStates.Count == MapNodes.Length)
-        {
-            RestoreMapState();
-        }
-        else
-        {
-            ValidateEventConfiguration();
-            InitializeNewMap();
-        }
+        MapNodes.Add(playerStartNode);
+        MapNodes.AddRange(eventNodes);
 
-        if (PlayerNode != null)
-        {
-            UpdateAccessibleNodes();
-        }
+        InitializeNewMap();
+
         // Changes the sound track playing
         SoundManager.Instance.SwitchBackgroundMusic(GameManager.Stage.map);
     }
 
-    private void OnDestroy()
-    {
-        if (!GameManager.Instance.IsDayOver)
-            SaveMapState();
-    }
-
-    private void RestoreMapState()
-    {
-        foreach (MapNode node in MapNodes)
-        {
-            MapNode.NodeType state = GameManager.Instance.NodeStates[node.name];
-            node.AssignEvent(state);
-
-            if (state == MapNode.NodeType.Player)
-            {
-                PlayerNode = node;
-            }
-        }
-    }
-
-    private void ValidateEventConfiguration()
-    {
-        if (NumberOfDilemmas + NumberOfGigs != MapNodes.Length - 1)
-        {
-            Debug.LogError("Number of events does not match number of nodes minus one for player start node.");
-        }
-    }
 
     private void InitializeNewMap()
     {
-        RandomlyPlacePlayer();
+        PlayerNode = MapNodes[0];
         AssignEvents();
-    }
-
-    private void RandomlyPlacePlayer()
-    {
-        int randomIndex = Random.Range(0, MapNodes.Length);
-        PlayerNode = MapNodes[randomIndex];
-        PlayerNode.nodeType = MapNode.NodeType.Player;
     }
 
     private void AssignEvents()
     {
-        MapNode.NodeType[] events = new MapNode.NodeType[NumberOfDilemmas + NumberOfGigs];
+        
+        MapNode.NodeType[] events = new MapNode.NodeType[eventNodes.Length];
 
         // Create event array
-        for (int i = 0; i < NumberOfDilemmas; i++)
+        int index = 0;
+        for (int i = 0; i < NumberOfEasyDilemmas; i++)
         {
-            events[i] = MapNode.NodeType.Dilemma;
+            events[index++] = MapNode.NodeType.EasyDilemma;
         }
-        for (int i = NumberOfDilemmas; i < NumberOfDilemmas + NumberOfGigs; i++)
+        for (int i = 0; i < NumberOfHardDilemmas; i++)
         {
-            events[i] = MapNode.NodeType.Gig;
+            events[index++] = MapNode.NodeType.HardDilemma;
+        }
+        for (int i = 0; i < NumberOfEasyGigs; i++)
+        {
+            events[index++] = MapNode.NodeType.EasyGig;
+        }
+        for (int i = 0; i < NumberOfHardGigs; i++)
+        {
+            events[index++] = MapNode.NodeType.HardGig;
         }
 
         // Shuffle events using Fisher-Yates algorithm
@@ -105,7 +79,7 @@ public class Map : MonoBehaviour
 
         // Assign events to nodes
         int eventIndex = 0;
-        for (int i = 0; i < MapNodes.Length; i++)
+        for (int i = 0; i < MapNodes.Count; i++)
         {
             if (MapNodes[i] != PlayerNode)
             {
@@ -117,6 +91,8 @@ public class Map : MonoBehaviour
                 MapNodes[i].AssignEvent(MapNode.NodeType.Player);
             }
         }
+
+        UpdateAccessibleNodes();
     }
 
     private void UpdateAccessibleNodes()
@@ -156,13 +132,5 @@ public class Map : MonoBehaviour
         PlayerNode = newNode;
 
         UpdateAccessibleNodes();
-    }
-
-    private void SaveMapState()
-    {
-        foreach (MapNode node in MapNodes)
-        {
-            GameManager.Instance.NodeStates[node.name] = node.nodeType;
-        }
     }
 }

@@ -17,7 +17,6 @@ public class LoadingAnimation : MonoBehaviour
 
         if (frames.Length == 0)
         {
-            Debug.LogError("No frames assigned to LoadingAnimation!");
             enabled = false;
             return;
         }

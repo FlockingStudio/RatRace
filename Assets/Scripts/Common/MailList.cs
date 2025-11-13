@@ -20,6 +20,8 @@ public class MailList : MonoBehaviour
             string[] parts = input.Split(',');
             string from = parts[0];
             string subject = parts[1];
+            string downloadStr = parts.Length > 2 ? parts[2] : "0";
+            bool download = downloadStr == "1";
 
             GameObject mailItem = Instantiate(MailItemPrefab, transform);
             RectTransform rectTransform = mailItem.GetComponent<RectTransform>();
@@ -29,7 +31,7 @@ public class MailList : MonoBehaviour
             rectTransform.anchoredPosition = new Vector2(0, yOffset);
 
             mailItem.GetComponent<MailItem>().SetTexts(from, subject);
-
+            mailItem.GetComponent<MailItem>().downloadable = download;
             yOffset -= spacing;
         }
     }
@@ -37,6 +39,6 @@ public class MailList : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

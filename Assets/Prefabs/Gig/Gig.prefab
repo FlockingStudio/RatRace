@@ -221,7 +221,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &573879198165582152
@@ -1594,7 +1594,6 @@ GameObject:
   - component: {fileID: 573879199235145955}
   - component: {fileID: 573879199235145956}
   - component: {fileID: 573879199235145954}
-  - component: {fileID: 573879199235145957}
   m_Layer: 5
   m_Name: QuitButton
   m_TagString: Untagged
@@ -1717,9 +1716,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 573879199235145957}
-        m_TargetAssemblyTypeName: ContinueButton, Assembly-CSharp
-        m_MethodName: SwitchToMap
+      - m_Target: {fileID: 573879198542517016}
+        m_TargetAssemblyTypeName: GigDisplayManager, Assembly-CSharp
+        m_MethodName: QuitButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 573879199441314171}
+        m_TargetAssemblyTypeName: Window, Assembly-CSharp
+        m_MethodName: CloseWindow
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1741,19 +1752,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9595a54c856e19c438c9f4f26e8d1e1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &573879199235145957
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 573879199235145959}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46de1045a70081043ae913b36f68951c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rollButton: {fileID: 573879198284714156}
 --- !u!1 &573879199403057904
 GameObject:
   m_ObjectHideFlags: 0
@@ -1920,8 +1918,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1315, y: 765}
+  m_AnchoredPosition: {x: -25.987, y: 0}
+  m_SizeDelta: {x: 1260, y: 765}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &573879199441314166
 CanvasRenderer:

@@ -69,14 +69,11 @@ public class GigDisplayManager : MonoBehaviour
         gigButtonScript.setPayoutAmount(int.Parse(gigInfo[2]));
     }
 
-
-
-    void OnDestroy()
+    public void QuitButtonClick()
     {
-        if (Player.Instance.Turn <= 0)
+        if (Player.Instance.Turn < 1)
         {
-            GameManager.Instance.IsDayOver = true;
-            GameManager.Instance.OpenGameOver();
+            GameManager.Instance.OpenLeaderBoard();
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Window : MonoBehaviour, IDragHandler
+public class Window : MonoBehaviour, IDragHandler, IPointerDownHandler
 {
     private RectTransform rectTransform;
     private RectTransform boundaryRectTransform;
@@ -24,6 +24,12 @@ public class Window : MonoBehaviour, IDragHandler
     private void Start()
     {
         MaximizeWindow();
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        // Bring window to front when clicked
+        transform.SetAsLastSibling();
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -52,11 +58,19 @@ public class Window : MonoBehaviour, IDragHandler
         return new Vector2(Mathf.Clamp(position.x, minX, maxX), Mathf.Clamp(position.y, minY, maxY));
     }
 
-    public void CloseWindow() => StartCoroutine(AnimateWindow(true));
+    public void CloseWindow() => StartCoroutine(AnimateWindow(true, true));
+    public void MinimizeWindow() => StartCoroutine(AnimateWindow(true));
 
-    public void MaximizeWindow() => StartCoroutine(AnimateWindow(false));
+    public void MaximizeWindow()
+    {
+        // Reset position to center before maximizing
+        rectTransform.anchoredPosition = Vector2.zero;
+        // Bring window to front by setting it as last sibling
+        transform.SetAsLastSibling();
+        StartCoroutine(AnimateWindow(false));
+    }
 
-    private IEnumerator AnimateWindow(bool minimize)
+    private IEnumerator AnimateWindow(bool minimize, bool destroy = false)
     {
         Vector2 startPos = minimize ? rectTransform.anchoredPosition : new Vector2(0, -Screen.height * 0.4f);
         Vector2 targetPos = minimize ? new Vector2(0, -Screen.height * 0.4f) : rectTransform.anchoredPosition;
@@ -86,7 +100,13 @@ public class Window : MonoBehaviour, IDragHandler
 
         if (minimize)
         {
-            Destroy(gameObject);
+            if (destroy)
+            {
+                Destroy(gameObject);
+                yield break;
+            }
+
+            gameObject.SetActive(false);
         }
     }
 }

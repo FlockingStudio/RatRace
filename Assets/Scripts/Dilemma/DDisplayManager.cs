@@ -61,15 +61,6 @@ public class DDisplayManager : MonoBehaviour
         dilemmaImage.sprite = Resources.Load<Sprite>("Sprites/" + dilemmaInfo[7].Trim());
     }
 
-    void OnDestroy()
-    {
-        if (Player.Instance != null && Player.Instance.Turn <= 0 && GameManager.Instance != null)
-        {
-            GameManager.Instance.IsDayOver = true;
-            GameManager.Instance.OpenGameOver();
-        }
-    }
-
     public void LeftButtonClick()
     {
         int moneyCost = int.Parse(dilemmaInfo[3]);
@@ -116,7 +107,6 @@ public class DDisplayManager : MonoBehaviour
     {
         if (resultWindowPrefab == null)
         {
-            Debug.LogError("resultWindowPrefab is not assigned in the Inspector!");
             return;
         }
 
@@ -136,14 +126,5 @@ public class DDisplayManager : MonoBehaviour
         }
 
         Button resultButton = resultWindow.GetComponentInChildren<Button>();
-        if (resultButton != null)
-        {
-            resultButton.onClick.AddListener(OpenMap);
-        }
-    }
-
-    private void OpenMap()
-    {
-        GameManager.Instance.OpenMap();
     }
 }

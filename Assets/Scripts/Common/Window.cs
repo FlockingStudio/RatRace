@@ -5,7 +5,6 @@ using UnityEngine.EventSystems;
 
 public class Window : MonoBehaviour, IDragHandler
 {
-    [SerializeField] private GameObject boundaryObject;
     private RectTransform rectTransform;
     private RectTransform boundaryRectTransform;
     private Canvas canvas;
@@ -15,18 +14,10 @@ public class Window : MonoBehaviour, IDragHandler
         rectTransform = GetComponent<RectTransform>();
         canvas = GetComponentInParent<Canvas>();
 
-        if (boundaryObject != null)
+        GameObject boundary = GameObject.FindGameObjectWithTag("Boundary");
+        if (boundary != null)
         {
-            boundaryRectTransform = boundaryObject.GetComponent<RectTransform>();
-        }
-        else
-        {
-            // grab the componnet using the tag "boundary"
-            GameObject boundary = GameObject.FindGameObjectWithTag("Boundary");
-            if (boundary != null)
-            {
-                boundaryRectTransform = boundary.GetComponent<RectTransform>();
-            }
+            boundaryRectTransform = boundary.GetComponent<RectTransform>();
         }
     }
 

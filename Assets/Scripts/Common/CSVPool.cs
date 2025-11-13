@@ -43,4 +43,10 @@ public class CSVPool
 
         return selectedItem;
     }
+
+    public List<string> GetAll()
+    {
+        LoadAll();
+        return availableItems;
+    }
 }

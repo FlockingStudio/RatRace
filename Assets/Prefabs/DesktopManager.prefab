@@ -52,3 +52,5 @@ MonoBehaviour:
   GigWindowPrefab: {fileID: 573879199441314173, guid: 998fe820b7270094d8d9e79595fd097c, type: 3}
   MailWindowPrefab: {fileID: 8251425431729956244, guid: 0a8119dde0785f44dbbc5a0ea39abe75, type: 3}
   MapWindowPrefab: {fileID: 6596226111372293855, guid: b11c8aacf2f80574d8a5e73e7df5c41e, type: 3}
+  DilemmaWindowPrefab: {fileID: 3123689932447995688, guid: 26669cc309cbb774ea6ffba976ad0857, type: 3}
+  DesktopIcons: []

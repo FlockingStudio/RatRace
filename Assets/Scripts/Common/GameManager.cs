@@ -21,9 +21,28 @@ public class GameManager : MonoBehaviour
         home = 6
     }
 
-    public Dictionary<string, MapNode.NodeType> NodeStates { get; set; }
-    public bool IsDayOver { get; set; } = false;
     private GameObject menuInstance;
+
+    // minimum money to win the game
+    public int targetMoney = 400;
+
+    // csv pooling
+
+    // dilemma
+    public TextAsset easyDilemmaCSV;
+    public TextAsset hardDilemmaCSV;
+    public CSVPool easyDilemmaPool;
+    public CSVPool hardDilemmaPool;
+
+    // gig
+    public TextAsset easyGigCSV;
+    public TextAsset hardGigCSV;
+    public CSVPool easyGigPool;
+    public CSVPool hardGigPool;
+
+    // mail
+    public TextAsset mailCSV;
+    public CSVPool mailPool;
 
     private void Awake()
     {
@@ -36,9 +55,11 @@ public class GameManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
+    }
 
-        // Initialize game state
-        NodeStates = new Dictionary<string, MapNode.NodeType>();
+    void Start()
+    {
+        LoadCsvPools();
     }
 
     public void OpenHome() => OpenScene(Stage.home);
@@ -113,5 +134,14 @@ public class GameManager : MonoBehaviour
             button.enabled = true;
         }
         SoundManager.Instance.PlayBackgroundMusic();
+    }
+
+    private void LoadCsvPools()
+    {
+        easyDilemmaPool = new CSVPool(easyDilemmaCSV);
+        hardDilemmaPool = new CSVPool(hardDilemmaCSV);
+        easyGigPool = new CSVPool(easyGigCSV);
+        hardGigPool = new CSVPool(hardGigCSV);
+        mailPool = new CSVPool(mailCSV);
     }
 }

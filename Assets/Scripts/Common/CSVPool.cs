@@ -44,6 +44,19 @@ public class CSVPool
         return selectedItem;
     }
 
+    public string GetFirst()
+    {
+        // If no items left, reload all items
+        if (availableItems.Count == 0)
+        {
+            LoadAll();
+        }
+
+        string selectedItem = availableItems[0];
+        availableItems.RemoveAt(0);
+        return selectedItem;
+    }
+
     public List<string> GetAll()
     {
         LoadAll();

@@ -120,13 +120,11 @@ public class Map : MonoBehaviour
         {
             PlayerNode.nodeType = MapNode.NodeType.Completed;
             PlayerNode.UpdateVisual();
-            GameManager.Instance.NodeStates[PlayerNode.name] = MapNode.NodeType.Completed;
         }
 
         // Update new node to player
         newNode.nodeType = MapNode.NodeType.Player;
         newNode.UpdateVisual();
-        GameManager.Instance.NodeStates[newNode.name] = MapNode.NodeType.Player;
 
         // Update player position
         PlayerNode = newNode;

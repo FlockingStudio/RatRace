@@ -1377,6 +1377,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 5890718410506911943, guid: 9afe3cb2eb4e61346b3f6e26d0c71893, type: 3}
+      propertyPath: easyGigCSV
+      value: 
+      objectReference: {fileID: 4900000, guid: 2645aae0b2cbade48acb534722fc652c, type: 3}
+    - target: {fileID: 5890718410506911943, guid: 9afe3cb2eb4e61346b3f6e26d0c71893, type: 3}
+      propertyPath: hardGigCSV
+      value: 
+      objectReference: {fileID: 4900000, guid: 87e2884958c78214d85e6137f651fb46, type: 3}
+    - target: {fileID: 5890718410506911943, guid: 9afe3cb2eb4e61346b3f6e26d0c71893, type: 3}
+      propertyPath: easyDilemmaCSV
+      value: 
+      objectReference: {fileID: 4900000, guid: 8b35bc8744726c1419eabe561a4ec29b, type: 3}
+    - target: {fileID: 5890718410506911943, guid: 9afe3cb2eb4e61346b3f6e26d0c71893, type: 3}
+      propertyPath: hardDilemmaCSV
+      value: 
+      objectReference: {fileID: 4900000, guid: d9202b534893bcb4999551f6c9a4ff03, type: 3}
     - target: {fileID: 5890718410506911992, guid: 9afe3cb2eb4e61346b3f6e26d0c71893, type: 3}
       propertyPath: m_RootOrder
       value: 3

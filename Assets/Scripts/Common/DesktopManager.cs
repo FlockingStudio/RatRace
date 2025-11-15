@@ -16,6 +16,7 @@ public class DesktopManager : MonoBehaviour
     public GameObject GigWindowPrefab;
     public GameObject MailWindowPrefab;
     public GameObject MapWindowPrefab;
+    public GameObject DilemmaWindowPrefab;
     public Icon[] DesktopIcons;
     private Canvas canvas;
     private Dictionary<WindowType, GameObject> windows = new Dictionary<WindowType, GameObject>();
@@ -41,7 +42,7 @@ public class DesktopManager : MonoBehaviour
         prefabs[WindowType.Gig] = GigWindowPrefab;
         prefabs[WindowType.Mail] = MailWindowPrefab;
         prefabs[WindowType.Map] = MapWindowPrefab;
-        prefabs[WindowType.Dilemma] = GigWindowPrefab; // Note: uses GigWindowPrefab
+        prefabs[WindowType.Dilemma] = DilemmaWindowPrefab;
     }
 
     public void OpenWindow(WindowType type)

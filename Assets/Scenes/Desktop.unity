@@ -322,18 +322,6 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5890718410506911992, guid: 9afe3cb2eb4e61346b3f6e26d0c71893, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5890718410506911992, guid: 9afe3cb2eb4e61346b3f6e26d0c71893, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5890718410506911992, guid: 9afe3cb2eb4e61346b3f6e26d0c71893, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5890718410506911992, guid: 9afe3cb2eb4e61346b3f6e26d0c71893, type: 3}
       propertyPath: m_LocalPosition.x
       value: 662.8758
       objectReference: {fileID: 0}
@@ -490,6 +478,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4299139924580724964, guid: 354afa3084c37914c9450f3923a7d59c, type: 3}
+      propertyPath: DilemmaWindowPrefab
+      value: 
+      objectReference: {fileID: 3123689932447995688, guid: 26669cc309cbb774ea6ffba976ad0857, type: 3}
     - target: {fileID: 4299139924580724964, guid: 354afa3084c37914c9450f3923a7d59c, type: 3}
       propertyPath: DesktopIcons.Array.data[0]
       value: 

@@ -1842,12 +1842,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SixSides:
-  - {fileID: -1802186726, guid: 2d543a6ed91cfbb4686f80723f06692d, type: 3}
-  - {fileID: 518436816, guid: 2d543a6ed91cfbb4686f80723f06692d, type: 3}
-  - {fileID: 40216673, guid: 2d543a6ed91cfbb4686f80723f06692d, type: 3}
-  - {fileID: 763547064, guid: 2d543a6ed91cfbb4686f80723f06692d, type: 3}
-  - {fileID: -1224710234, guid: 2d543a6ed91cfbb4686f80723f06692d, type: 3}
-  - {fileID: 640681607, guid: 2d543a6ed91cfbb4686f80723f06692d, type: 3}
+  - {fileID: 21300000, guid: 17b7a6a5719f6ae4287f569d5afe74cf, type: 3}
+  - {fileID: 21300000, guid: b96cedd9a3311604e9c7f095e88ae851, type: 3}
+  - {fileID: 21300000, guid: e4ee3d48c05203a4895a81d89896e287, type: 3}
+  - {fileID: 21300000, guid: b4ee31cb445deae47a25c69e8e61303b, type: 3}
+  - {fileID: 21300000, guid: 622ddbfaf7c8898448225de1adea1e9e, type: 3}
+  - {fileID: 21300000, guid: acf5d5ecd17ac58478aef50d8a03f236, type: 3}
   EightSides:
   - {fileID: 21300000, guid: 4b8880375c558c848911c2e1aa6cc2a0, type: 3}
   - {fileID: 21300000, guid: b328ac9d9c51ead44b6d3bcb7839b2ea, type: 3}

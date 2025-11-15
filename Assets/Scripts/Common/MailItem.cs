@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MailItem : MonoBehaviour
 {
     public bool downloadable = false;
     public GameObject MailWindowPrefab;
     private GameObject mailWindowInstance;
+    private string bodyText;
     void Start()
     {
     }
@@ -17,13 +19,14 @@ public class MailItem : MonoBehaviour
     {
     }
 
-    public void SetTexts(string from, string subject)
+    public void SetTexts(string from, string subject, string body)
     {
         TextMeshProUGUI fromInput = transform.Find("FromInput").GetComponent<TextMeshProUGUI>();
         TextMeshProUGUI subjectInput = transform.Find("SubjectInput").GetComponent<TextMeshProUGUI>();
 
         fromInput.text = from;
         subjectInput.text = subject;
+        bodyText = body;
     }
 
     public void OpenMailWindow()
@@ -36,7 +39,7 @@ public class MailItem : MonoBehaviour
         TextMeshProUGUI bodyInput = mailWindowInstance.transform.Find("BodyInput").GetComponent<TextMeshProUGUI>();
         fromInput.text = transform.Find("FromInput").GetComponent<TextMeshProUGUI>().text;
         subjectInput.text = transform.Find("SubjectInput").GetComponent<TextMeshProUGUI>().text;
-        bodyInput.text = "yo";
+        bodyInput.text = bodyText;
 
         if (downloadable)
         {

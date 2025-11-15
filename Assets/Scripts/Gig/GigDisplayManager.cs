@@ -2,7 +2,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
-using static GameManager;
 
 public class GigDisplayManager : MonoBehaviour
 {
@@ -10,31 +9,15 @@ public class GigDisplayManager : MonoBehaviour
 
     public TextMeshProUGUI greaterThanText;
 
-    public TextAsset easyGigCSV;
-    public TextAsset hardGigCSV;
-
     public Button rollButton;
     public Button continueButton;
 
 
-    private static CSVPool easyGigPool;
-    private static CSVPool hardGigPool;
-
     private void Start()
     {
-        // Create pool on first run
-        if (easyGigPool == null)
-        {
-            easyGigPool = new CSVPool(easyGigCSV);
-        }
-        if (hardGigPool == null)
-        {
-            hardGigPool = new CSVPool(hardGigCSV);
-        }
-
         LoadRandomGig();
         // Plays the correct track for the gig
-        SoundManager.Instance.SwitchBackgroundMusic(Stage.gig);
+        SoundManager.Instance.SwitchBackgroundMusic(GameManager.Stage.gig);
         if (Player.Instance.GetMoney() < Player.Instance.GetDicePrices().Min())
         {
             gigText.text = "You can't afford to roll. Please Leave the casino.";
@@ -49,11 +32,11 @@ public class GigDisplayManager : MonoBehaviour
         string selectedGig;
         if (Player.Instance.GetEventDifficulty() == Difficulty.EASY)
         {
-            selectedGig = easyGigPool.GetRandom();
+            selectedGig = GameManager.Instance.easyGigPool.GetRandom();
         }
         else //if (Player.Instance.GetEventDifficulty() == Difficulty.HARD)
         {
-            selectedGig = hardGigPool.GetRandom();
+            selectedGig = GameManager.Instance.hardGigPool.GetRandom();
         }
 
         // Parse the selected gig

@@ -19,7 +19,6 @@ public class DiceSelectButton : MonoBehaviour
     {
         // Sets the display for what the button should like like at start
         List<int> dicePrices = Player.Instance.GetDicePrices();
-        Debug.Log(dicePrices);
         if (diceType == 6)
         {
             dicePrice = dicePrices[0];

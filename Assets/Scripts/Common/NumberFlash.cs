@@ -41,7 +41,6 @@ public class NumberFlash : MonoBehaviour
 
         while (elapsedTime < fadeDuration)
         {
-            //Debug.Log(elapsedTime);
             elapsedTime += Time.deltaTime;
             text.color = Color.Lerp(initialColor, targetColor, elapsedTime / fadeDuration);
             yield return null;

@@ -17,7 +17,6 @@ public class GigDisplayManager : MonoBehaviour
     {
         LoadRandomGig();
         // Plays the correct track for the gig
-        SoundManager.Instance.SwitchBackgroundMusic(GameManager.Stage.gig);
         if (Player.Instance.GetMoney() < Player.Instance.GetDicePrices().Min())
         {
             gigText.text = "You can't afford to roll. Please Leave the casino.";
@@ -40,7 +39,7 @@ public class GigDisplayManager : MonoBehaviour
         }
 
         // Parse the selected gig
-        string[] gigInfo = selectedGig.Split(";");
+        string[] gigInfo = selectedGig.Split(",");
 
         // Update UI elements
         gigText.SetText(gigInfo[0]);
@@ -56,7 +55,14 @@ public class GigDisplayManager : MonoBehaviour
     {
         if (Player.Instance.Turn < 1)
         {
-            GameManager.Instance.OpenLeaderBoard();
+            if (Player.Instance.GetMoney() >= GameManager.Instance.targetMoney)
+            {
+                DesktopManager.Instance.NextDaySequence();
+            }
+            else
+            {
+                DesktopManager.Instance.EndSequence();
+            }
         }
     }
 }

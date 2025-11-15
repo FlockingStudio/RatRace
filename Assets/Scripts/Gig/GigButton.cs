@@ -37,7 +37,6 @@ public class GigButton : MonoBehaviour
 
         // Start dice animation
         Dice diceScript = diceImage.GetComponent<Dice>();
-        SoundManager.Instance.PlayDiceShake();
         diceScript.beginAnimation();
 
         // Schedule dice roll and scene transition
@@ -102,7 +101,6 @@ public class GigButton : MonoBehaviour
 
     private void PlayRollSound()
     {
-        SoundManager.Instance.PlayDiceRoll();
     }
 
     public void SetDiceType(int diceKind)

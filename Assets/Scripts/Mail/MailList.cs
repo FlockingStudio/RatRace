@@ -7,19 +7,20 @@ public class MailList : MonoBehaviour
 {
     public GameObject MailItemPrefab;
     private float spacing = 135f; // Adjust this value to change the gap between items
-    private float startOffset = 20f; // Offset for the first mail item (negative = higher up)
+    private float startOffset = 15f; // Offset for the first mail item (negative = higher up)
     private int mailItemCount = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        string[] inputs = ParseCSVLine(GameManager.Instance.mailPool.GetFirst());
-        AddMailItem(inputs[0], inputs[1], inputs[3], inputs[2] == "1");
+        string[] inputs = ParseCSVLine(GameManager.Instance.specialMailPool.GetFirst());
+        AddMailItem(inputs[0], inputs[1], inputs[2]);
 
-        inputs = ParseCSVLine(GameManager.Instance.mailPool.GetFirst());
-        AddMailItem(inputs[0], inputs[1], inputs[3], inputs[2] == "1");
+        AddSubscriptionMail();
+        AddPaymentReminder();
 
-        AddSubscriptionMails();
+        inputs = ParseCSVLine(GameManager.Instance.specialMailPool.GetFirst());
+        AddMailItem(inputs[0], inputs[1], inputs[2], true);
     }
 
     private string[] ParseCSVLine(string line)
@@ -44,7 +45,7 @@ public class MailList : MonoBehaviour
         return result.ToArray();
     }
 
-    public void AddMailItem(string from, string subject, string body, bool downloadable = false)
+    public void AddMailItem(string from, string subject, string body, bool downloadable = false, bool endButton = false)
     {
         float yOffset = startOffset + (-mailItemCount * spacing);
 
@@ -57,6 +58,7 @@ public class MailList : MonoBehaviour
 
         mailItem.GetComponent<MailItem>().SetTexts(from, subject, body);
         mailItem.GetComponent<MailItem>().downloadable = downloadable;
+        mailItem.GetComponent<MailItem>().endButton = endButton;
 
         mailItemCount++;
     }
@@ -73,20 +75,32 @@ public class MailList : MonoBehaviour
         mailItemCount = 0;
     }
 
-    public void RefreshMailList()
+    public void AddSubscriptionMail()
     {
-        ClearAllMail();
-
-        AddSubscriptionMails();
+        string[] inputs = ParseCSVLine(GameManager.Instance.subscriptionMailPool.GetRandom());
+        AddMailItem(inputs[0], inputs[1], inputs[2] + $"\nPayment of ${GameManager.Instance.targetMoney} will be processed by the end of today.");
     }
 
-    public void AddSubscriptionMails()
+    public void AddPaymentReminder()
     {
-        string[] inputs = ParseCSVLine(GameManager.Instance.mailPool.GetRandom());
-        AddMailItem(inputs[0], inputs[1], inputs[3] + $"\nPayment of ${GameManager.Instance.targetMoney/2} will be processed within a week.");
+        string from = "BankPaymore";
+        string subject = "Upcoming Payment Reminder";
+        string body = $"Dear Customer,\n\nThis is a reminder that your scheduled payment of ${GameManager.Instance.targetMoney} is due by the end of today. Please ensure that sufficient funds are available in your account to avoid any significant penalties \n Thank you for choosing BankPaymore for your financial needs.";
+        AddMailItem(from, subject, body);
+    }
 
-        inputs = ParseCSVLine(GameManager.Instance.mailPool.GetRandom());
-        AddMailItem(inputs[0], inputs[1], inputs[3] + $"\nPayment of ${GameManager.Instance.targetMoney/2} will be processed within a week.");
+    public void AddResultMail()
+    {
+        string from = "BankPaymore";
+        string subject = "Payment Processed Successfully";
+        string body = $"Dear Customer,\n\nWe are pleased to inform you that your scheduled payment of ${GameManager.Instance.targetMoney} has been successfully processed today. Thank you for your prompt attention to this matter.\n We appreciate your continued trust in BankPaymore for your financial needs.";
+        AddMailItem(from, subject, body);
+    }
+
+    public void AddSpecialMail()
+    {
+        string[] inputs = ParseCSVLine(GameManager.Instance.specialMailPool.GetRandom());
+        AddMailItem(inputs[0], inputs[1], inputs[2], false, true);
     }
 
     // Update is called once per frame

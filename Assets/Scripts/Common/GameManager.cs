@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     private GameObject menuInstance;
 
     // minimum money to win the game
-    public int targetMoney = 400;
+    public int targetMoney = 50;
 
     // csv pooling
 
@@ -41,8 +41,10 @@ public class GameManager : MonoBehaviour
     public CSVPool hardGigPool;
 
     // mail
-    public TextAsset mailCSV;
-    public CSVPool mailPool;
+    public TextAsset subscriptionMailCSV;
+    public TextAsset specialMailCSV;
+    public CSVPool subscriptionMailPool;
+    public CSVPool specialMailPool;
 
     private void Awake()
     {
@@ -114,13 +116,11 @@ public class GameManager : MonoBehaviour
             button.enabled = false;
         }
         menuInstance = Instantiate(MenuPrefab, GameObject.Find("Screen").transform);
-        //SoundManager.Instance.PauseBackgroundMusic();
     }
 
     public void RestartGame()
     {
         Destroy(Player.Instance.gameObject);
-        Destroy(SoundManager.Instance.gameObject);
         Destroy(Instance.gameObject);
         SceneManager.LoadScene("Login");
     }
@@ -133,7 +133,6 @@ public class GameManager : MonoBehaviour
         {
             button.enabled = true;
         }
-        SoundManager.Instance.PlayBackgroundMusic();
     }
 
     private void LoadCsvPools()
@@ -142,6 +141,7 @@ public class GameManager : MonoBehaviour
         hardDilemmaPool = new CSVPool(hardDilemmaCSV);
         easyGigPool = new CSVPool(easyGigCSV);
         hardGigPool = new CSVPool(hardGigCSV);
-        mailPool = new CSVPool(mailCSV);
+        subscriptionMailPool = new CSVPool(subscriptionMailCSV);
+        specialMailPool = new CSVPool(specialMailCSV);
     }
 }

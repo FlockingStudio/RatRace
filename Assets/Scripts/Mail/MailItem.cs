@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class MailItem : MonoBehaviour
 {
     public bool downloadable = false;
+    public bool endButton = false;
     public GameObject MailWindowPrefab;
     private GameObject mailWindowInstance;
     private string bodyText;
@@ -45,14 +46,28 @@ public class MailItem : MonoBehaviour
         {
             ShowDownloadButton();
         }
+
+        if (endButton)
+        {
+            ShowEndButton();
+        }
     }
 
-    public void ShowDownloadButton()
+    private void ShowDownloadButton()
     {
         Transform downloadButton = mailWindowInstance.transform.Find("DownloadButton");
         if (downloadButton != null)
         {
             downloadButton.gameObject.SetActive(true);
+        }
+    }
+
+    private void ShowEndButton()
+    {
+        Transform endButton = mailWindowInstance.transform.Find("EndButton");
+        if (endButton != null)
+        {
+            endButton.gameObject.SetActive(true);
         }
     }
 }

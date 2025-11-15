@@ -388,7 +388,6 @@ GameObject:
   - component: {fileID: 573879198284714152}
   - component: {fileID: 573879198284714154}
   - component: {fileID: 573879198284714156}
-  - component: {fileID: 573879198284714157}
   m_Layer: 5
   m_Name: RollButton
   m_TagString: Untagged
@@ -530,30 +529,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 573879198284714157}
-        m_TargetAssemblyTypeName: ButtonSound, Assembly-CSharp
-        m_MethodName: PlaySound
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &573879198284714157
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 573879198284714159}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9595a54c856e19c438c9f4f26e8d1e1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &573879198381037337
 GameObject:
   m_ObjectHideFlags: 0
@@ -587,10 +562,10 @@ RectTransform:
   m_Father: {fileID: 573879199441314170}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -708, y: 200.5}
-  m_SizeDelta: {x: 534.9083, y: 163.3443}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -62.852875, y: 187.93893}
+  m_SizeDelta: {x: 504.6141, y: 138.2222}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &573879198381037335
 CanvasRenderer:
@@ -683,7 +658,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 20.527084, y: 18.35442, z: 12.316055, w: 2.3940735}
+  m_margin: {x: 2.0549622, y: -0.117687225, z: -0.24497986, w: 2.3940735}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -870,8 +845,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gigText: {fileID: 573879198381037334}
   greaterThanText: {fileID: 573879198941153943}
-  easyGigCSV: {fileID: 4900000, guid: 2645aae0b2cbade48acb534722fc652c, type: 3}
-  hardGigCSV: {fileID: 4900000, guid: 87e2884958c78214d85e6137f651fb46, type: 3}
   rollButton: {fileID: 573879198284714156}
   continueButton: {fileID: 573879199235145956}
 --- !u!1 &573879198742242518
@@ -1593,7 +1566,6 @@ GameObject:
   - component: {fileID: 573879199235145952}
   - component: {fileID: 573879199235145955}
   - component: {fileID: 573879199235145956}
-  - component: {fileID: 573879199235145954}
   m_Layer: 5
   m_Name: QuitButton
   m_TagString: Untagged
@@ -1704,18 +1676,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 573879199235145954}
-        m_TargetAssemblyTypeName: ButtonSound, Assembly-CSharp
-        m_MethodName: PlaySound
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 573879198542517016}
         m_TargetAssemblyTypeName: GigDisplayManager, Assembly-CSharp
         m_MethodName: QuitButtonClick
@@ -1740,18 +1700,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &573879199235145954
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 573879199235145959}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9595a54c856e19c438c9f4f26e8d1e1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &573879199403057904
 GameObject:
   m_ObjectHideFlags: 0

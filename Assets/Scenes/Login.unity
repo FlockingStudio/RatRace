@@ -173,6 +173,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5676033208605332177, guid: 4775a2ac73791dd4c93796f5c9c23be9, type: 3}
+      propertyPath: Money
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5676033208605332177, guid: 4775a2ac73791dd4c93796f5c9c23be9, type: 3}
+      propertyPath: Username
+      value: User
+      objectReference: {fileID: 0}
+    - target: {fileID: 5676033208605332177, guid: 4775a2ac73791dd4c93796f5c9c23be9, type: 3}
+      propertyPath: DicePrices.Array.data[0]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5676033208605332177, guid: 4775a2ac73791dd4c93796f5c9c23be9, type: 3}
+      propertyPath: DicePrices.Array.data[1]
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5676033208605332177, guid: 4775a2ac73791dd4c93796f5c9c23be9, type: 3}
+      propertyPath: DicePrices.Array.data[2]
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 5676033208605332182, guid: 4775a2ac73791dd4c93796f5c9c23be9, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1385,6 +1405,10 @@ PrefabInstance:
       propertyPath: hardGigCSV
       value: 
       objectReference: {fileID: 4900000, guid: 87e2884958c78214d85e6137f651fb46, type: 3}
+    - target: {fileID: 5890718410506911943, guid: 9afe3cb2eb4e61346b3f6e26d0c71893, type: 3}
+      propertyPath: targetMoney
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 5890718410506911943, guid: 9afe3cb2eb4e61346b3f6e26d0c71893, type: 3}
       propertyPath: easyDilemmaCSV
       value: 

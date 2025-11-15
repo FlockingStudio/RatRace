@@ -45,8 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MenuPrefab: {fileID: 8764475477338999650, guid: b6d430e30a853c243bd56033db9aebdf, type: 3}
+  targetMoney: 50
   easyDilemmaCSV: {fileID: 4900000, guid: 8b35bc8744726c1419eabe561a4ec29b, type: 3}
   hardDilemmaCSV: {fileID: 4900000, guid: d9202b534893bcb4999551f6c9a4ff03, type: 3}
   easyGigCSV: {fileID: 4900000, guid: 2645aae0b2cbade48acb534722fc652c, type: 3}
   hardGigCSV: {fileID: 4900000, guid: 87e2884958c78214d85e6137f651fb46, type: 3}
-  mailCSV: {fileID: 4900000, guid: 87afb29382727c346bc8da6ffd1daf10, type: 3}
+  subscriptionMailCSV: {fileID: 4900000, guid: 87afb29382727c346bc8da6ffd1daf10, type: 3}
+  specialMailCSV: {fileID: 4900000, guid: cd8f2184649c7f742bc88eb373ad7d3f, type: 3}

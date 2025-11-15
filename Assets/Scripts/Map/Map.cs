@@ -32,9 +32,6 @@ public class Map : MonoBehaviour
         MapNodes.AddRange(eventNodes);
 
         InitializeNewMap();
-
-        // Changes the sound track playing
-        SoundManager.Instance.SwitchBackgroundMusic(GameManager.Stage.map);
     }
 
 

@@ -91,7 +91,23 @@ public class DesktopManager : MonoBehaviour
 
         foreach (WindowType type in windows.Keys)
         {
-            
+            switch (type)
+            {
+                case WindowType.Mail:
+                    if (windows[type].activeSelf)
+                        windows[type].GetComponent<Window>().MinimizeWindow();
+                        MailList mailList = windows[type].GetComponentInChildren<MailList>();
+                        mailList.ClearAllMail();
+                        mailList.AddSpecialMail();
+                    break;
+                default:
+                    if (windows[type] != null)
+                    {
+                        windows[type].SetActive(true);
+                        windows[type].GetComponent<Window>().CloseWindow();
+                    }
+                    break;
+            }
         }
 
         DesktopIcons[0].StartAnimation();
@@ -111,6 +127,7 @@ public class DesktopManager : MonoBehaviour
                             windows[window].GetComponent<Window>().MinimizeWindow();
                         MailList mailList = windows[window].GetComponentInChildren<MailList>();
                         Player.Instance.ResetDailyStats();
+                        GameManager.Instance.paidBillsToday = false;
                         mailList.ClearAllMail();
                         mailList.AddResultMail();
                         mailList.AddSubscriptionMail();
@@ -122,7 +139,6 @@ public class DesktopManager : MonoBehaviour
                 }
             }
         }
-
 
         DesktopIcons[0].StartAnimation();
         DesktopIcons[2].GetComponent<Button>().interactable = false;

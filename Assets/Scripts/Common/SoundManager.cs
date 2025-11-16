@@ -20,21 +20,23 @@ public class SoundManager : MonoBehaviour
 
     private void Awake()
     {
-        Debug.Log("Awake");
-        // Singleton pattern implementation
-        if (Instance != null && Instance != this)
+        Debug.Log(isActiveAndEnabled);
+        if (Instance == null)
         {
-            Destroy(gameObject);
-            return;
-        }
+            Instance = this;
+            BackgroundMusic = MainMenuBackground;
 
-        Instance = this;
-        BackgroundMusic = MainMenuBackground;
-        // Set all background music to loop
-        if (MapBackground != null) MapBackground.loop = true;
-        if (EventBackground != null) EventBackground.loop = true;
-        if (MainMenuBackground != null) MainMenuBackground.loop = true;
-        DontDestroyOnLoad(gameObject);
+            // Set all background music to loop
+            if (MapBackground != null) MapBackground.loop = true;
+            if (EventBackground != null) EventBackground.loop = true;
+            if (MainMenuBackground != null) MainMenuBackground.loop = true;
+
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            //Destroy(gameObject);
+        }
     }
 
     private void Start()

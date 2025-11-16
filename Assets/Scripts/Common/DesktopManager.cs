@@ -1,13 +1,15 @@
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum WindowType
 {
     Gig,
     Mail,
     Map,
-    Dilemma
+    Dilemma,
+    Credits
 }
 
 public class DesktopManager : MonoBehaviour
@@ -17,6 +19,7 @@ public class DesktopManager : MonoBehaviour
     public GameObject MailWindowPrefab;
     public GameObject MapWindowPrefab;
     public GameObject DilemmaWindowPrefab;
+    public GameObject CreditsWindowPrefab;
     public Icon[] DesktopIcons;
     private Canvas canvas;
     private Dictionary<WindowType, GameObject> windows = new Dictionary<WindowType, GameObject>();
@@ -43,6 +46,7 @@ public class DesktopManager : MonoBehaviour
         prefabs[WindowType.Mail] = MailWindowPrefab;
         prefabs[WindowType.Map] = MapWindowPrefab;
         prefabs[WindowType.Dilemma] = DilemmaWindowPrefab;
+        prefabs[WindowType.Credits] = CreditsWindowPrefab;
     }
 
     public void OpenWindow(WindowType type)
@@ -82,15 +86,54 @@ public class DesktopManager : MonoBehaviour
         }
     }
 
+    public void EndSequence()
+    {
+
+        foreach (WindowType type in windows.Keys)
+        {
+            
+        }
+
+        DesktopIcons[0].StartAnimation();
+        DesktopIcons[2].GetComponent<Button>().interactable = false;
+    }
+
+    public void NextDaySequence()
+    {
+        foreach (WindowType window in windows.Keys)
+        {
+            if (windows[window] != null)
+            {
+                switch (window)
+                {
+                    case WindowType.Mail:
+                        if (windows[window].activeSelf)
+                            windows[window].GetComponent<Window>().MinimizeWindow();
+                        MailList mailList = windows[window].GetComponentInChildren<MailList>();
+                        Player.Instance.ResetDailyStats();
+                        mailList.ClearAllMail();
+                        mailList.AddResultMail();
+                        mailList.AddSubscriptionMail();
+                        mailList.AddPaymentReminder();
+                        break;
+                    default:
+                        windows[window].GetComponent<Window>().CloseWindow();   
+                        break;
+                }
+            }
+        }
+
+
+        DesktopIcons[0].StartAnimation();
+        DesktopIcons[2].GetComponent<Button>().interactable = false;
+
+        Destroy(windows[WindowType.Map]);
+    }
+
     // Legacy methods for backward compatibility
     public void OpenMail() => OpenWindow(WindowType.Mail);
     public void OpenGig() => OpenWindow(WindowType.Gig);
     public void OpenDilemma() => OpenWindow(WindowType.Dilemma);
     public void OpenMap() => OpenWindow(WindowType.Map);
-
-    public void CloseMail() => CloseWindow(WindowType.Mail);
-    public void CloseGig() => CloseWindow(WindowType.Gig);
-    public void CloseDilemma() => CloseWindow(WindowType.Dilemma);
-    public void CloseMap() => CloseWindow(WindowType.Map);
-
+    public void OpenCredits() => OpenWindow(WindowType.Credits);
 }

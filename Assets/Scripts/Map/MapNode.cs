@@ -111,7 +111,15 @@ public class MapNode : MonoBehaviour
             // out of turn + clicking visited node
             if (Player.Instance.Turn < 1 && originalType == NodeType.Completed)
             {
-                GameManager.Instance.OpenLeaderBoard();
+                if (Player.Instance.GetMoney() >= GameManager.Instance.targetMoney)
+                {
+                    DesktopManager.Instance.NextDaySequence();
+                }
+                else
+                {
+                    DesktopManager.Instance.EndSequence();
+                }
+                return;
             }
 
             // Open appropriate scene based on original node type

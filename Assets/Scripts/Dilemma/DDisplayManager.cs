@@ -31,10 +31,10 @@ public class DDisplayManager : MonoBehaviour
             text = GameManager.Instance.hardDilemmaPool.GetRandom();
         }
 
-        string[] dilemmaInfo = text.Split(",");
+        string[] dilemmaInfo = ParseCSVLine(text);
 
         TextMeshProUGUI dilemmaText = transform.Find("DilemmaText").GetComponent<TextMeshProUGUI>();
-        dilemmaText.SetText(dilemmaInfo[0]);
+        dilemmaText.SetText(dilemmaInfo[0].Replace("\\n", "\n"));
 
         TextMeshProUGUI option1Text = transform.Find("TopButton/Text").GetComponent<TextMeshProUGUI>();
         option1Text.SetText(dilemmaInfo[1]);
@@ -44,6 +44,37 @@ public class DDisplayManager : MonoBehaviour
 
         MoneyImpact = int.Parse(dilemmaInfo[2]);
         DiceIndex = int.Parse(dilemmaInfo[4]);
+    }
+
+    private string[] ParseCSVLine(string line)
+    {
+        List<string> fields = new List<string>();
+        bool inQuotes = false;
+        string currentField = "";
+
+        for (int i = 0; i < line.Length; i++)
+        {
+            char c = line[i];
+
+            if (c == '"')
+            {
+                inQuotes = !inQuotes;
+            }
+            else if (c == ',' && !inQuotes)
+            {
+                fields.Add(currentField);
+                currentField = "";
+            }
+            else
+            {
+                currentField += c;
+            }
+        }
+
+        // Add the last field
+        fields.Add(currentField);
+
+        return fields.ToArray();
     }
 
     public void OnTopButtonPressed()
@@ -58,17 +89,43 @@ public class DDisplayManager : MonoBehaviour
 
         if (Player.Instance.Turn < 1)
         {
-            GameManager.Instance.OpenLeaderBoard();
+            if (Player.Instance.GetMoney() >= GameManager.Instance.targetMoney)
+            {
+                DesktopManager.Instance.NextDaySequence();
+            } else
+            {
+                DesktopManager.Instance.EndSequence();
+            }
         }
     }
 
     public void OnBottomButtonPressed()
     {
-        Player.Instance.DicePrices[DiceIndex] -= 10;
+        switch (DiceIndex)
+        {
+            case 0:
+                Player.Instance.DicePrices[DiceIndex] -= 1;
+                break;
+            case 1:
+                Player.Instance.DicePrices[DiceIndex] -= 2;
+                break;
+            case 2:
+                Player.Instance.DicePrices[DiceIndex] -= 4;
+                break;
+            default:
+                break;
+        }
 
         if (Player.Instance.Turn < 1)
         {
-            GameManager.Instance.OpenLeaderBoard();
+            if (Player.Instance.GetMoney() >= GameManager.Instance.targetMoney)
+            {
+                DesktopManager.Instance.NextDaySequence();
+            }
+            else
+            {
+                DesktopManager.Instance.EndSequence();
+            }
         }
     }
 }

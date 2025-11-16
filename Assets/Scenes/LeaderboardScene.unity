@@ -607,7 +607,6 @@ GameObject:
   - component: {fileID: 306863569}
   - component: {fileID: 306863568}
   - component: {fileID: 306863567}
-  - component: {fileID: 306863566}
   m_Layer: 5
   m_Name: MenuButton
   m_TagString: Untagged
@@ -636,18 +635,6 @@ RectTransform:
   m_AnchoredPosition: {x: 63.767, y: -197}
   m_SizeDelta: {x: 227.1405, y: 100}
   m_Pivot: {x: 0.780708, y: 2.3274105}
---- !u!114 &306863566
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 306863564}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9595a54c856e19c438c9f4f26e8d1e1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &306863567
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -692,18 +679,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 306863566}
-        m_TargetAssemblyTypeName: ButtonSound, Assembly-CSharp
-        m_MethodName: PlaySound
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 5890718410506911943, guid: 9afe3cb2eb4e61346b3f6e26d0c71893, type: 3}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: OpenMenu

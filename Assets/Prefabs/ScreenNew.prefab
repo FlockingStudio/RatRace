@@ -158,10 +158,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8b1a954913b1b1499d88c68c4490df0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationType: 0
   animationSpeed: 1
   playOnStart: 1
-  showOnStart: 1
 --- !u!1 &969901353
 GameObject:
   m_ObjectHideFlags: 0
@@ -181,7 +179,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &969901354
 RectTransform:
   m_ObjectHideFlags: 0
@@ -199,7 +197,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -908, y: 33}
+  m_AnchoredPosition: {x: -908, y: 24}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &969901356
@@ -320,10 +318,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8b1a954913b1b1499d88c68c4490df0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationType: 0
   animationSpeed: 1
   playOnStart: 1
-  showOnStart: 0
 --- !u!1 &1179661220
 GameObject:
   m_ObjectHideFlags: 0
@@ -377,7 +373,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1630976883
 RectTransform:
   m_ObjectHideFlags: 0
@@ -395,7 +391,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -908, y: 180}
+  m_AnchoredPosition: {x: -908, y: 187}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1630976887
@@ -492,6 +488,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4299139924580724964}
+        m_TargetAssemblyTypeName: DesktopManager, Assembly-CSharp
+        m_MethodName: OpenCredits
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1630976884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -504,10 +512,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8b1a954913b1b1499d88c68c4490df0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationType: 0
   animationSpeed: 1
   playOnStart: 0
-  showOnStart: 1
 --- !u!1 &1733383909
 GameObject:
   m_ObjectHideFlags: 0
@@ -1292,7 +1298,6 @@ GameObject:
   - component: {fileID: 4883975417951889499}
   - component: {fileID: 5029055685781662102}
   - component: {fileID: 2812566350447146470}
-  - component: {fileID: 536059729416337612}
   m_Layer: 5
   m_Name: MenuButton
   m_TagString: Untagged
@@ -1403,18 +1408,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 536059729416337612}
-        m_TargetAssemblyTypeName: ButtonSound, Assembly-CSharp
-        m_MethodName: PlaySound
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 5890718410506911943, guid: 9afe3cb2eb4e61346b3f6e26d0c71893, type: 3}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: OpenMenu
@@ -1427,18 +1420,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &536059729416337612
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3330187605273377609}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9595a54c856e19c438c9f4f26e8d1e1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &3922622999089919242
 GameObject:
   m_ObjectHideFlags: 0
@@ -2076,15 +2057,15 @@ PrefabInstance:
     - target: {fileID: 512284190527771109, guid: 513d79ee865c41a44938ef562e9411a1, type: 3}
       propertyPath: DesktopIcons.Array.data[0]
       value: 
-      objectReference: {fileID: 272572432}
+      objectReference: {fileID: 2061369597}
     - target: {fileID: 512284190527771109, guid: 513d79ee865c41a44938ef562e9411a1, type: 3}
       propertyPath: DesktopIcons.Array.data[1]
       value: 
-      objectReference: {fileID: 969901353}
+      objectReference: {fileID: 1630976884}
     - target: {fileID: 512284190527771109, guid: 513d79ee865c41a44938ef562e9411a1, type: 3}
       propertyPath: DesktopIcons.Array.data[2]
       value: 
-      objectReference: {fileID: 1630976882}
+      objectReference: {fileID: 1303728816}
     - target: {fileID: 2325287405862632702, guid: 513d79ee865c41a44938ef562e9411a1, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

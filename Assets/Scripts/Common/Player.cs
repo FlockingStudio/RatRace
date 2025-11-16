@@ -55,7 +55,6 @@ public class Player : MonoBehaviour
     public void AddMoney(int amount)
     {
         Money += amount;
-        SoundManager.Instance.PlayCoinSoundGain();
         NumberFlash MoneyFlash = GameObject.Find("MoneyFlash").GetComponent<NumberFlash>();
         MoneyFlash.Activate(amount);
     }
@@ -67,7 +66,6 @@ public class Player : MonoBehaviour
         //i'm putting it like this because i don't think we should play the sound if you don't actually lose money -craig
         if (Money != 0)
         {
-            SoundManager.Instance.PlayCoinSoundLose();
         }
         if (Money <= amount)
         {
@@ -96,5 +94,11 @@ public class Player : MonoBehaviour
     public void SetUserName()
     {
         Username = GameObject.Find("InputField (TMP)").GetComponent<TMP_InputField>().text;
+    }
+
+    public void ResetDailyStats()
+    {
+        Day += 1;
+        Turn = 3;
     }
 }

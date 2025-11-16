@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class MailItem : MonoBehaviour
 {
     public bool downloadable = false;
+    public bool endButton = false;
+    public bool payBillsButton = false;
     public GameObject MailWindowPrefab;
     private GameObject mailWindowInstance;
     private string bodyText;
@@ -45,14 +47,47 @@ public class MailItem : MonoBehaviour
         {
             ShowDownloadButton();
         }
+
+        if (endButton)
+        {
+            ShowEndButton();
+        }
+
+        if (payBillsButton)
+        {
+            ShowPayBillsButton(!GameManager.Instance.paidBillsToday);
+        }
     }
 
-    public void ShowDownloadButton()
+    private void ShowDownloadButton()
     {
         Transform downloadButton = mailWindowInstance.transform.Find("DownloadButton");
         if (downloadButton != null)
         {
             downloadButton.gameObject.SetActive(true);
+            if (DesktopManager.Instance.DesktopIcons[2].gameObject.activeSelf)
+            {
+                downloadButton.GetComponent<Button>().interactable = false;
+            }
+        }
+    }
+
+    private void ShowEndButton()
+    {
+        Transform endButton = mailWindowInstance.transform.Find("EndButton");
+        if (endButton != null)
+        {
+            endButton.gameObject.SetActive(true);
+        }
+    }
+
+    public void ShowPayBillsButton(bool interactable)
+    {
+        Transform payBillsButton = mailWindowInstance.transform.Find("PayBillsButton");
+        if (payBillsButton != null)
+        {
+            payBillsButton.gameObject.SetActive(true);
+            payBillsButton.GetComponent<Button>().interactable = interactable;
         }
     }
 }

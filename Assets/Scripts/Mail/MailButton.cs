@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -26,6 +27,14 @@ public class MailButton : MonoBehaviour
     public void OnEndButtonClicked()
     {
         GameManager.Instance.OpenLeaderBoard();
+        gameObject.GetComponent<Button>().interactable = false;
+    }
+
+    public void OnPayBillsButtonClicked()
+    {
+        Player.Instance.SubtractMoney(GameManager.Instance.targetMoney);
+        GameManager.Instance.targetMoney += 25;
+        DesktopManager.Instance.DesktopIcons[2].GetComponent<Button>().interactable = true;
         gameObject.GetComponent<Button>().interactable = false;
     }
 }

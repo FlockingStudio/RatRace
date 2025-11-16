@@ -88,21 +88,10 @@ public class DesktopManager : MonoBehaviour
 
     public void EndSequence()
     {
-        foreach (GameObject window in windows.Values)
-        {
-            if (window != null)
-            {
-                MailList mailList = window.GetComponentInChildren<MailList>();
-                if (mailList != null)
-                {
-                    window.SetActive(true);
-                    mailList.ClearAllMail();
-                    mailList.AddSpecialMail();
-                }
 
-                if (!window.activeSelf) continue;
-                window.GetComponent<Window>().MinimizeWindow();
-            }
+        foreach (WindowType type in windows.Keys)
+        {
+            
         }
 
         DesktopIcons[0].StartAnimation();
@@ -111,27 +100,33 @@ public class DesktopManager : MonoBehaviour
 
     public void NextDaySequence()
     {
-        foreach (GameObject window in windows.Values)
+        foreach (WindowType window in windows.Keys)
         {
-            if (window != null)
+            if (windows[window] != null)
             {
-                MailList mailList = window.GetComponentInChildren<MailList>();
-                if (mailList != null)
+                switch (window)
                 {
-                    window.SetActive(true);
-                    mailList.ClearAllMail();
-                    mailList.AddResultMail();
-                    mailList.AddSubscriptionMail();
-                    mailList.AddPaymentReminder();
+                    case WindowType.Mail:
+                        if (windows[window].activeSelf)
+                            windows[window].GetComponent<Window>().MinimizeWindow();
+                        MailList mailList = windows[window].GetComponentInChildren<MailList>();
+                        Player.Instance.ResetDailyStats();
+                        mailList.ClearAllMail();
+                        mailList.AddResultMail();
+                        mailList.AddSubscriptionMail();
+                        mailList.AddPaymentReminder();
+                        break;
+                    default:
+                        windows[window].GetComponent<Window>().CloseWindow();   
+                        break;
                 }
-
-                if (!window.activeSelf) continue;
-                window.GetComponent<Window>().MinimizeWindow();
             }
         }
 
+
         DesktopIcons[0].StartAnimation();
-        Player.Instance.ResetDailyStats();
+        DesktopIcons[2].GetComponent<Button>().interactable = false;
+
         Destroy(windows[WindowType.Map]);
     }
 
@@ -141,11 +136,4 @@ public class DesktopManager : MonoBehaviour
     public void OpenDilemma() => OpenWindow(WindowType.Dilemma);
     public void OpenMap() => OpenWindow(WindowType.Map);
     public void OpenCredits() => OpenWindow(WindowType.Credits);
-
-    public void CloseMail() => CloseWindow(WindowType.Mail);
-    public void CloseGig() => CloseWindow(WindowType.Gig);
-    public void CloseDilemma() => CloseWindow(WindowType.Dilemma);
-    public void CloseMap() => CloseWindow(WindowType.Map);
-    public void CloseCredits() => CloseWindow(WindowType.Credits);
-
 }

@@ -45,7 +45,7 @@ public class MailList : MonoBehaviour
         return result.ToArray();
     }
 
-    public void AddMailItem(string from, string subject, string body, bool downloadable = false, bool endButton = false)
+    public void AddMailItem(string from, string subject, string body, bool downloadable = false, bool endButton = false, bool payBillsButton = false)
     {
         float yOffset = startOffset + (-mailItemCount * spacing);
 
@@ -59,6 +59,7 @@ public class MailList : MonoBehaviour
         mailItem.GetComponent<MailItem>().SetTexts(from, subject, body);
         mailItem.GetComponent<MailItem>().downloadable = downloadable;
         mailItem.GetComponent<MailItem>().endButton = endButton;
+        mailItem.GetComponent<MailItem>().payBillsButton = payBillsButton;
 
         mailItemCount++;
     }
@@ -78,23 +79,23 @@ public class MailList : MonoBehaviour
     public void AddSubscriptionMail()
     {
         string[] inputs = ParseCSVLine(GameManager.Instance.subscriptionMailPool.GetRandom());
-        AddMailItem(inputs[0], inputs[1], inputs[2] + $"\nPayment of ${GameManager.Instance.targetMoney} will be processed by the end of today.");
+        AddMailItem(inputs[0], inputs[1], inputs[2]);
     }
 
     public void AddPaymentReminder()
     {
         string from = "BankPaymore";
         string subject = "Upcoming Payment Reminder";
-        string body = $"Dear Customer,\n\nThis is a reminder that your scheduled payment of ${GameManager.Instance.targetMoney} is due by the end of today. Please ensure that sufficient funds are available in your account to avoid any significant penalties \n Thank you for choosing BankPaymore for your financial needs.";
+        string body = $"Dear Customer,\n\nThis is a reminder that your scheduled payment of ${GameManager.Instance.targetMoney + 25 * (Player.Instance.Day - 1)} is due by the end of today. Please ensure that sufficient funds are available in your account to avoid any significant penalties.\n\nThank you for choosing BankPaymore for your financial needs.";
         AddMailItem(from, subject, body);
     }
 
     public void AddResultMail()
     {
         string from = "BankPaymore";
-        string subject = "Payment Processed Successfully";
-        string body = $"Dear Customer,\n\nWe are pleased to inform you that your scheduled payment of ${GameManager.Instance.targetMoney} has been successfully processed today. Thank you for your prompt attention to this matter.\n We appreciate your continued trust in BankPaymore for your financial needs.";
-        AddMailItem(from, subject, body);
+        string subject = "Payment Required";
+        string body = $"Dear Customer,\n\nYour scheduled payment of ${GameManager.Instance.targetMoney} was not received by the due date. Please make this payment immediately to avoid further penalties.\n\nSincerely,\nBankPaymore Collections Department";
+        AddMailItem(from, subject, body, false, false, true);
     }
 
     public void AddSpecialMail()

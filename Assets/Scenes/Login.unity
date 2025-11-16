@@ -183,11 +183,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5676033208605332177, guid: 4775a2ac73791dd4c93796f5c9c23be9, type: 3}
       propertyPath: DicePrices.Array.data[0]
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5676033208605332177, guid: 4775a2ac73791dd4c93796f5c9c23be9, type: 3}
       propertyPath: DicePrices.Array.data[1]
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5676033208605332177, guid: 4775a2ac73791dd4c93796f5c9c23be9, type: 3}
       propertyPath: DicePrices.Array.data[2]

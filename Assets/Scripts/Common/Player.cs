@@ -100,6 +100,5 @@ public class Player : MonoBehaviour
     {
         Day += 1;
         Turn = 3;
-        SubtractMoney(GameManager.Instance.targetMoney);
     }
 }

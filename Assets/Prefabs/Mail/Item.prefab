@@ -35,8 +35,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000011444, y: -0.8676}
-  m_SizeDelta: {x: 183.7221, y: 79.4989}
+  m_AnchoredPosition: {x: -48.275417, y: -0.8676}
+  m_SizeDelta: {x: 135.1532, y: 79.4989}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &232360959
 CanvasRenderer:
@@ -93,8 +93,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -170,8 +170,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -225.27, y: -0.8676}
-  m_SizeDelta: {x: 266.81, y: 79.4989}
+  m_AnchoredPosition: {x: -245.61237, y: -0.8676}
+  m_SizeDelta: {x: 259.5149, y: 79.4989}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &261077737
 CanvasRenderer:
@@ -230,8 +230,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -307,8 +307,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 284.33102, y: -0.8676}
-  m_SizeDelta: {x: 386.8779, y: 79.4989}
+  m_AnchoredPosition: {x: 248.54, y: -0.8676}
+  m_SizeDelta: {x: 458.47, y: 79.4989}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1526639558
 CanvasRenderer:
@@ -365,8 +365,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -500,8 +500,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -693,4 +693,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   downloadable: 0
+  endButton: 0
   MailWindowPrefab: {fileID: 2221574686571042821, guid: cffb91b5bab9a4e4b9b7cb181a3d5d8e, type: 3}

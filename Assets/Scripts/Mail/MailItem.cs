@@ -8,6 +8,7 @@ public class MailItem : MonoBehaviour
 {
     public bool downloadable = false;
     public bool endButton = false;
+    public bool payBillsButton = false;
     public GameObject MailWindowPrefab;
     private GameObject mailWindowInstance;
     private string bodyText;
@@ -51,6 +52,11 @@ public class MailItem : MonoBehaviour
         {
             ShowEndButton();
         }
+
+        if (payBillsButton)
+        {
+            ShowPayBillsButton(!GameManager.Instance.paidBillsToday);
+        }
     }
 
     private void ShowDownloadButton()
@@ -59,6 +65,10 @@ public class MailItem : MonoBehaviour
         if (downloadButton != null)
         {
             downloadButton.gameObject.SetActive(true);
+            if (DesktopManager.Instance.DesktopIcons[2].gameObject.activeSelf)
+            {
+                downloadButton.GetComponent<Button>().interactable = false;
+            }
         }
     }
 
@@ -68,6 +78,16 @@ public class MailItem : MonoBehaviour
         if (endButton != null)
         {
             endButton.gameObject.SetActive(true);
+        }
+    }
+
+    public void ShowPayBillsButton(bool interactable)
+    {
+        Transform payBillsButton = mailWindowInstance.transform.Find("PayBillsButton");
+        if (payBillsButton != null)
+        {
+            payBillsButton.gameObject.SetActive(true);
+            payBillsButton.GetComponent<Button>().interactable = interactable;
         }
     }
 }

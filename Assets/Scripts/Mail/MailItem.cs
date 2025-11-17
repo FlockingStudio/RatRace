@@ -33,6 +33,12 @@ public class MailItem : MonoBehaviour
 
     public void OpenMailWindow()
     {
+        // If this mail window is already open, don't create another instance
+        if (mailWindowInstance != null)
+        {
+            return;
+        }
+
         Canvas canvas = GetComponentInParent<Canvas>();
         mailWindowInstance = Instantiate(MailWindowPrefab, canvas.transform);
         // find 3 text components and set their text to the values from this mail item

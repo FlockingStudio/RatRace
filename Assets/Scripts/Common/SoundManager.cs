@@ -6,12 +6,15 @@ public class SoundManager : MonoBehaviour
     public AudioSource buttonClickSound;
     public AudioSource diceRollSound;
     public AudioSource diceShakeSound;
+    public AudioSource mailActionSound;
     public AudioSource coinSoundGain;
     public AudioSource coinSoundLose;
     public AudioSource mailSound;
+    public AudioSource trophySound;
     public AudioSource MapBackground;
     public AudioSource EventBackground; // need to change this with other background track
-    public AudioSource MainMenuBackground;
+    public AudioSource LoginBackground;
+    public AudioSource DesktopBackground;
     public AudioSource trashBinSound;
     public AudioSource browserSound;
     public float volume = 1;
@@ -24,12 +27,12 @@ public class SoundManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            BackgroundMusic = MainMenuBackground;
+            BackgroundMusic = LoginBackground;
 
             // Set all background music to loop
             if (MapBackground != null) MapBackground.loop = true;
             if (EventBackground != null) EventBackground.loop = true;
-            if (MainMenuBackground != null) MainMenuBackground.loop = true;
+            if (LoginBackground != null) LoginBackground.loop = true;
 
             DontDestroyOnLoad(gameObject);
         }
@@ -42,7 +45,7 @@ public class SoundManager : MonoBehaviour
     private void Start()
     {
         // Initialize audio sources if needed
-        PlayBackgroundMusic();
+        //PlayBackgroundMusic();
     }
 
     private void Update()
@@ -80,6 +83,14 @@ public class SoundManager : MonoBehaviour
             BackgroundMusic.Pause();
         }
     }
+    
+    public void StopBackgroundMusic()
+    {
+        if (BackgroundMusic.isPlaying)
+        {
+            BackgroundMusic.Stop();
+        }
+    }
 
     public void ResumeBackgroundMusic()
     {
@@ -99,30 +110,41 @@ public class SoundManager : MonoBehaviour
         coinSoundLose.Play();
     }
 
-    public void SwitchBackgroundMusic(GameManager.Stage stage)
+    public void SwitchBackgroundMusic(Soundtracks track)
     {
-        BackgroundMusic.Pause();
-        switch (stage)
+        StopBackgroundMusic();
+        switch (track)
         {
-            case GameManager.Stage.map:
+            case Soundtracks.MAP:
                 BackgroundMusic = MapBackground;
                 break;
-            default:
+            case Soundtracks.EVENT:
                 BackgroundMusic = EventBackground;
                 break;
+            case Soundtracks.DESKTOP:
+                BackgroundMusic = DesktopBackground;
+                break;
+            default:
+                BackgroundMusic = LoginBackground;
+                break;
+            
         }
         BackgroundMusic.Play();
     }
     
     public void PlayMailSound()
     {
-        Debug.Log(isActiveAndEnabled);
         mailSound.Play();
     }
 
-    public void PlayTrashBinSound()
+    public void PlayTrophySound()
     {
-        trashBinSound.Play();
+        trophySound.Play();
+    }
+
+    public void PlayMailActionSound()
+    {
+        mailActionSound.Play();
     }
 
     public void PlayBrowserSound()
@@ -141,9 +163,12 @@ public class SoundManager : MonoBehaviour
         if (coinSoundLose != null) coinSoundLose.volume = volume;
         if (MapBackground != null) MapBackground.volume = volume;
         if (EventBackground != null) EventBackground.volume = volume;
-        if (MainMenuBackground != null) MainMenuBackground.volume = volume;
+        if (LoginBackground != null) LoginBackground.volume = volume;
         if (trashBinSound != null) trashBinSound.volume = volume;
         if (browserSound != null) browserSound.volume = volume;
         if (mailSound != null) mailSound.volume = volume;
+        if (DesktopBackground != null) DesktopBackground.volume = volume;
+        if (mailActionSound != null) mailActionSound.volume = volume;
+        if (trophySound != null) trophySound.volume = volume;
     }
 }

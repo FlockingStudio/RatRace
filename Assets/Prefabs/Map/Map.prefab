@@ -2089,6 +2089,7 @@ GameObject:
   - component: {fileID: 6596226111372293853}
   - component: {fileID: 6596226111372293843}
   - component: {fileID: 1444856264}
+  - component: {fileID: 4865759903289241254}
   m_Layer: 5
   m_Name: Map
   m_TagString: Untagged
@@ -2193,6 +2194,18 @@ MonoBehaviour:
   NumberOfHardDilemmas: 2
   NumberOfEasyGigs: 1
   NumberOfHardGigs: 2
+--- !u!114 &4865759903289241254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6596226111372293855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a91ae5017d69ed24eafe29b95c368f92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8752130707775993337
 GameObject:
   m_ObjectHideFlags: 0

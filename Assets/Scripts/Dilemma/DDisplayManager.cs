@@ -12,6 +12,7 @@ public class DDisplayManager : MonoBehaviour
     private int MoneyImpact = 0;
     void Start()
     {
+        AudioManager.Instance.PlayUpBeatMusic();
         Initialize();
     }
 
@@ -89,14 +90,12 @@ public class DDisplayManager : MonoBehaviour
 
         if (Player.Instance.Turn < 1)
         {
-            if (Player.Instance.GetMoney() >= GameManager.Instance.targetMoney)
-            {
-                DesktopManager.Instance.NextDaySequence();
-            } else
-            {
-                DesktopManager.Instance.EndSequence();
-            }
+            DesktopManager.Instance.OpenMetagameEnd();
+            AudioManager.Instance.StopMusic();
+            return;
         }
+
+        AudioManager.Instance.PlayMapMusic();
     }
 
     public void OnBottomButtonPressed()
@@ -118,14 +117,11 @@ public class DDisplayManager : MonoBehaviour
 
         if (Player.Instance.Turn < 1)
         {
-            if (Player.Instance.GetMoney() >= GameManager.Instance.targetMoney)
-            {
-                DesktopManager.Instance.NextDaySequence();
-            }
-            else
-            {
-                DesktopManager.Instance.EndSequence();
-            }
+            DesktopManager.Instance.OpenMetagameEnd();
+            AudioManager.Instance.StopMusic();
+            return;
         }
+
+        AudioManager.Instance.PlayMapMusic();
     }
 }

@@ -75,6 +75,7 @@ public class ChildToggle : MonoBehaviour
     /// </summary>
     public void OnEndEditToggleWithDelay()
     {
+        AudioManager.Instance.PlayLogin();
         StartCoroutine(ToggleWaitAndLoadHome(3f));
     }
 
@@ -103,12 +104,10 @@ public class ChildToggle : MonoBehaviour
     {
         if (childOne.activeSelf)
         {
-            SoundManager.Instance.PlayMailSound();
             EnableChildTwo();
         }
         else
         {
-            SoundManager.Instance.PlayTrophySound();
             EnableChildOne();
         }
     }

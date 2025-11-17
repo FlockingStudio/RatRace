@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 5890718410506911942}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 662.8758, y: 482.91846, z: -5.3613043}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.4775, y: 0.4775, z: 0.4775}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MenuPrefab: {fileID: 8764475477338999650, guid: b6d430e30a853c243bd56033db9aebdf, type: 3}
   targetMoney: 50
+  paidBillsToday: 0
   easyDilemmaCSV: {fileID: 4900000, guid: 8b35bc8744726c1419eabe561a4ec29b, type: 3}
   hardDilemmaCSV: {fileID: 4900000, guid: d9202b534893bcb4999551f6c9a4ff03, type: 3}
   easyGigCSV: {fileID: 4900000, guid: 2645aae0b2cbade48acb534722fc652c, type: 3}

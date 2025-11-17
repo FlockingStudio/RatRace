@@ -20,6 +20,7 @@ public class MailButton : MonoBehaviour
 
     public void OnDownloadButtonClicked()
     {
+        AudioManager.Instance.PlayBrowserClick();
         DesktopManager.Instance.ShowIcons();
         gameObject.GetComponent<Button>().interactable = false;
     }

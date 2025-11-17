@@ -16,6 +16,7 @@ public class GigDisplayManager : MonoBehaviour
     private void Start()
     {
         LoadRandomGig();
+        AudioManager.Instance.PlayGigMusic();
         // Plays the correct track for the gig
         if (Player.Instance.GetMoney() < Player.Instance.GetDicePrices().Min())
         {
@@ -53,16 +54,10 @@ public class GigDisplayManager : MonoBehaviour
 
     public void QuitButtonClick()
     {
+        AudioManager.Instance.StopMusic();
         if (Player.Instance.Turn < 1)
         {
-            if (Player.Instance.GetMoney() >= GameManager.Instance.targetMoney)
-            {
-                DesktopManager.Instance.NextDaySequence();
-            }
-            else
-            {
-                DesktopManager.Instance.EndSequence();
-            }
+           DesktopManager.Instance.OpenMetagameEnd();
         }
     }
 }

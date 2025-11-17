@@ -26,6 +26,7 @@ public class GigButton : MonoBehaviour
     }
     public void ButtonLogic()
     {
+        AudioManager.Instance.PlayDiceShake();
         // Stops the player from interacting with either button
         GetComponent<Button>().interactable = false;
         quitButton.interactable = false;
@@ -39,11 +40,8 @@ public class GigButton : MonoBehaviour
         Dice diceScript = diceImage.GetComponent<Dice>();
         diceScript.beginAnimation();
 
-        SoundManager.Instance.PlayDiceShake();
-
-        // Schedule dice roll and scene transition
+        // Schedule dice roll after 2 seconds
         Invoke("DiceRoll", 2.0f);
-        Invoke("PlayRollSound", 2.0f);
     }
 
     public void setRequiredRoll(int num)
@@ -58,7 +56,6 @@ public class GigButton : MonoBehaviour
 
     private void DiceRoll()
     {
-
         // Roll the dice from 1 to whatever thwe max of the dice is
         int randomPick = UnityEngine.Random.Range(1, diceType + 1);
 
@@ -99,11 +96,6 @@ public class GigButton : MonoBehaviour
             }
 
         }
-    }
-
-    private void PlayRollSound()
-    {
-        SoundManager.Instance.PlayDiceRoll();
     }
 
     public void SetDiceType(int diceKind)

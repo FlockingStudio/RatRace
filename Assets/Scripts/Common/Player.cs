@@ -54,6 +54,7 @@ public class Player : MonoBehaviour
 
     public void AddMoney(int amount)
     {
+        AudioManager.Instance.PlayCoinGain();
         Money += amount;
         NumberFlash MoneyFlash = GameObject.Find("MoneyFlash").GetComponent<NumberFlash>();
         MoneyFlash.Activate(amount);
@@ -61,6 +62,7 @@ public class Player : MonoBehaviour
 
     public void SubtractMoney(int amount)
     {
+        AudioManager.Instance.PlayCoinLose();
         NumberFlash MoneyFlash = GameObject.Find("MoneyFlash").GetComponent<NumberFlash>();
         MoneyFlash.Activate(-amount);
         //i'm putting it like this because i don't think we should play the sound if you don't actually lose money -craig

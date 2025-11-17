@@ -43,6 +43,13 @@ public class MailItem : MonoBehaviour
         subjectInput.text = transform.Find("SubjectInput").GetComponent<TextMeshProUGUI>().text;
         bodyInput.text = bodyText;
 
+        // Check if all buttons are hidden - if so, expand body text area
+        bool anyButtonActive = downloadable || endButton || payBillsButton;
+        if (!anyButtonActive)
+        {
+            ExpandBodyInput(bodyInput);
+        }
+
         if (downloadable)
         {
             ShowDownloadButton();
@@ -88,6 +95,21 @@ public class MailItem : MonoBehaviour
         {
             payBillsButton.gameObject.SetActive(true);
             payBillsButton.GetComponent<Button>().interactable = interactable;
+        }
+    }
+
+    private void ExpandBodyInput(TextMeshProUGUI bodyInput)
+    {
+        RectTransform bodyRect = bodyInput.GetComponent<RectTransform>();
+        if (bodyRect != null)
+        {
+            // Increase height by 150 units downward (buttons take ~150-200 vertical space)
+            Vector2 currentSize = bodyRect.sizeDelta;
+            bodyRect.sizeDelta = new Vector2(currentSize.x, currentSize.y + 120f);
+
+            // Move down by half the added height to expand downward
+            Vector2 currentPos = bodyRect.anchoredPosition;
+            bodyRect.anchoredPosition = new Vector2(currentPos.x, currentPos.y - 55f);
         }
     }
 }

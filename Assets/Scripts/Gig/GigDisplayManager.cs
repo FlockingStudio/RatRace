@@ -15,6 +15,7 @@ public class GigDisplayManager : MonoBehaviour
 
     private void Start()
     {
+        DesktopManager.Instance.Busy = true;
         LoadRandomGig();
         AudioManager.Instance.PlayGigMusic();
         // Plays the correct track for the gig
@@ -54,10 +55,15 @@ public class GigDisplayManager : MonoBehaviour
 
     public void QuitButtonClick()
     {
-        AudioManager.Instance.StopMusic();
+        DesktopManager.Instance.Busy = false;
+
         if (Player.Instance.Turn < 1)
         {
-           DesktopManager.Instance.OpenMetagameEnd();
+            AudioManager.Instance.StopMusic();
+            DesktopManager.Instance.OpenMetagameEnd();
+            return;
         }
+        
+        AudioManager.Instance.PlayMapMusic();
     }
 }

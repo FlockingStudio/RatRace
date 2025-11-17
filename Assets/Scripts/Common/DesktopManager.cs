@@ -24,6 +24,7 @@ public class DesktopManager : MonoBehaviour
     public GameObject CreditsWindowPrefab;
     public GameObject MetaGameEndPrefab;
     public Icon[] DesktopIcons;
+    public bool Busy = false;
     private Canvas canvas;
     private Dictionary<WindowType, GameObject> windows = new Dictionary<WindowType, GameObject>();
     private Dictionary<WindowType, GameObject> prefabs = new Dictionary<WindowType, GameObject>();
@@ -99,7 +100,6 @@ public class DesktopManager : MonoBehaviour
     private IEnumerator EndSequenceCoroutine()
     {
         AudioManager.Instance.PlayBadEndMusic();
-        DesktopIcons[2].GetComponent<Button>().interactable = false;
 
         foreach (WindowType type in windows.Keys)
         {
@@ -133,8 +133,6 @@ public class DesktopManager : MonoBehaviour
 
     private IEnumerator NextDaySequenceCoroutine()
     {
-        DesktopIcons[2].GetComponent<Button>().interactable = false;
-
         foreach (WindowType window in windows.Keys)
         {
             if (windows[window] != null)
@@ -180,6 +178,7 @@ public class DesktopManager : MonoBehaviour
     public void OpenCredits() => OpenWindow(WindowType.Credits);
     public void OpenMetagameEnd()
     {
+        DesktopIcons[2].GetComponent<Button>().interactable = false;
         AudioManager.Instance.PlayAlert();
         OpenWindow(WindowType.MetaGameEnd);
     }

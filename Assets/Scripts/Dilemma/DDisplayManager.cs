@@ -12,6 +12,7 @@ public class DDisplayManager : MonoBehaviour
     private int MoneyImpact = 0;
     void Start()
     {
+        DesktopManager.Instance.Busy = true;
         AudioManager.Instance.PlayUpBeatMusic();
         Initialize();
     }
@@ -80,6 +81,8 @@ public class DDisplayManager : MonoBehaviour
 
     public void OnTopButtonPressed()
     {
+        DesktopManager.Instance.Busy = false;
+
         if (MoneyImpact > 0)
         {
             Player.Instance.AddMoney(MoneyImpact);
@@ -100,6 +103,8 @@ public class DDisplayManager : MonoBehaviour
 
     public void OnBottomButtonPressed()
     {
+        DesktopManager.Instance.Busy = false;
+
         switch (DiceIndex)
         {
             case 0:

@@ -97,6 +97,11 @@ public class MapNode : MonoBehaviour
 
     public void OnNodeClicked()
     {
+        if (DesktopManager.Instance.Busy)
+        {
+            return;
+        }
+
         if (nodeType != NodeType.Player)
         {
             // Remember the original node type before moving

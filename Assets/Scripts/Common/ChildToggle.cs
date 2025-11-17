@@ -103,10 +103,12 @@ public class ChildToggle : MonoBehaviour
     {
         if (childOne.activeSelf)
         {
+            SoundManager.Instance.PlayMailSound();
             EnableChildTwo();
         }
         else
         {
+            SoundManager.Instance.PlayTrophySound();
             EnableChildOne();
         }
     }

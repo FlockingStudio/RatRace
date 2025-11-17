@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
@@ -28,6 +29,9 @@ public class AudioManager : MonoBehaviour
     // AudioSource for playing sounds
     private AudioSource sfxSource;
     private AudioSource musicSource;
+
+    // Volume
+    public Single volume = 1;
 
     void Awake()
     {
@@ -82,6 +86,13 @@ public class AudioManager : MonoBehaviour
         {
             PlayMouseClick();
         }
+    }
+
+    public void SetVolume(Single newVolume)
+    {   
+        volume = newVolume;
+        sfxSource.volume = volume;
+        musicSource.volume = volume;
     }
 
     // Sound Effect Methods

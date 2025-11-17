@@ -97,6 +97,11 @@ public class MapNode : MonoBehaviour
 
     public void OnNodeClicked()
     {
+        if (DesktopManager.Instance.Busy)
+        {
+            return;
+        }
+
         if (nodeType != NodeType.Player)
         {
             // Remember the original node type before moving
@@ -111,14 +116,7 @@ public class MapNode : MonoBehaviour
             // out of turn + clicking visited node
             if (Player.Instance.Turn < 1 && originalType == NodeType.Completed)
             {
-                if (Player.Instance.GetMoney() >= GameManager.Instance.targetMoney)
-                {
-                    DesktopManager.Instance.NextDaySequence();
-                }
-                else
-                {
-                    DesktopManager.Instance.EndSequence();
-                }
+                DesktopManager.Instance.OpenMetagameEnd();
                 return;
             }
 

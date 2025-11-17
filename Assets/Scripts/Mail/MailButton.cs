@@ -20,6 +20,7 @@ public class MailButton : MonoBehaviour
 
     public void OnDownloadButtonClicked()
     {
+        AudioManager.Instance.PlayBrowserClick();
         DesktopManager.Instance.ShowIcons();
         gameObject.GetComponent<Button>().interactable = false;
     }
@@ -32,6 +33,7 @@ public class MailButton : MonoBehaviour
 
     public void OnPayBillsButtonClicked()
     {
+        GameManager.Instance.paidBillsToday = true;
         Player.Instance.SubtractMoney(GameManager.Instance.targetMoney);
         GameManager.Instance.targetMoney += 25;
         DesktopManager.Instance.DesktopIcons[2].GetComponent<Button>().interactable = true;

@@ -32,6 +32,8 @@ public class Map : MonoBehaviour
         MapNodes.AddRange(eventNodes);
 
         InitializeNewMap();
+
+        AudioManager.Instance.PlayMapMusic();
     }
 
 

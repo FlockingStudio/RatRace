@@ -86,7 +86,7 @@ public class MailList : MonoBehaviour
     {
         string from = "BankPaymore";
         string subject = "Upcoming Payment Reminder";
-        string body = $"Dear Customer,\n\nThis is a reminder that your scheduled payment of ${GameManager.Instance.targetMoney + 25 * (Player.Instance.Day - 1)} is due by the end of today. Please ensure that sufficient funds are available in your account to avoid any significant penalties.\n\nThank you for choosing BankPaymore for your financial needs.";
+        string body = $"Dear Customer,\n\nThis is a reminder that your scheduled payment of ${50 + 25 * (Player.Instance.Day - 1)} is due by the end of today. Please ensure that sufficient funds are available in your account to avoid any significant penalties.\n\nThank you for choosing BankPaymore for your financial needs.";
         AddMailItem(from, subject, body);
     }
 

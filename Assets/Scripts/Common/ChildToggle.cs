@@ -75,6 +75,7 @@ public class ChildToggle : MonoBehaviour
     /// </summary>
     public void OnEndEditToggleWithDelay()
     {
+        AudioManager.Instance.PlayLogin();
         StartCoroutine(ToggleWaitAndLoadHome(3f));
     }
 

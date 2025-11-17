@@ -63,6 +63,7 @@ public class Window : MonoBehaviour, IDragHandler, IPointerDownHandler
 
     public void MaximizeWindow()
     {
+        AudioManager.Instance.PlayWindowOpen();
         // Reset position to center before maximizing
         rectTransform.anchoredPosition = Vector2.zero;
         // Bring window to front by setting it as last sibling

@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -9,7 +10,8 @@ public enum WindowType
     Mail,
     Map,
     Dilemma,
-    Credits
+    Credits,
+    MetaGameEnd
 }
 
 public class DesktopManager : MonoBehaviour
@@ -20,11 +22,14 @@ public class DesktopManager : MonoBehaviour
     public GameObject MapWindowPrefab;
     public GameObject DilemmaWindowPrefab;
     public GameObject CreditsWindowPrefab;
+    public GameObject MetaGameEndPrefab;
     public Icon[] DesktopIcons;
+    public bool Busy = false;
     private Canvas canvas;
     private Dictionary<WindowType, GameObject> windows = new Dictionary<WindowType, GameObject>();
     private Dictionary<WindowType, GameObject> prefabs = new Dictionary<WindowType, GameObject>();
-    
+    private readonly WaitForSeconds oneSecondWait = new(0.25f);
+
 
 
     // Start is called before the first frame update
@@ -47,6 +52,7 @@ public class DesktopManager : MonoBehaviour
         prefabs[WindowType.Map] = MapWindowPrefab;
         prefabs[WindowType.Dilemma] = DilemmaWindowPrefab;
         prefabs[WindowType.Credits] = CreditsWindowPrefab;
+        prefabs[WindowType.MetaGameEnd] = MetaGameEndPrefab;
     }
 
     public void OpenWindow(WindowType type)
@@ -88,17 +94,44 @@ public class DesktopManager : MonoBehaviour
 
     public void EndSequence()
     {
+        StartCoroutine(EndSequenceCoroutine());
+    }
+
+    private IEnumerator EndSequenceCoroutine()
+    {
+        AudioManager.Instance.PlayBadEndMusic();
 
         foreach (WindowType type in windows.Keys)
         {
-            
+            switch (type)
+            {
+                case WindowType.Mail:
+                    if (windows[type].activeSelf)
+                        windows[type].GetComponent<Window>().MinimizeWindow();
+                    yield return oneSecondWait;
+                    MailList mailList = windows[type].GetComponentInChildren<MailList>();
+                    mailList.ClearAllMail();
+                    mailList.AddSpecialMail();
+                    break;
+                default:
+                    if (windows[type] != null && windows[type].activeSelf)
+                    {
+                        windows[type].GetComponent<Window>().CloseWindow();
+                        yield return oneSecondWait;
+                    }
+                    break;
+            }
         }
 
         DesktopIcons[0].StartAnimation();
-        DesktopIcons[2].GetComponent<Button>().interactable = false;
     }
 
     public void NextDaySequence()
+    {
+        StartCoroutine(NextDaySequenceCoroutine());
+    }
+
+    private IEnumerator NextDaySequenceCoroutine()
     {
         foreach (WindowType window in windows.Keys)
         {
@@ -108,24 +141,31 @@ public class DesktopManager : MonoBehaviour
                 {
                     case WindowType.Mail:
                         if (windows[window].activeSelf)
+                        {
                             windows[window].GetComponent<Window>().MinimizeWindow();
+                            yield return oneSecondWait;
+                        }
                         MailList mailList = windows[window].GetComponentInChildren<MailList>();
                         Player.Instance.ResetDailyStats();
+                        GameManager.Instance.paidBillsToday = false;
                         mailList.ClearAllMail();
                         mailList.AddResultMail();
                         mailList.AddSubscriptionMail();
                         mailList.AddPaymentReminder();
                         break;
                     default:
-                        windows[window].GetComponent<Window>().CloseWindow();   
+                        if (windows[window].activeSelf)
+                        {
+                            windows[window].GetComponent<Window>().CloseWindow();
+                            yield return oneSecondWait;
+                        }
                         break;
                 }
             }
         }
 
-
         DesktopIcons[0].StartAnimation();
-        DesktopIcons[2].GetComponent<Button>().interactable = false;
+        AudioManager.Instance.PlayUpBeatMusic();
 
         Destroy(windows[WindowType.Map]);
     }
@@ -136,4 +176,11 @@ public class DesktopManager : MonoBehaviour
     public void OpenDilemma() => OpenWindow(WindowType.Dilemma);
     public void OpenMap() => OpenWindow(WindowType.Map);
     public void OpenCredits() => OpenWindow(WindowType.Credits);
+    public void OpenMetagameEnd()
+    {
+        DesktopIcons[2].GetComponent<Button>().interactable = false;
+        AudioManager.Instance.PlayAlert();
+        OpenWindow(WindowType.MetaGameEnd);
+    }
+        
 }

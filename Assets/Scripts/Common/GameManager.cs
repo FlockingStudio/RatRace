@@ -122,6 +122,7 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         Destroy(Player.Instance.gameObject);
+        Destroy(AudioManager.Instance.gameObject);
         Destroy(Instance.gameObject);
         SceneManager.LoadScene("Login");
     }

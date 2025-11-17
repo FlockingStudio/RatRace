@@ -48,7 +48,6 @@ public class Dice : MonoBehaviour
     public void beginAnimation()
     {
         animationStarted = true;
-        // Makes sure complete is false to allow dor multiple rerolls
         complete = false;
     }
 
@@ -57,6 +56,7 @@ public class Dice : MonoBehaviour
     {
         complete = true;
         GetComponent<Image>().sprite = CurrentDice[side - 1];
+        AudioManager.Instance.PlayDiceRoll();
     }
 
     public void SetDiceType(int diceKind)

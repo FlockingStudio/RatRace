@@ -12,6 +12,8 @@ public class DDisplayManager : MonoBehaviour
     private int MoneyImpact = 0;
     void Start()
     {
+        DesktopManager.Instance.Busy = true;
+        AudioManager.Instance.PlayUpBeatMusic();
         Initialize();
     }
 
@@ -79,6 +81,8 @@ public class DDisplayManager : MonoBehaviour
 
     public void OnTopButtonPressed()
     {
+        DesktopManager.Instance.Busy = false;
+
         if (MoneyImpact > 0)
         {
             Player.Instance.AddMoney(MoneyImpact);
@@ -89,18 +93,18 @@ public class DDisplayManager : MonoBehaviour
 
         if (Player.Instance.Turn < 1)
         {
-            if (Player.Instance.GetMoney() >= GameManager.Instance.targetMoney)
-            {
-                DesktopManager.Instance.NextDaySequence();
-            } else
-            {
-                DesktopManager.Instance.EndSequence();
-            }
+            DesktopManager.Instance.OpenMetagameEnd();
+            AudioManager.Instance.StopMusic();
+            return;
         }
+
+        AudioManager.Instance.PlayMapMusic();
     }
 
     public void OnBottomButtonPressed()
     {
+        DesktopManager.Instance.Busy = false;
+
         switch (DiceIndex)
         {
             case 0:
@@ -118,14 +122,11 @@ public class DDisplayManager : MonoBehaviour
 
         if (Player.Instance.Turn < 1)
         {
-            if (Player.Instance.GetMoney() >= GameManager.Instance.targetMoney)
-            {
-                DesktopManager.Instance.NextDaySequence();
-            }
-            else
-            {
-                DesktopManager.Instance.EndSequence();
-            }
+            DesktopManager.Instance.OpenMetagameEnd();
+            AudioManager.Instance.StopMusic();
+            return;
         }
+
+        AudioManager.Instance.PlayMapMusic();
     }
 }

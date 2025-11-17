@@ -33,6 +33,12 @@ public class MailItem : MonoBehaviour
 
     public void OpenMailWindow()
     {
+        // If this mail window is already open, don't create another instance
+        if (mailWindowInstance != null)
+        {
+            return;
+        }
+
         Canvas canvas = GetComponentInParent<Canvas>();
         mailWindowInstance = Instantiate(MailWindowPrefab, canvas.transform);
         // find 3 text components and set their text to the values from this mail item
@@ -42,6 +48,13 @@ public class MailItem : MonoBehaviour
         fromInput.text = transform.Find("FromInput").GetComponent<TextMeshProUGUI>().text;
         subjectInput.text = transform.Find("SubjectInput").GetComponent<TextMeshProUGUI>().text;
         bodyInput.text = bodyText;
+
+        // Check if all buttons are hidden - if so, expand body text area
+        bool anyButtonActive = downloadable || endButton || payBillsButton;
+        if (!anyButtonActive)
+        {
+            ExpandBodyInput(bodyInput);
+        }
 
         if (downloadable)
         {
@@ -88,6 +101,21 @@ public class MailItem : MonoBehaviour
         {
             payBillsButton.gameObject.SetActive(true);
             payBillsButton.GetComponent<Button>().interactable = interactable;
+        }
+    }
+
+    private void ExpandBodyInput(TextMeshProUGUI bodyInput)
+    {
+        RectTransform bodyRect = bodyInput.GetComponent<RectTransform>();
+        if (bodyRect != null)
+        {
+            // Increase height by 150 units downward (buttons take ~150-200 vertical space)
+            Vector2 currentSize = bodyRect.sizeDelta;
+            bodyRect.sizeDelta = new Vector2(currentSize.x, currentSize.y + 120f);
+
+            // Move down by half the added height to expand downward
+            Vector2 currentPos = bodyRect.anchoredPosition;
+            bodyRect.anchoredPosition = new Vector2(currentPos.x, currentPos.y - 55f);
         }
     }
 }

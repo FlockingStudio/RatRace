@@ -124,6 +124,7 @@ public class DesktopManager : MonoBehaviour
             }
         }
 
+        Busy = false;
         DesktopIcons[0].StartAnimation();
     }
 
@@ -165,6 +166,7 @@ public class DesktopManager : MonoBehaviour
             }
         }
 
+        Busy = false;
         DesktopIcons[0].StartAnimation();
         AudioManager.Instance.PlayUpBeatMusic();
 

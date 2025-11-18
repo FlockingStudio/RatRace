@@ -63,7 +63,7 @@ public class MailItem : MonoBehaviour
 
         if (endButton)
         {
-            ShowEndButton();
+            DesktopManager.Instance.ShowEndButton();
         }
 
         if (payBillsButton)
@@ -82,15 +82,6 @@ public class MailItem : MonoBehaviour
             {
                 downloadButton.GetComponent<Button>().interactable = false;
             }
-        }
-    }
-
-    private void ShowEndButton()
-    {
-        Transform endButton = mailWindowInstance.transform.Find("EndButton");
-        if (endButton != null)
-        {
-            endButton.gameObject.SetActive(true);
         }
     }
 

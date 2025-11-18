@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Diagnostics;
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -29,8 +31,21 @@ public class Window : MonoBehaviour, IDragHandler, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        // Bring window to front when clicked
-        transform.SetAsLastSibling();
+        // Bring window to front when clicke
+        Window[] openWindows = transform.parent.GetComponentsInChildren<Window>();
+        List<string> windowNames = new List<string>();
+        foreach (Window c in openWindows){
+            windowNames.Add(c.name);
+        }
+        /**
+        foreach (String c in windowNames){
+            Debug.Log(c);
+        }
+        **/
+        if (!windowNames.Contains("Menu(Clone)") && !windowNames.Contains("MetaGameEnd(Clone)"))
+        {
+            transform.SetAsLastSibling();
+        }
     }
 
     public void OnDrag(PointerEventData eventData)

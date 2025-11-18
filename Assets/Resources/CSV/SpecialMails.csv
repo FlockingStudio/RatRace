@@ -1,3 +1,3 @@
-Boss,Termination,"You're fired. Security footage caught you stealing.\nYour final paycheck is revoked. Don't bother using me as a reference.\nGood luck paying rent."
-MetaGamble,Make Money Fast!,"Hey brother! Win MEGA MONEY with our exclusive game!\nReal players are winning thousands daily!\nOnly 3 turns per day to keep it fair. Your lucky break is one click away!"
-BankPaymore,Account Alert,"Your account has been TERMINATED due to repeated overdrafts.\nAll remaining assets have been seized to cover outstanding fees.\nYour credit score has been severely impacted."
+Boss,Termination,"You're fired. Security footage caught you stealing.\nYour final paycheck is revoked. Don't bother using me as a reference.\nGood luck <color=#800000>covering your bills.</color>"
+MetaGamble,Make Money Fast!,"Hey brother! Win <color=#2a822a>MEGA MONEY</color> with our exclusive game!\nReal players are winning <color=#2a822a>thousands daily!</color>\nOnly 3 turns per day to keep it fair. Your lucky break is <color=#2a822a>one click away!</color>"
+BankPaymore,Account Alert,"Your account has been <color=#800000>TERMINATED</color> due to repeated overdrafts.\nAll remaining assets have been seized to cover outstanding fees.\nYour credit score has been <color=#800000>severely impacted.</color>"

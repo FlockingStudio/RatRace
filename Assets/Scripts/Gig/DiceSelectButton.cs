@@ -31,7 +31,7 @@ public class DiceSelectButton : MonoBehaviour
         {
             dicePrice = dicePrices[2];
         }
-        buttonText.text = "1-" + diceType.ToString() + " Dice, $" + dicePrice.ToString();
+        buttonText.text = $"1-{diceType.ToString()} Dice, <color=#800000>${dicePrice.ToString()}</color>";
         // Prevents the button from being clicked if the played doesn't have enough money
         if (Player.Instance.GetMoney() < dicePrice)
         {

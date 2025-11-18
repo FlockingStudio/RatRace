@@ -45,7 +45,8 @@ public class GigDisplayManager : MonoBehaviour
 
         // Update UI elements
         gigText.SetText(gigInfo[0]);
-        greaterThanText.SetText("Roll " + gigInfo[1] +" or more to win.");
+        string targetText = $"Roll <color=#624391>{gigInfo[1]}</color> or more to win.";
+        greaterThanText.SetText(targetText);//573C82little darker //624391 little lighter
 
         // Set required roll value on the button
         GigButton gigButtonScript = rollButton.GetComponent<GigButton>();

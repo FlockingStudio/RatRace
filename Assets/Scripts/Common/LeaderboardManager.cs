@@ -22,6 +22,12 @@ public class LeaderboardManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Color userColor = new Color(0.878f,0.706f,0.133f);
+        string userText = Player.Instance.Username;
+        if (userText.Trim() == "")
+        {
+            userText = "You";
+        }
         // Creates a list of the names and score ui's
         List<TextMeshProUGUI> uiName = new List<TextMeshProUGUI> { firstName, secondName, thirdName, fourthName, fifthName, sixthName };
         List<TextMeshProUGUI> uiScore = new List<TextMeshProUGUI> { firstScore, secondScore, thirdScore, fourthScore, fifthScore, sixthScore };
@@ -42,7 +48,8 @@ public class LeaderboardManager : MonoBehaviour
             // If the players spot hasn't been found and this is it
             else if (playerScore >= currentScore)
             {
-                uiName[i].text = "You";
+                uiName[i].text = userText;
+                uiName[i].color = userColor;
                 uiScore[i].text = playerScore.ToString();
                 placeFound = true;
                 i -= 1;
@@ -56,7 +63,8 @@ public class LeaderboardManager : MonoBehaviour
         }
         if (!placeFound)
         {
-            uiName[uiName.Count - 1].text = "You";
+            uiName[uiName.Count - 1].text = userText;
+            uiName[uiName.Count - 1].color = userColor;
             uiScore[uiScore.Count - 1].text = playerScore.ToString();
         }
     }

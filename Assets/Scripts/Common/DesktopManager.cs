@@ -23,6 +23,7 @@ public class DesktopManager : MonoBehaviour
     public GameObject DilemmaWindowPrefab;
     public GameObject CreditsWindowPrefab;
     public GameObject MetaGameEndPrefab;
+    public Button endButton;
     public Icon[] DesktopIcons;
     public bool Busy = false;
     private Canvas canvas;
@@ -168,6 +169,15 @@ public class DesktopManager : MonoBehaviour
         AudioManager.Instance.PlayUpBeatMusic();
 
         Destroy(windows[WindowType.Map]);
+    }
+
+    public void ShowEndButton()
+    {
+        if (endButton != null)
+        {
+            endButton.gameObject.SetActive(true);
+            endButton.transform.SetAsLastSibling();
+        }
     }
 
     // Legacy methods for backward compatibility

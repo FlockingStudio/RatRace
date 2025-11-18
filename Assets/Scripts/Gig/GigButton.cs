@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,7 +29,7 @@ public class GigButton : MonoBehaviour
     {
         AudioManager.Instance.PlayDiceShake();
         // Stops the player from interacting with either button
-        GetComponent<Button>().interactable = false;
+        GetComponent<Button>().GameObject().SetActive(false);
         quitButton.interactable = false;
         sixButton.interactable = false;
         eightButton.interactable = false;
@@ -82,7 +83,6 @@ public class GigButton : MonoBehaviour
                 // Changes the gig text to show the player won
                 //gigText.text = "You failed. Roll again or press Quit Gig to go to map.";
                 // Allows the player to interact with both buttons
-                GetComponent<Button>().interactable = true;
                 MakeDiceButtonsInteractable();
                 quitButton.interactable = true;
             }

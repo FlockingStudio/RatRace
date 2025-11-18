@@ -116,6 +116,11 @@ public class GameManager : MonoBehaviour
         {
             button.enabled = false;
         }
+        Window[] allWindows = UnityEngine.Object.FindObjectsByType<Window>(FindObjectsSortMode.None);
+        foreach (Window window in allWindows)
+        {
+            window.enabled = false;
+        }
         menuInstance = Instantiate(MenuPrefab, GameObject.Find("Screen").transform);
     }
 
@@ -134,6 +139,11 @@ public class GameManager : MonoBehaviour
         foreach (Button button in allButtons)
         {
             button.enabled = true;
+        }
+        Window[] allWindows = UnityEngine.Object.FindObjectsByType<Window>(FindObjectsSortMode.None);
+        foreach (Window window in allWindows)
+        {
+            window.enabled = true;
         }
     }
 

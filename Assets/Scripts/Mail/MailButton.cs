@@ -36,7 +36,9 @@ public class MailButton : MonoBehaviour
         GameManager.Instance.paidBillsToday = true;
         Player.Instance.SubtractMoney(GameManager.Instance.targetMoney);
         GameManager.Instance.targetMoney += 25;
+        Player.Instance.Day += 1;
         DesktopManager.Instance.DesktopIcons[2].GetComponent<Button>().interactable = true;
         gameObject.GetComponent<Button>().interactable = false;
+        DesktopManager.Instance.AddReminderMail();
     }
 }

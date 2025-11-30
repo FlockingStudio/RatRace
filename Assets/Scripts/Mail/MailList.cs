@@ -94,7 +94,7 @@ public class MailList : MonoBehaviour
     {
         string from = "BankPaymore";
         string subject = "Payment Required";
-        string body = $"Dear Customer,\n\nYour scheduled payment of <color=#800000>${GameManager.Instance.targetMoney}</color> was not received by the due date. Please make this payment <color=#800000>immediately</color> to avoid further penalties.\n\nSincerely,\nBankPaymore Collections Department";
+        string body = $"Dear Customer,\n\nYour scheduled payment of <color=#800000>${GameManager.Instance.targetMoney}</color> was not received by the due date. Please make a payment <color=#800000>before day end</color> to avoid losing access to your game MetaGamble.\n\nSincerely,\nBankPaymore Collections Department";
         AddMailItem(from, subject, body, false, false, true);
     }
 

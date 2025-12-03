@@ -124,6 +124,7 @@ public class DesktopManager : MonoBehaviour
             }
         }
 
+        Busy = false;
         DesktopIcons[0].StartAnimation();
     }
 
@@ -152,7 +153,6 @@ public class DesktopManager : MonoBehaviour
                         mailList.ClearAllMail();
                         mailList.AddResultMail();
                         mailList.AddSubscriptionMail();
-                        mailList.AddPaymentReminder();
                         break;
                     default:
                         if (windows[window].activeSelf)
@@ -165,10 +165,20 @@ public class DesktopManager : MonoBehaviour
             }
         }
 
+        Busy = false;
         DesktopIcons[0].StartAnimation();
         AudioManager.Instance.PlayUpBeatMusic();
 
         Destroy(windows[WindowType.Map]);
+    }
+
+    public void AddReminderMail()
+    {
+        if (windows.ContainsKey(WindowType.Mail) && windows[WindowType.Mail] != null)
+        {
+            MailList mailList = windows[WindowType.Mail].GetComponentInChildren<MailList>();
+            mailList.AddPaymentReminder();
+        }
     }
 
     public void ShowEndButton()

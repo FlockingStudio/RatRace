@@ -7,7 +7,7 @@ public class MegaGameEnd : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        DesktopManager.Instance.Busy = true;
     }
 
     // Update is called once per frame

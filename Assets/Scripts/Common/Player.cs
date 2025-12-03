@@ -100,7 +100,6 @@ public class Player : MonoBehaviour
 
     public void ResetDailyStats()
     {
-        Day += 1;
         Turn = 3;
     }
 }

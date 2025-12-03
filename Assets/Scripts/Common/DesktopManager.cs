@@ -191,6 +191,7 @@ public class DesktopManager : MonoBehaviour
         DesktopIcons[2].GetComponent<Button>().interactable = false;
         AudioManager.Instance.PlayAlert();
         OpenWindow(WindowType.MetaGameEnd);
+        //GameManager.Instance.busy = true;
     }
         
 }

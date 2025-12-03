@@ -116,11 +116,7 @@ public class GameManager : MonoBehaviour
         {
             button.enabled = false;
         }
-        Window[] allWindows = UnityEngine.Object.FindObjectsByType<Window>(FindObjectsSortMode.None);
-        foreach (Window window in allWindows)
-        {
-            window.enabled = false;
-        }
+        //GameManager.Instance.busy = true;
         menuInstance = Instantiate(MenuPrefab, GameObject.Find("Screen").transform);
     }
 
@@ -140,11 +136,7 @@ public class GameManager : MonoBehaviour
         {
             button.enabled = true;
         }
-        Window[] allWindows = UnityEngine.Object.FindObjectsByType<Window>(FindObjectsSortMode.None);
-        foreach (Window window in allWindows)
-        {
-            window.enabled = true;
-        }
+        //GameManager.Instance.busy = false;
     }
 
     private void LoadCsvPools()

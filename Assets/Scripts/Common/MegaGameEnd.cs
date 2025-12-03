@@ -16,6 +16,11 @@ public class MegaGameEnd : MonoBehaviour
 
     }
 
+    void Awake()
+    {
+        //GameManager.Instance.busy = true;
+    }
+
     public void OnClick()
     {
         if (Player.Instance.GetMoney() >= GameManager.Instance.targetMoney)

@@ -14,6 +14,7 @@ public class Window : MonoBehaviour, IDragHandler, IPointerDownHandler
 
     private void Awake()
     {
+        UnityEngine.Debug.Log("new window");
         rectTransform = GetComponent<RectTransform>();
         canvas = GetComponentInParent<Canvas>();
 

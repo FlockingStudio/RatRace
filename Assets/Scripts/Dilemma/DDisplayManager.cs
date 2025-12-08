@@ -82,6 +82,9 @@ public class DDisplayManager : MonoBehaviour
     public void OnTopButtonPressed()
     {
         DesktopManager.Instance.Busy = false;
+        // Disables the buttons when clicked on
+        transform.Find("TopButton").GetComponent<Button>().interactable = false;
+        transform.Find("BottomButton").GetComponent<Button>().interactable = false;
 
         if (MoneyImpact > 0)
         {
@@ -104,6 +107,9 @@ public class DDisplayManager : MonoBehaviour
     public void OnBottomButtonPressed()
     {
         DesktopManager.Instance.Busy = false;
+        // Disables the buttons when clicked on
+        transform.Find("TopButton").GetComponent<Button>().interactable = false;
+        transform.Find("BottomButton").GetComponent<Button>().interactable = false;
 
         switch (DiceIndex)
         {

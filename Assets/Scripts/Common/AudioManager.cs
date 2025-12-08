@@ -17,6 +17,7 @@ public class AudioManager : MonoBehaviour
     private AudioClip mail;
     private AudioClip alert;
     private AudioClip mouseClick;
+    private AudioClip dayTransition;
 
     // Background Music (OST)
     private AudioClip mapMusic;
@@ -25,6 +26,8 @@ public class AudioManager : MonoBehaviour
     private AudioClip sadSongMusic;
     private AudioClip gigMusic;
     private AudioClip badEndMusic;
+    private AudioClip goodEndMusic;
+    private AudioClip computerHum;
 
     // AudioSource for playing sounds
     private AudioSource sfxSource;
@@ -67,6 +70,7 @@ public class AudioManager : MonoBehaviour
         mail = Resources.Load<AudioClip>("Audio/Mail");
         alert = Resources.Load<AudioClip>("Audio/Alert");
         mouseClick = Resources.Load<AudioClip>("Audio/MouseClick");
+        dayTransition = Resources.Load<AudioClip>("Audio/DayTransition");
 
         // Load Background Music (OST) from Resources
         mapMusic = Resources.Load<AudioClip>("Audio/OST/Map");
@@ -75,8 +79,10 @@ public class AudioManager : MonoBehaviour
         sadSongMusic = Resources.Load<AudioClip>("Audio/OST/SadSong");
         gigMusic = Resources.Load<AudioClip>("Audio/OST/Gig");
         badEndMusic = Resources.Load<AudioClip>("Audio/OST/BadEnd");
+        goodEndMusic = Resources.Load<AudioClip>("Audio/OST/GoodEnd");
+        computerHum = Resources.Load<AudioClip>("Audio/OST/ComputerHum");
 
-        PlayMainMusic();
+        PlayComputerHum();
     }
 
     void Update()
@@ -151,6 +157,11 @@ public class AudioManager : MonoBehaviour
         sfxSource.PlayOneShot(mouseClick);
     }
 
+    public void PlayDayTransition()
+    {
+        sfxSource.PlayOneShot(dayTransition);
+    }
+
     // Background Music Methods
     public void PlayMapMusic()
     {
@@ -185,6 +196,18 @@ public class AudioManager : MonoBehaviour
     public void PlayBadEndMusic()
     {
         musicSource.clip = badEndMusic;
+        musicSource.Play();
+    }
+
+    public void PlayGoodEndMusic()
+    {
+        musicSource.clip = goodEndMusic;
+        musicSource.Play();
+    }
+
+    public void PlayComputerHum()
+    {
+        musicSource.clip = computerHum;
         musicSource.Play();
     }
 

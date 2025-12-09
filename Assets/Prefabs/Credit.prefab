@@ -70,8 +70,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9a14a8a1184c5f14fbce3338ea4d7a35, type: 2}
-  m_sharedMaterial: {fileID: 4485435423566117028, guid: 9a14a8a1184c5f14fbce3338ea4d7a35, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ce63c1bf5043d8b48a83ff122937d52e, type: 2}
+  m_sharedMaterial: {fileID: 8993912289247554885, guid: ce63c1bf5043d8b48a83ff122937d52e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -299,8 +299,8 @@ MonoBehaviour:
     & Lead Visuals\r\nCraig Johnson \u2013 Lead Design & Programmer\r\nDalton Low
     \u2013 Programmer\r\nBrian Chu \u2013 Audio\r\nDohyun Kim \u2013 Lead Programmer\r"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9a14a8a1184c5f14fbce3338ea4d7a35, type: 2}
-  m_sharedMaterial: {fileID: 4485435423566117028, guid: 9a14a8a1184c5f14fbce3338ea4d7a35, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ce63c1bf5043d8b48a83ff122937d52e, type: 2}
+  m_sharedMaterial: {fileID: 8993912289247554885, guid: ce63c1bf5043d8b48a83ff122937d52e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

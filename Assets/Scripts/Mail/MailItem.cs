@@ -41,6 +41,8 @@ public class MailItem : MonoBehaviour
 
         Canvas canvas = GetComponentInParent<Canvas>();
         mailWindowInstance = Instantiate(MailWindowPrefab, canvas.transform);
+        Window windowComponent = mailWindowInstance.GetComponent<Window>();
+        windowComponent.randomizeTargetPosition = true;
         // find 3 text components and set their text to the values from this mail item
         TextMeshProUGUI fromInput = mailWindowInstance.transform.Find("FromInput").GetComponent<TextMeshProUGUI>();
         TextMeshProUGUI subjectInput = mailWindowInstance.transform.Find("SubjectInput").GetComponent<TextMeshProUGUI>();

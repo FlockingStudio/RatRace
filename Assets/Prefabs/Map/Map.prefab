@@ -68,8 +68,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Dilemma
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9a14a8a1184c5f14fbce3338ea4d7a35, type: 2}
-  m_sharedMaterial: {fileID: 4485435423566117028, guid: 9a14a8a1184c5f14fbce3338ea4d7a35, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ce63c1bf5043d8b48a83ff122937d52e, type: 2}
+  m_sharedMaterial: {fileID: 8993912289247554885, guid: ce63c1bf5043d8b48a83ff122937d52e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -659,8 +659,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: The Metaverse
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9a14a8a1184c5f14fbce3338ea4d7a35, type: 2}
-  m_sharedMaterial: {fileID: 4485435423566117028, guid: 9a14a8a1184c5f14fbce3338ea4d7a35, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ce63c1bf5043d8b48a83ff122937d52e, type: 2}
+  m_sharedMaterial: {fileID: 8993912289247554885, guid: ce63c1bf5043d8b48a83ff122937d52e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -684,8 +684,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48
-  m_fontSizeBase: 48
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1101,8 +1101,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Player
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9a14a8a1184c5f14fbce3338ea4d7a35, type: 2}
-  m_sharedMaterial: {fileID: 4485435423566117028, guid: 9a14a8a1184c5f14fbce3338ea4d7a35, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ce63c1bf5043d8b48a83ff122937d52e, type: 2}
+  m_sharedMaterial: {fileID: 8993912289247554885, guid: ce63c1bf5043d8b48a83ff122937d52e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1203,8 +1203,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -462, y: 125}
-  m_SizeDelta: {x: 261.933, y: 50}
+  m_AnchoredPosition: {x: -462, y: 126}
+  m_SizeDelta: {x: 271.8539, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1143034955
 CanvasRenderer:
@@ -1236,8 +1236,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Click map nodes to continue
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9a14a8a1184c5f14fbce3338ea4d7a35, type: 2}
-  m_sharedMaterial: {fileID: 4485435423566117028, guid: 9a14a8a1184c5f14fbce3338ea4d7a35, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ce63c1bf5043d8b48a83ff122937d52e, type: 2}
+  m_sharedMaterial: {fileID: 8993912289247554885, guid: ce63c1bf5043d8b48a83ff122937d52e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1371,8 +1371,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Gambling
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9a14a8a1184c5f14fbce3338ea4d7a35, type: 2}
-  m_sharedMaterial: {fileID: 4485435423566117028, guid: 9a14a8a1184c5f14fbce3338ea4d7a35, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ce63c1bf5043d8b48a83ff122937d52e, type: 2}
+  m_sharedMaterial: {fileID: 8993912289247554885, guid: ce63c1bf5043d8b48a83ff122937d52e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1812,8 +1812,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9a14a8a1184c5f14fbce3338ea4d7a35, type: 2}
-  m_sharedMaterial: {fileID: 4485435423566117028, guid: 9a14a8a1184c5f14fbce3338ea4d7a35, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ce63c1bf5043d8b48a83ff122937d52e, type: 2}
+  m_sharedMaterial: {fileID: 8993912289247554885, guid: ce63c1bf5043d8b48a83ff122937d52e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

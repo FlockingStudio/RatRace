@@ -47,6 +47,9 @@ public class DesktopManager : MonoBehaviour
 
         canvas = GetComponentInParent<Canvas>();
 
+        // Plays the main music
+        AudioManager.Instance.PlayMainMusic();
+
         // Initialize prefabs dictionary
         prefabs[WindowType.Gig] = GigWindowPrefab;
         prefabs[WindowType.Mail] = MailWindowPrefab;
@@ -100,7 +103,16 @@ public class DesktopManager : MonoBehaviour
 
     private IEnumerator EndSequenceCoroutine()
     {
-        AudioManager.Instance.PlayBadEndMusic();
+        int days = Player.Instance.Day - 1;
+        int playerScore = days * 700 + Player.Instance.GetMoney();
+        if (playerScore < 3000)
+        {
+            AudioManager.Instance.PlayBadEndMusic();
+        }
+        else
+        {
+            AudioManager.Instance.PlayGoodEndMusic();
+        }
 
         foreach (WindowType type in windows.Keys)
         {

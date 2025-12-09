@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 
 public class Window : MonoBehaviour, IDragHandler, IPointerDownHandler
 {
+    public bool randomizeTargetPosition = false;
     private RectTransform rectTransform;
     private RectTransform boundaryRectTransform;
     private Canvas canvas;
@@ -88,8 +89,11 @@ public class Window : MonoBehaviour, IDragHandler, IPointerDownHandler
 
     private IEnumerator AnimateWindow(bool minimize, bool destroy = false)
     {
+        // randomize target position slightly
+        Vector2 offset = randomizeTargetPosition ? new Vector2(UnityEngine.Random.Range(-150.0f, 150.0f), UnityEngine.Random.Range(-100f, 100f)): Vector2.zero;
+        
         Vector2 startPos = minimize ? rectTransform.anchoredPosition : new Vector2(0, -Screen.height * 0.4f);
-        Vector2 targetPos = minimize ? new Vector2(0, -Screen.height * 0.4f) : rectTransform.anchoredPosition;
+        Vector2 targetPos = minimize ? new Vector2(0, -Screen.height * 0.4f) : rectTransform.anchoredPosition + offset;
         Vector3 startScale = minimize ? rectTransform.localScale : Vector3.zero;
         Vector3 targetScale = minimize ? Vector3.zero : Vector3.one;
 

@@ -9,10 +9,10 @@ public class Map : MonoBehaviour
     public static Map Instance;
     public MapNode playerStartNode;
     public MapNode[] eventNodes;
-    public int NumberOfEasyDilemmas = 2;
-    public int NumberOfHardDilemmas = 2;
-    public int NumberOfEasyGigs = 1;
-    public int NumberOfHardGigs = 2;
+    private int NumberOfEasyDilemmas;
+    private int NumberOfHardDilemmas;
+    private int NumberOfEasyGigs;
+    private int NumberOfHardGigs;
 
     private List<MapNode> MapNodes = new List<MapNode>();
     private MapNode PlayerNode;
@@ -47,6 +47,28 @@ public class Map : MonoBehaviour
     {
         
         MapNode.NodeType[] events = new MapNode.NodeType[eventNodes.Length];
+
+        if (Player.Instance.Day < 2)
+        {
+            NumberOfEasyDilemmas = 4;
+            NumberOfHardDilemmas = 0;
+            NumberOfEasyGigs = 3;
+            NumberOfHardGigs = 0;
+        } 
+        else if (Player.Instance.Day < 4)
+        {
+            NumberOfEasyDilemmas = 3;
+            NumberOfHardDilemmas = 1;
+            NumberOfEasyGigs = 2;
+            NumberOfHardGigs = 1;
+        }
+        else
+        {
+            NumberOfEasyDilemmas = 0;
+            NumberOfHardDilemmas = 4;
+            NumberOfEasyGigs = 0;
+            NumberOfHardGigs = 3;
+        }
 
         // Create event array
         int index = 0;

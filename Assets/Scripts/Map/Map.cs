@@ -114,6 +114,8 @@ public class Map : MonoBehaviour
         }
 
         UpdateAccessibleNodes();
+
+        ObjectiveDisplay.Instance.SetObjective();
     }
 
     private void UpdateAccessibleNodes()

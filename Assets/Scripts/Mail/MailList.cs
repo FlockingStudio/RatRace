@@ -86,7 +86,7 @@ public class MailList : MonoBehaviour
     {
         string from = "BankPaymore";
         string subject = "Upcoming Payment Reminder";
-        string body = $"Dear Customer,\n\nThis is a reminder that your scheduled payment of <color=#800000>${50 + 25 * (Player.Instance.Day - 1)}</color> is due by the <color=#800000>end of today.</color> Please ensure that sufficient funds are available in your account to avoid any significant penalties.\n\nThank you for choosing BankPaymore for your financial needs.";
+        string body = $"Dear Customer,\nThis is a reminder that your scheduled payment of <color=#800000>${50 + 25 * (Player.Instance.Day - 1)}</color> is due by the <color=#800000>end of today.</color> This is a collected charge of all recurring payments to your account. Please ensure that sufficient funds are available in your account by the end of the day.\nBankPaymore Collections Department";
         AddMailItem(from, subject, body);
     }
 
@@ -94,7 +94,7 @@ public class MailList : MonoBehaviour
     {
         string from = "BankPaymore";
         string subject = "Payment Required";
-        string body = $"Dear Customer,\n\nYour scheduled payment of <color=#800000>${GameManager.Instance.targetMoney}</color> was not received by the due date. Please make a payment <color=#800000>before day end</color> to avoid losing access to your game MetaGamble.\n\nSincerely,\nBankPaymore Collections Department";
+        string body = $"Dear Customer,\nYour payment of <color=#800000>${GameManager.Instance.targetMoney}</color> must be completed <color=#800000>immediately</color>, using the link provided in this email. Failure to do so will result in the seizure of all collateral assets, including your vehicle and MetaGamble credit.\n\nBankPaymore Collections Department";
         AddMailItem(from, subject, body, false, false, true);
     }
 

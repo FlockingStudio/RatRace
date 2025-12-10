@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     // minimum money to win the game
     public int targetMoney = 50;
     public bool paidBillsToday = false;
+    //public bool objectiveVisible = false;
 
     // csv pooling
 
@@ -116,6 +117,7 @@ public class GameManager : MonoBehaviour
         {
             button.enabled = false;
         }
+        //GameManager.Instance.busy = true;
         menuInstance = Instantiate(MenuPrefab, GameObject.Find("Screen").transform);
     }
 
@@ -135,6 +137,7 @@ public class GameManager : MonoBehaviour
         {
             button.enabled = true;
         }
+        //GameManager.Instance.busy = false;
     }
 
     private void LoadCsvPools()

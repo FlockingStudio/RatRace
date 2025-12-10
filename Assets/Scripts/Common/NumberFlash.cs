@@ -16,13 +16,13 @@ public class NumberFlash : MonoBehaviour
         if (money > 0)
         {
             display = "+" + money.ToString();
-            text.color = new Color(0f, 0.5f, 0f); // dark green
+            text.color = new Color(0.46f, 0.87f, 0.42f); // dark green
             text.SetText(display);
         }
         else if (money < 0)
         {
             display = money.ToString();
-            text.color = new Color(0.5f, 0f, 0f); // dark red
+            text.color = new Color(0.96f, 0.41f, 0.33f); // dark red
             text.SetText(display);
         }
 
@@ -32,7 +32,7 @@ public class NumberFlash : MonoBehaviour
     IEnumerator FadeOut()
     {
         float fadeDuration = 0.7f;
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(1.0f);
 
         Color initialColor = text.color;
         Color targetColor = new Color(initialColor.r, initialColor.g, initialColor.b, 0f);

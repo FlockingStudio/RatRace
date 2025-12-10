@@ -298,10 +298,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2941921617882311221, guid: 354afa3084c37914c9450f3923a7d59c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3930416149374408269, guid: 354afa3084c37914c9450f3923a7d59c, type: 3}
       propertyPath: m_SizeDelta.x
       value: 280
@@ -345,10 +341,6 @@ PrefabInstance:
     - target: {fileID: 4373667290797817142, guid: 354afa3084c37914c9450f3923a7d59c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 4808050237985951302, guid: 354afa3084c37914c9450f3923a7d59c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 354afa3084c37914c9450f3923a7d59c, type: 3}

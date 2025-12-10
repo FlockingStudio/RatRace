@@ -72,6 +72,11 @@ public class MailItem : MonoBehaviour
         {
             ShowPayBillsButton(!GameManager.Instance.paidBillsToday);
         }
+
+        if(subjectInput.text == "Upcoming Payment Reminder")
+        {
+            ObjectiveDisplay.Instance.SetObjective();
+        }
     }
 
     private void ShowDownloadButton()

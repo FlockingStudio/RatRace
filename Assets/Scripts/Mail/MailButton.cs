@@ -34,6 +34,8 @@ public class MailButton : MonoBehaviour
     public void OnPayBillsButtonClicked()
     {
         GameManager.Instance.paidBillsToday = true;
+        //GameManager.Instance.objectiveVisible = false;
+        ObjectiveDisplay.Instance.SetNeutral();
         Player.Instance.SubtractMoney(GameManager.Instance.targetMoney);
         GameManager.Instance.targetMoney += 25;
         Player.Instance.Day += 1;

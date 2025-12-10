@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     // minimum money to win the game
     public int targetMoney = 50;
     public bool paidBillsToday = false;
+    //public bool objectiveVisible = false;
 
     // csv pooling
 

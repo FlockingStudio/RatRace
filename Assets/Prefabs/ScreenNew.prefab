@@ -1979,6 +1979,7 @@ GameObject:
   - component: {fileID: 5939540522478571416}
   - component: {fileID: 6969230663962896282}
   - component: {fileID: 8860070564567525557}
+  - component: {fileID: 1961975609323988152}
   m_Layer: 5
   m_Name: EndButton
   m_TagString: Untagged
@@ -2004,7 +2005,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 504, y: 377}
+  m_AnchoredPosition: {x: 617.2, y: -360.1}
   m_SizeDelta: {x: 280, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5898961005898691844
@@ -2123,6 +2124,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d11af6d9879794946a1eacaca202da3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1961975609323988152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4808050237985951302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0011dc048bae3d4f8443e13d91ff404, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5650919428271660485

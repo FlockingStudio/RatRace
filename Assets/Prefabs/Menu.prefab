@@ -571,6 +571,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1f72b26429f34340a0ba5139eb92b20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  randomizeTargetPosition: 0
 --- !u!1 &8764475478282401179
 GameObject:
   m_ObjectHideFlags: 0

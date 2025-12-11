@@ -39,6 +39,7 @@ public class MailButton : MonoBehaviour
         Player.Instance.SubtractMoney(GameManager.Instance.targetMoney);
         GameManager.Instance.targetMoney += 25;
         Player.Instance.Day += 1;
+        Player.Instance.ResetDailyStats();
         DayDisplay.Instance.animateFade();
         AudioManager.Instance.PlayDayTransition();
         DesktopManager.Instance.DesktopIcons[2].GetComponent<Button>().interactable = true;

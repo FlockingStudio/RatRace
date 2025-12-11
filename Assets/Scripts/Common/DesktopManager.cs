@@ -160,7 +160,6 @@ public class DesktopManager : MonoBehaviour
                             yield return oneSecondWait;
                         }
                         MailList mailList = windows[window].GetComponentInChildren<MailList>();
-                        Player.Instance.ResetDailyStats();
                         GameManager.Instance.paidBillsToday = false;
                         mailList.ClearAllMail();
                         mailList.AddResultMail();

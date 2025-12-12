@@ -64,10 +64,10 @@ public class Map : MonoBehaviour
         }
         else
         {
-            NumberOfEasyDilemmas = 0;
-            NumberOfHardDilemmas = 4;
-            NumberOfEasyGigs = 0;
-            NumberOfHardGigs = 3;
+            NumberOfEasyDilemmas = 1;
+            NumberOfHardDilemmas = 3;
+            NumberOfEasyGigs = 1;
+            NumberOfHardGigs = 2;
         }
 
         // Create event array
